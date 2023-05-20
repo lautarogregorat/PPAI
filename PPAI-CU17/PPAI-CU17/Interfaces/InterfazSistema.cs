@@ -21,7 +21,12 @@ namespace PPAI_CU17.Interfaces
         private void btnRegistrarRespuestaOperador_Click(object sender, EventArgs e)
         {
             InterfazIVR interfazIVR = new InterfazIVR();
-            interfazIVR.registrarRespuesta();
+            interfazIVR.registrarRespuestaOperador();
+        }
+
+        private void InterfazSistema_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

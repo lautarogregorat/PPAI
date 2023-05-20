@@ -99,10 +99,12 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
             ForeColor = Color.FromArgb(0, 0, 64);
             HelpButton = true;
-            ImeMode = ImeMode.NoControl;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
             Name = "InterfazSistema";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "InterfazSistema";
+            Load += InterfazSistema_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -8,7 +8,7 @@ namespace PPAI_CU17.Controladores
 {
     internal class InterfazIVR
     {
-        public void registrarRespuesta()
+        public void registrarRespuestaOperador()
         {
 
         }
