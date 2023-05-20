@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "PPAI-CU17/1.0.0": {
+        "runtime": {
+          "PPAI-CU17.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PPAI-CU17/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
