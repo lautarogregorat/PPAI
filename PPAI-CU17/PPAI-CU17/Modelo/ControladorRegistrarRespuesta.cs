@@ -35,52 +35,52 @@ namespace PPAI_CU17.Modelo
         {
             return this.descripcion;
         }
-        public string GetRespuesta()
+        public string getRespuesta()
         {
             return this.respuesta;
         }
 
-        public string GetAccion()
+        public string getAccion()
         {
             return this.accion;
         }
 
-        public Estado GetEstadoEnCurso()
+        public Estado getEstadoEnCurso()
         {
             return this.estadoEnCurso;
         }
 
-        public DateTime GetHoraActual()
+        public DateTime getHoraActual()
         {
             return this.horaActual;
         }
 
-        public Llamada GetDatosLlamada()
+        public Llamada getDatosLlamada()
         {
             return this.datosLlamada;
         }
 
-        public InformacionCliente GetInformacionCliente()
+        public InformacionCliente getInformacionCliente()
         {
             return this.informacionCliente;
         }
 
-        public Estado GetEstadoFinalizado()
+        public Estado getEstadoFinalizado()
         {
             return this.estadoFinalizado;
         }
 
-        public void SetDescripcion(string value)
+        public void setDescripcion(string value)
         {
             this.descripcion = value;
         }
 
-        public void TomarRespuesta(string value)
+        public void tomarRespuesta(string value)
         {
             this.respuesta = value;
         }
 
-        public void SetAccion(string value)
+        public void setAccion(string value)
         {
             this.accion = value;
         }
@@ -105,6 +105,11 @@ namespace PPAI_CU17.Modelo
 
                 }
             }
+        }
+
+        private void actualizarEstadoLlamada(Llamada llamadaIdentificada) 
+        {
+            llamadaIdentificada.enCurso(this.estadoEnCurso);
         }
 
     }

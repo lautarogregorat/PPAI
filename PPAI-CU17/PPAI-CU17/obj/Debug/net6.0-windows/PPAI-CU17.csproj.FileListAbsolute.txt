@@ -36,3 +36,4 @@ C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Progra
 C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.pdb
 C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.genruntimeconfig.cache
 C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\ref\PPAI-CU17.dll
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.VentanaRegistrarRespuesta.resources
