@@ -17,3 +17,22 @@ D:\FEDE\FACULTAD\2023\DSI\Practico\PPAI\RepoPPAI\PPAI-CU17\PPAI-CU17\obj\Debug\n
 D:\FEDE\FACULTAD\2023\DSI\Practico\PPAI\RepoPPAI\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.VentanaLogin.resources
 D:\FEDE\FACULTAD\2023\DSI\Practico\PPAI\RepoPPAI\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.InterfazSistema.resources
 D:\FEDE\FACULTAD\2023\DSI\Practico\PPAI\RepoPPAI\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Properties.Resources.resources
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.exe
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.deps.json
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.runtimeconfig.json
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.dll
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.pdb
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.csproj.AssemblyReference.cache
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.InterfazSistema.resources
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.VentanaLogin.resources
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Properties.Resources.resources
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.csproj.GenerateResource.cache
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.AssemblyInfoInputs.cache
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.AssemblyInfo.cs
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.csproj.CoreCompileInputs.cache
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.dll
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\refint\PPAI-CU17.dll
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.pdb
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.genruntimeconfig.cache
+C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\ref\PPAI-CU17.dll
