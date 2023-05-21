@@ -12,13 +12,15 @@ namespace PPAI_CU17.Modelo
         private string nombreSubopcion;
         private int nroOrdenSubopcion;
         public Opcion opcionPadre;
+        public Validacion validacion;
 
         // constructor para subopcion
-        public Subopcion(string nombreSubopcion, int nroOrdenSubopcion)
+        public Subopcion(string nombreSubopcion, int nroOrdenSubopcion, Validacion validacion)
         {
             this.nombreSubopcion = nombreSubopcion;
             this.nroOrdenSubopcion = nroOrdenSubopcion;
             opcionPadre = null;
+            this.validacion = validacion
         }
 
         // metodos get para subopcion
@@ -37,10 +39,10 @@ namespace PPAI_CU17.Modelo
             return opcionPadre;
         }
 
-        /* public object getValidaciones()
+        public Validacion getValidaciones()
         {
-            return validacion (pero todavia no esta programada la parte de las validaciones)
-        } */
+            return validacion;
+        }
     }
 
 
