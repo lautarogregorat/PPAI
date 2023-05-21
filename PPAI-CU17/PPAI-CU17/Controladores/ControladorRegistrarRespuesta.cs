@@ -1,4 +1,5 @@
-﻿using PPAI_CU17.Modelo;
+﻿using PPAI_CU17.Interfaces;
+using PPAI_CU17.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,22 +14,14 @@ namespace PPAI_CU17.Controladores
         private string descripcion;
         private string accion;
         private Estado estadoEnCurso;
-        private DateTime horaActual;
+        private DateTime fechaYhoraActual;
         private Llamada datosLlamada;
         private InformacionCliente informacionCliente;
         private Estado estadoFinalizado;
 
-        public ControladorRegistrarRespuesta(string respuesta, string descripcion, string accion, Estado estadoEnCurso, DateTime horaActual, Llamada datosLlamada,
-        InformacionCliente informacionCliente, Estado estadoFinalizado)
+        public ControladorRegistrarRespuesta(Llamada datosLlamada)
         {
-            this.respuesta = respuesta;
-            this.descripcion = descripcion;
-            this.accion = accion;
-            this.estadoEnCurso = estadoEnCurso;
-            this.horaActual = horaActual;
             this.datosLlamada = datosLlamada;
-            this.informacionCliente = informacionCliente;
-            this.estadoFinalizado = estadoFinalizado;
         }
 
         public string getDescripcion()
@@ -52,7 +45,7 @@ namespace PPAI_CU17.Controladores
 
         public DateTime getHoraActual()
         {
-            return horaActual;
+            return fechaYhoraActual;
         }
 
         public Llamada getDatosLlamada()
@@ -90,11 +83,7 @@ namespace PPAI_CU17.Controladores
             estadoEnCurso = estado;
         }
 
-        public void registrarRespuesta(Llamada llamadaIniciada, Cliente clienteIdentificado, Opcion opcionIdentificada, Subopcion subopcionIdentificada)
-        {
-
-        }
-        private void buscarEstadoEnCurso(Array Estados)
+        private void buscarEstadoEnCurso(List<Estado> Estados)
         {
             foreach (Estado estado in Estados)
             {
@@ -112,13 +101,62 @@ namespace PPAI_CU17.Controladores
             llamadaIdentificada.enCurso(estadoEnCurso);
         }
 
-        private void buscarDatosLlamada(Llamada llamadaIdentificada, Cliente cliente, Opcion opcion, Categoria categoria, Subopcion subopcion)
+        private string buscarDatosLlamada()
         {
-            llamadaIdentificada.getCliente();
-            llamadaIdentificada.getOpcionyCategoria(opcion, categoria);
-            llamadaIdentificada.getSubOpcion(subopcion);
-            llamadaIdentificada.getValidaciones(subopcion);
+            String infoLlamada = "";
+            infoLlamada.Concat(this.datosLlamada.getCliente());
+            infoLlamada.Concat(this.datosLlamada.getSubOpcion());
+            infoLlamada.Concat(this.datosLlamada.getOpcionyCategoria());
+            infoLlamada.Concat(this.datosLlamada.getValidaciones());
+
+            return infoLlamada;
         }
+
+        private void obtenerFechaYhoraActual()
+        {
+            DateTime fechaYhoraActualizada = DateTime.Now;
+            this.fechaYhoraActual = fechaYhoraActualizada;
+        }
+
+        public void registrarRespuesta(Llamada llamadaIniciada)
+        {
+            List<Estado> estados = new List<Estado>();
+            string[] stringsEstados = new string[9];
+
+            stringsEstados.Append("Iniciada");
+            stringsEstados.Append("EnCurso");
+            stringsEstados.Append("Finalizada");
+            stringsEstados.Append("Cancelada");
+            stringsEstados.Append("PendienteEscucha");
+            stringsEstados.Append("Correcta");
+            stringsEstados.Append("Observada");
+            stringsEstados.Append("Descartada");
+            stringsEstados.Append("Encuestada");
+
+            foreach (string str in stringsEstados)
+            {
+                Estado est = new Estado(str);
+                estados.Add(est);
+            }
+
+            this.buscarEstadoEnCurso(estados);
+            this.obtenerFechaYhoraActual();
+            this.actualizarEstadoLlamada(datosLlamada);
+
+            this.datosLlamada.enCurso(this.estadoEnCurso);
+
+            string infoLlamada = this.buscarDatosLlamada();
+
+            VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new VentanaRegistrarRespuesta();
+
+            ventanaRegistrarRespuesta.habilitar();
+
+            ventanaRegistrarRespuesta.mostrarDatosLlamada(infoLlamada);
+
+
+        }
+
+
     }
 
 

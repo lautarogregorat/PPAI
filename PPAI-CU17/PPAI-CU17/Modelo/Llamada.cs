@@ -1,4 +1,5 @@
 ﻿using PPAI_CU17.Modelo;
+using System.Security.Cryptography.Xml;
 
 namespace PPAI_CU17.Modelo
 {
@@ -6,43 +7,61 @@ namespace PPAI_CU17.Modelo
         
     {
        private Cliente cliente;
-       private List<CambiodeEstado> cambioDeEstado ;
-       public Llamada() 
-       { 
-            /*
-             Constructor llamada
-             */ 
+       private List<CambiodeEstado> cambioDeEstado;
+        private Opcion opcionSeleccionada;
+        private SubOpcion subopcionSeleccionada;
+        
+        private string descripcionOperador;
+        private string detalleAccionRequerida;
+        private int duracion;
+        private Boolean encuestaEnviada;
+        private string observacionAuditor;
+        
+
+       public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, Estado estadoIniciada) 
+       {
+            this.cliente = datosCliente;
+            this.opcionSeleccionada = opcion;
+            this.subopcionSeleccionada = subOpcion;
+
+            this.crearCambioEstado(estadoIniciada);
              
        }
 
-        public void enCurso(Estado estado)
+        public void enCurso(Estado enCurso)
+        {
+            crearCambioEstado(enCurso);
+        }
+
+        public String getCliente()
+        {
+            return this.cliente.getNombre();
+        }
+        public String getOpcionyCategoria()
+        {
+            String datosOpcionYcategoria = "";
+
+            datosOpcionYcategoria.Concat(this.opcionSeleccionada.getDatos());
+
+            datosOpcionYcategoria.Concat(this.opcionSeleccionada.getCategoria());
+
+            return datosOpcionYcategoria;
+        }
+        public String getSubOpcion()
+        {
+            return this.subopcionSeleccionada.getDatos();
+        }
+
+        public String getValidaciones() 
+        {
+            return this.subopcionSeleccionada.getValidaciones();
+        }
+
+        private void crearCambioEstado(Estado estado)
         {
             CambiodeEstado nuevoCambioDeEstado = new CambiodeEstado(estado);
-            cambioDeEstado.Add(nuevoCambioDeEstado);
-        }
+            this.cambioDeEstado.Add(nuevoCambioDeEstado);
 
-        public void getCliente()
-        {
-            this.cliente.getNombre();
-        }
-        public void getOpcionyCategoria(Opcion opcion, Categoria categoria)
-        {
-            opcion.getDatos();
-            opcion.getCategoria(categoria);
-            
-        }
-        public void getSubOpcion(Subopcion subopcion)
-        {
-            /*
-             subopcion.getDatos();
-             */
-        }
-
-        public void getValidaciones(Subopcion subopcion) 
-        { 
-            /*
-             subopcion.getValidaciones()
-             */
         }
     }
 }

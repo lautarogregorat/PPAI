@@ -13,7 +13,7 @@ namespace PPAI_CU17.Interfaces
     public partial class VentanaRegistrarRespuesta : Form
     {
         // Atributos de la clase VentanaRegistrarRespuesta
-        private DataGridView grillaDatosLlamada;
+        private TextBox txtDatosLlamada;
         private ListBox listaValidaciones;
         private TextBox txtRespuesta;
         private TextBox txtAccion;
@@ -29,6 +29,7 @@ namespace PPAI_CU17.Interfaces
             Height = 600;
 
             // Crear y configurar la grilla de datos
+            /*
             grillaDatosLlamada = new DataGridView();
             grillaDatosLlamada.Dock = DockStyle.Fill;
             grillaDatosLlamada.RowHeadersVisible = true;
@@ -36,6 +37,14 @@ namespace PPAI_CU17.Interfaces
             grillaDatosLlamada.Columns.Add("Opcion seleccionada:", "nombreOpcion");
             grillaDatosLlamada.Columns.Add("SubOpcion seleccionada:", "nombreSubOpcion");
             grillaDatosLlamada.Columns.Add("Categoria seleccionada:", "nombreCategoria");
+            */
+
+            // Crear y configurar el TextBox de los datos de llamada
+            txtDatosLlamada = new TextBox();
+            txtDatosLlamada.Multiline = true;
+            txtDatosLlamada.ReadOnly = true;
+            txtDatosLlamada.Dock = DockStyle.Fill;
+
 
             // Crear y configurar la lista de validaciones
             listaValidaciones = new ListBox();
@@ -52,7 +61,7 @@ namespace PPAI_CU17.Interfaces
             btnConfirmar.Click += BtnConfirmar_Click;
 
             // Agregar los controles a la ventana
-            Controls.Add(grillaDatosLlamada);
+            Controls.Add(txtDatosLlamada);
             Controls.Add(listaValidaciones);
             Controls.Add(txtRespuesta);
             Controls.Add(txtAccion);
@@ -65,9 +74,9 @@ namespace PPAI_CU17.Interfaces
             Show();
         }
 
-        public void mostrarDatosLlamada(string nombreCliente, string nombreOpcion, string nombreSubopcion, string nombreCategoria)
+        public void mostrarDatosLlamada(String datosLlamada)
         {
-            grillaDatosLlamada.Rows.Add(nombreCliente, nombreOpcion, nombreSubopcion, nombreCategoria);
+            txtDatosLlamada.Text = datosLlamada;
         }
 
         public void mostrarValidaciones(List<string> validaciones)

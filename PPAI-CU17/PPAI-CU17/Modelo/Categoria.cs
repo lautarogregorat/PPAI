@@ -26,9 +26,9 @@ namespace PPAI_CU17.Modelo
         }
 
         // Agregamos opciones a la categoria
-        public void AgregarOpcion(Opcion _opcion)
+        public void agregarOpcion(Opcion _opcion)
         {
-            _opcion.categoriaPadre = this;
+            _opcion.categoria = this;
             opciones.Add(_opcion);
         }
 
@@ -52,6 +52,12 @@ namespace PPAI_CU17.Modelo
         {
             return nroOrdenCategoria;
         }
+        public string getDatos() {
+
+            return this.ToString();
+        }
+
+
     }
 }
 

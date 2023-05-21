@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace PPAI_CU17.Modelo
 {
-    public class Subopcion
+    public class SubOpcion
     {
         // atributos
         private string nombreSubopcion;
         private int nroOrdenSubopcion;
+        private List<Validacion> validaciones;
         public Opcion opcionPadre;
 
         // constructor para subopcion
-        public Subopcion(string nombreSubopcion, int nroOrdenSubopcion)
+        public SubOpcion(string nombreSubopcion, int nroOrdenSubopcion)
         {
             this.nombreSubopcion = nombreSubopcion;
             this.nroOrdenSubopcion = nroOrdenSubopcion;
@@ -37,10 +38,24 @@ namespace PPAI_CU17.Modelo
             return opcionPadre;
         }
 
-        /* public object getValidaciones()
+        public string getDatos()
         {
-            return validacion (pero todavia no esta programada la parte de las validaciones)
-        } */
+            return this.ToString();
+        }
+        
+        public string getValidaciones()
+        {
+
+            String datosValidaciones = "";
+
+            this.validaciones.ForEach(validacion =>
+            {
+                datosValidaciones.Concat(validacion.getMensajeValidacion());
+                datosValidaciones.Concat("\n");
+            });
+
+            return datosValidaciones;
+        }
     }
 
 

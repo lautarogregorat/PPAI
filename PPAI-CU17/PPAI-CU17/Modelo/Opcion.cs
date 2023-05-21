@@ -5,25 +5,25 @@ namespace PPAI_CU17.Modelo;
 	{
 	// atributos para opcion
 	private string audioMensajeSubopcion;
-        private string mensajeSubopcion;
+        private string mensajeOpcion;
         private string nombreOpcion;
         private int nroOrdenOpcion;
-        private List<Subopcion> subopciones;
-        public Categoria categoriaPadre;
+        private List<SubOpcion> subopciones;
+        public Categoria categoria;
       
       // constructor para opcion
-        public Opcion(string audioMensajeSubopciones, string mensajeSubopciones, string nombreOpcion, int nroOrdenOpcion)
+        public Opcion(string audioMensajeSubopciones, string mensajeOpcion, string nombreOpcion, int nroOrdenOpcion, Categoria categoriaSuperior)
         {
             this.audioMensajeSubopcion = audioMensajeSubopciones;
-            this.mensajeSubopcion = mensajeSubopciones;
+            this.mensajeOpcion = mensajeOpcion;
             this.nombreOpcion = nombreOpcion;
             this.nroOrdenOpcion = nroOrdenOpcion;
-            subopciones = new List<Subopcion>();
-            categoriaPadre = null;
+            this.subopciones = new List<SubOpcion>();
+            this.categoria = null;
         }
 
         // Agregamos subopciones a la opcion
-        public void AgregarSubopcion(Subopcion _subopcion)
+        public void agregarSubopcion(SubOpcion _subopcion)
         {
             _subopcion.opcionPadre = this;
             subopciones.Add(_subopcion);
@@ -36,24 +36,29 @@ namespace PPAI_CU17.Modelo;
             return audioMensajeSubopcion;
         }
 
-        public string getMensajeSubopcion()
+        public string getMensajeOpcion()
         {
-            return mensajeSubopcion;
+            return this.mensajeOpcion;
         }
 
         public string getNombreOpcion()
         {
-            return nombreOpcion;
+            return this.nombreOpcion;
         }
 
         public int getNroOrdenOpcion()
         {
-            return nroOrdenOpcion;
+            return this.nroOrdenOpcion;
         }
 
         // get categoria
-        public Categoria getCategoria()
+        public String getCategoria()
         {
-            return categoriaPadre;
+        return this.categoria.getDatos();
+        }
+
+        public string getDatos() 
+        {
+        return this.ToString();
         }
 	}

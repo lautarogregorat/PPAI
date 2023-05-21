@@ -11,22 +11,24 @@ namespace PPAI_CU17.Modelo
         // atributos de validacion
         private string audioMensajeValidacion;
         private string nombreValidacion;
-        
+
         // constructor de validacion
-        public Validacion(string audioMensajeValidacion, string nombreValidacion)
+        public Validacion(string _audioMensajeValidacion, string _nombreValidacion)
         {
-            this.audioMensajeValidacion = audioMensajeValidacion;
-            this.nombreValidacion = nombreValidacion;
+            this.audioMensajeValidacion = _audioMensajeValidacion;
+            this.nombreValidacion = _nombreValidacion;
         }
-        
+
         // metodos get para validacion
-        public string getAudioMensajeValidacion()
+        public string getMensajeValidacion()
         {
             return audioMensajeValidacion;
         }
-        
-        public string nombreValidacion()
+
+        public string getNombreValidacion()
         {
             return nombreValidacion;
         }
+
     }
+}

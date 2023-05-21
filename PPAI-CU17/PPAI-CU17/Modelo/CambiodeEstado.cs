@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PPAI_CU17.Modelo
 {
-    internal class CambiodeEstado
+    public class CambiodeEstado
 
     {
         private Estado estado;
