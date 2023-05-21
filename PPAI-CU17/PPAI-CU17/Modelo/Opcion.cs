@@ -6,18 +6,18 @@ namespace PPAI_CU17.Modelo;
 	// atributos para opcion
 	private string audioMensajeSubopcion;
         private string mensajeSubopcion;
-        private string nombreSubop;
-        private int nroOrdenSubop;
+        private string nombreOpcion;
+        private int nroOrdenOpcion;
         private List<Subopcion> subopciones;
         public Categoria categoriaPadre;
       
       // constructor para opcion
-        public Opcion(string audioMensajeSubopciones, string mensajeSubopciones, string nombre, int nroOrden)
+        public Opcion(string audioMensajeSubopciones, string mensajeSubopciones, string nombreOpcion, int nroOrdenOpcion)
         {
             this.audioMensajeSubopcion = audioMensajeSubopciones;
             this.mensajeSubopcion = mensajeSubopciones;
-            this.nombreSubop = nombre;
-            this.nroOrdenSubop = nroOrden;
+            this.nombreOpcion = nombreOpcion;
+            this.nroOrdenOpcion = nroOrdenOpcion;
             subopciones = new List<Subopcion>();
             categoriaPadre = null;
         }
@@ -41,14 +41,14 @@ namespace PPAI_CU17.Modelo;
             return mensajeSubopcion;
         }
 
-        public string getNombreSubop()
+        public string getNombreOpcion()
         {
-            return nombreSubop;
+            return nombreOpcion;
         }
 
-        public int getNroOrdenSubop()
+        public int getNroOrdenOpcion()
         {
-            return nroOrdenSubop;
+            return nroOrdenOpcion;
         }
 
         // get categoria
