@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace PPAI_CU17.Modelo
 {
-    internal class CambiodeEstado
-
+    public class Categoria
     {
-        private Estado estado;
-        public CambiodeEstado(Estado estado) 
+        public Categoria()
+        { 
+        }
+        public string getDatos()
         {
-            this.estado = estado;
+            return "datos de categoria";
         }
     }
 }
+

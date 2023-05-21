@@ -90,7 +90,7 @@ namespace PPAI_CU17.Modelo
             this.estadoEnCurso = estado;
         }
 
-        public void registrarRespuesta(string respuesta)
+        public void registrarRespuesta(/*ACA VAN LLAMADA CLIENTE OPCION Y SUBOPCION*/)
         {
             
         }
@@ -112,6 +112,13 @@ namespace PPAI_CU17.Modelo
             llamadaIdentificada.enCurso(this.estadoEnCurso);
         }
 
+        private void buscarDatosLlamada(Llamada llamadaIdentificada, Cliente cliente, Opcion opcion, Categoria categoria, Subopcion subopcion)
+        {
+            llamadaIdentificada.getCliente(cliente);
+            llamadaIdentificada.getOpcionyCategoria(opcion, categoria);
+            llamadaIdentificada.getSubOpcion(subopcion);
+            llamadaIdentificada.getValidaciones(subopcion);
+        }
     }
 
 
