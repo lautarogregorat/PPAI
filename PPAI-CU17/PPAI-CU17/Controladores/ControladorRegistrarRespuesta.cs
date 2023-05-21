@@ -1,12 +1,12 @@
 ﻿using PPAI_CU17.Entidades;
-using PPAI_CU17.Interfaces;
+using PPAI_CU17.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPAI_CU17.Modelo
+namespace PPAI_CU17.Controladores
 {
     public class ControladorRegistrarRespuesta
     {
@@ -34,83 +34,83 @@ namespace PPAI_CU17.Modelo
 
         public string getDescripcion()
         {
-            return this.descripcion;
+            return descripcion;
         }
         public string getRespuesta()
         {
-            return this.respuesta;
+            return respuesta;
         }
 
         public string getAccion()
         {
-            return this.accion;
+            return accion;
         }
 
         public Estado getEstadoEnCurso()
         {
-            return this.estadoEnCurso;
+            return estadoEnCurso;
         }
 
         public DateTime getHoraActual()
         {
-            return this.horaActual;
+            return horaActual;
         }
 
         public Llamada getDatosLlamada()
         {
-            return this.datosLlamada;
+            return datosLlamada;
         }
 
         public InformacionCliente getInformacionCliente()
         {
-            return this.informacionCliente;
+            return informacionCliente;
         }
 
         public Estado getEstadoFinalizado()
         {
-            return this.estadoFinalizado;
+            return estadoFinalizado;
         }
 
         public void setDescripcion(string value)
         {
-            this.descripcion = value;
+            descripcion = value;
         }
 
         public void tomarRespuesta(string value)
         {
-            this.respuesta = value;
+            respuesta = value;
         }
 
         public void setAccion(string value)
         {
-            this.accion = value;
+            accion = value;
         }
 
         private void setEstadoEnCurso(Estado estado)
         {
-            this.estadoEnCurso = estado;
+            estadoEnCurso = estado;
         }
 
-        public void registrarRespuesta(/*ACA VAN LLAMADA CLIENTE OPCION Y SUBOPCION*/)
+        public void registrarRespuesta(Llamada llamadaIniciada, Cliente clienteIdentificado, Opcion opcionIdentificada, Subopcion subopcionIdentificada)
         {
-            
+
         }
-        private void buscarEstadoEnCurso(Array Estados) 
+        private void buscarEstadoEnCurso(Array Estados)
         {
             foreach (Estado estado in Estados)
             {
                 if (estado.sosEnCurso())
                 {
-                    this.setEstadoEnCurso(estado);
+                    setEstadoEnCurso(estado);
                     break;
 
                 }
             }
         }
 
-        private void actualizarEstadoLlamada(Llamada llamadaIdentificada) 
+        private void actualizarEstadoLlamada(Llamada llamadaIdentificada)
         {
-            llamadaIdentificada.enCurso(this.estadoEnCurso);
+            llamadaIdentificada.enCurso(estadoEnCurso);
         }
 
         private void buscarDatosLlamada(Llamada llamadaIdentificada, Cliente cliente, Opcion opcion, Categoria categoria, Subopcion subopcion)
@@ -119,30 +119,7 @@ namespace PPAI_CU17.Modelo
             llamadaIdentificada.getOpcionyCategoria(opcion, categoria);
             llamadaIdentificada.getSubOpcion(subopcion);
             llamadaIdentificada.getValidaciones(subopcion);
-            
         }
-
-        private void validarRespuestas() 
-        {
-
-
-        }
-        private void registrarAccionRequerida()
-        {
-
-        }
-
-        private void buscarEstadoFinalizado()
-        {
-
-        }
-
-        private void registrarFindeLLamada()
-        {
-
-        }
-
-
     }
 
 

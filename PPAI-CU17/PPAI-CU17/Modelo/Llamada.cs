@@ -8,7 +8,10 @@ namespace PPAI_CU17.Modelo
        private CambiodeEstado cambiodeEstado;
        public Llamada() 
        { 
-            
+            /*
+             Constructor llamada
+             */ 
+             
        }
 
         public void enCurso(Estado estado)

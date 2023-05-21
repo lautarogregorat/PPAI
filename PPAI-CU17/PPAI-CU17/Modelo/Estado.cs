@@ -16,20 +16,13 @@
 
         public Boolean sosEnCurso()
         {
-            if (this.nombre == "En curso")
-            {
-                return true;            
-            } else { return false; }
+            return this.nombre == "En curso";
 
         }
 
-        public Boolean esFinalizado()
+        public Boolean esFinalizada()
         {
-            if (this.nombre == "Finalizado")
-            {
-                return true;
-            }
-            else { return false; }
+            return this.nombre == "Finalizada";
 
         }
     }

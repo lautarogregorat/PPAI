@@ -37,3 +37,23 @@ C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Progra
 C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.genruntimeconfig.cache
 C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\ref\PPAI-CU17.dll
 C:\Users\lauta\OneDrive\Documentos\ING. 3ER AÑO\Diseño de Sistemas\PPAI\Programacion del CU17\ppai-registrar-rta-operador\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.VentanaRegistrarRespuesta.resources
+D:\Repos\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.exe
+D:\Repos\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.deps.json
+D:\Repos\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.runtimeconfig.json
+D:\Repos\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.dll
+D:\Repos\PPAI-CU17\PPAI-CU17\bin\Debug\net6.0-windows\PPAI-CU17.pdb
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.csproj.AssemblyReference.cache
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.InterfazSistema.resources
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.VentanaLogin.resources
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Interfaces.VentanaRegistrarRespuesta.resources
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI_CU17.Properties.Resources.resources
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.csproj.GenerateResource.cache
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.AssemblyInfoInputs.cache
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.AssemblyInfo.cs
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.csproj.CoreCompileInputs.cache
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.dll
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\refint\PPAI-CU17.dll
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.pdb
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\PPAI-CU17.genruntimeconfig.cache
+D:\Repos\PPAI-CU17\PPAI-CU17\obj\Debug\net6.0-windows\ref\PPAI-CU17.dll
