@@ -11,17 +11,17 @@ namespace PPAI_CU17.Modelo
         // atributos para categoria
         private string audioMensajeOpcion; 
         private string mensajeOpcion;
-        private string nombreOp;
-        private int nroOrdenOp;
+        private string nombreCategoria;
+        private int nroOrdenCategoria;
         private List<Opcion> opciones;
 
         // constructor Categoria
-        public Categoria(string audioMensajeOpcion, string mensajeOpcion, string nombre, int nroOrden)
+        public Categoria(string audioMensajeOpcion, string mensajeOpcion, string nombreCategoria, int nroOrdenCategoria)
         {
             this.audioMensajeOpcion = audioMensajeOpcion;
             this.mensajeOpcion = mensajeOpcion;
-            this.nombreOp = nombre;
-            this.nroOrdenOp = nroOrden;
+            this.nombreCategoria = nombreCategoria;
+            this.nroOrdenCategoria = nroOrdenCategoria;
             opciones = new List<Opcion>();
         }
 
@@ -43,14 +43,14 @@ namespace PPAI_CU17.Modelo
             return mensajeOpcion;
         }
 
-        public string getNombreOp()
+        public string getNombreCategoria()
         {
-            return nombreOp;
+            return nombreCategoria;
         }
 
-        public int getNroOrdenOp()
+        public int getNroOrdenCategoria()
         {
-            return nroOrdenOp;
+            return nroOrdenCategoria;
         }
     }
 }
