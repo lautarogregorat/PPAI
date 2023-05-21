@@ -9,10 +9,11 @@ namespace PPAI_CU17.Modelo;
         private string nombreOpcion;
         private int nroOrdenOpcion;
         private List<Subopcion> subopciones;
+	public Validacion validacion;
         public Categoria categoriaPadre;
       
       // constructor para opcion
-        public Opcion(string audioMensajeSubopciones, string mensajeSubopciones, string nombreOpcion, int nroOrdenOpcion)
+        public Opcion(string audioMensajeSubopciones, string mensajeSubopciones, string nombreOpcion, int nroOrdenOpcion, Validacion validacion)
         {
             this.audioMensajeSubopcion = audioMensajeSubopciones;
             this.mensajeSubopcion = mensajeSubopciones;
@@ -20,6 +21,7 @@ namespace PPAI_CU17.Modelo;
             this.nroOrdenOpcion = nroOrdenOpcion;
             subopciones = new List<Subopcion>();
             categoriaPadre = null;
+	    this.validacion = validacion;
         }
 
         // Agregamos subopciones a la opcion
@@ -56,4 +58,11 @@ namespace PPAI_CU17.Modelo;
         {
             return categoriaPadre;
         }
+	
+	// get validacion
+	public Validacion getValidacion()
+	{
+		return validacion;
+	}
+	
 	}
