@@ -13,6 +13,7 @@ namespace PPAI_CU17.Modelo
         private int nroOrdenSubopcion;
         private List<Validacion> validaciones;
         public Opcion opcionPadre;
+        public Validacion validacion;
 
         // constructor para subopcion
         public SubOpcion(string nombreSubopcion, int nroOrdenSubopcion)
@@ -20,6 +21,7 @@ namespace PPAI_CU17.Modelo
             this.nombreSubopcion = nombreSubopcion;
             this.nroOrdenSubopcion = nroOrdenSubopcion;
             opcionPadre = null;
+            this.validacion = validacion
         }
 
         // metodos get para subopcion

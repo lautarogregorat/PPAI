@@ -61,4 +61,11 @@ namespace PPAI_CU17.Modelo;
         {
         return this.ToString();
         }
+	
+	// get validacion
+	public Validacion getValidacion()
+	{
+		return validacion;
+	}
+	
 	}
