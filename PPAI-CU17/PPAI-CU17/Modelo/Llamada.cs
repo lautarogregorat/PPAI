@@ -1,11 +1,12 @@
-﻿using PPAI_CU17.Entidades;
+﻿using PPAI_CU17.Modelo;
 
 namespace PPAI_CU17.Modelo
 {
     public class Llamada
         
     {
-       private CambiodeEstado cambiodeEstado;
+       private Cliente cliente;
+       private List<CambiodeEstado> cambioDeEstado ;
        public Llamada() 
        { 
             /*
@@ -16,12 +17,13 @@ namespace PPAI_CU17.Modelo
 
         public void enCurso(Estado estado)
         {
-            this.cambiodeEstado = new CambiodeEstado (estado);   
+            CambiodeEstado nuevoCambioDeEstado = new CambiodeEstado(estado);
+            cambioDeEstado.Add(nuevoCambioDeEstado);
         }
 
-        public void getCliente(Cliente cliente)
+        public void getCliente()
         {
-            cliente.getNombre();
+            this.cliente.getNombre();
         }
         public void getOpcionyCategoria(Opcion opcion, Categoria categoria)
         {

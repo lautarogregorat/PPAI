@@ -1,4 +1,4 @@
-﻿using PPAI_CU17.Entidades;
+﻿using PPAI_CU17.Modelo;
 
 namespace PPAI_CU17.Modelo;
 	public class Opcion

@@ -1,5 +1,4 @@
-﻿using PPAI_CU17.Entidades;
-using PPAI_CU17.Modelo;
+﻿using PPAI_CU17.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,7 +114,7 @@ namespace PPAI_CU17.Controladores
 
         private void buscarDatosLlamada(Llamada llamadaIdentificada, Cliente cliente, Opcion opcion, Categoria categoria, Subopcion subopcion)
         {
-            llamadaIdentificada.getCliente(cliente);
+            llamadaIdentificada.getCliente();
             llamadaIdentificada.getOpcionyCategoria(opcion, categoria);
             llamadaIdentificada.getSubOpcion(subopcion);
             llamadaIdentificada.getValidaciones(subopcion);
