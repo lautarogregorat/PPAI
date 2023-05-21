@@ -9,27 +9,27 @@ namespace PPAI_CU17.Modelo
     public class Subopcion
     {
         // atributos
-        private string nombre;
-        private int nroOrden;
+        private string nombreSubopcion;
+        private int nroOrdenSubopcion;
         public Opcion opcionPadre;
 
         // constructor para subopcion
-        public Subopcion(string nombre, int nroOrden)
+        public Subopcion(string nombreSubopcion, int nroOrdenSubopcion)
         {
-            this.nombre = nombre;
-            this.nroOrden = nroOrden;
+            this.nombreSubopcion = nombreSubopcion;
+            this.nroOrdenSubopcion = nroOrdenSubopcion;
             opcionPadre = null;
         }
 
         // metodos get para subopcion
-        public string getNombre()
+        public string getNombreSubopcion()
         {
-            return nombre;
+            return nombreSubopcion;
         }
 
-        public int getNroOrden()
+        public int getNroOrdenSubopcion()
         {
-            return nroOrden;
+            return nroOrdenSubopcion;
         }
 
        public Opcion  getOpcion()
