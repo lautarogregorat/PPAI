@@ -1,4 +1,5 @@
 ﻿using PPAI_CU17.Entidades;
+using PPAI_CU17.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,7 +119,30 @@ namespace PPAI_CU17.Modelo
             llamadaIdentificada.getOpcionyCategoria(opcion, categoria);
             llamadaIdentificada.getSubOpcion(subopcion);
             llamadaIdentificada.getValidaciones(subopcion);
+            
         }
+
+        private void validarRespuestas() 
+        {
+
+
+        }
+        private void registrarAccionRequerida()
+        {
+
+        }
+
+        private void buscarEstadoFinalizado()
+        {
+
+        }
+
+        private void registrarFindeLLamada()
+        {
+
+        }
+
+
     }
 
 
