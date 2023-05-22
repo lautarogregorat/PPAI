@@ -63,5 +63,13 @@ namespace PPAI_CU17.Modelo
             this.cambioDeEstado.Add(nuevoCambioDeEstado);
 
         }
+
+        public bool validarInfoCliente(String respuesta)
+        {
+            List<Validacion> validaciones = this.subopcionSeleccionada.obtenerValidaciones();
+            return this.cliente.esInformacionCorrecta(respuesta, validaciones);
+
+
+        }
     }
 }

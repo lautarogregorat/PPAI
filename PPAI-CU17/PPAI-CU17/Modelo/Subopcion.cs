@@ -21,7 +21,8 @@ namespace PPAI_CU17.Modelo
             this.nombreSubopcion = nombreSubopcion;
             this.nroOrdenSubopcion = nroOrdenSubopcion;
             opcionPadre = null;
-            this.validacion = validacion
+            this.validacion = validacion;
+            this.validaciones = new List<Validacion>();
         }
 
         // metodos get para subopcion
@@ -57,6 +58,11 @@ namespace PPAI_CU17.Modelo
             });
 
             return datosValidaciones;
+        }
+
+        public List<Validacion> obtenerValidaciones()
+        {
+            return this.validaciones;
         }
     }
 

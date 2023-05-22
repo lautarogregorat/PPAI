@@ -89,9 +89,10 @@ namespace PPAI_CU17.Interfaces
             listaValidaciones.Visible = true;
         }
 
-        public void tomarRespuesta()
+        public string tomarRespuesta()
         {
             string respuesta = txtRespuesta.Text;
+            return respuesta;
             // Guardar la respuesta en alguna estructura de datos o hacer algo con ella
         }
 
