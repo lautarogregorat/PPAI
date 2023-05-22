@@ -83,6 +83,7 @@ namespace PPAI_CU17.Controladores
             estadoEnCurso = estado;
         }
 
+        // Busca entre los objetos estado la instancia "enCurso" y setea usando el método arriba definido
         private void buscarEstadoEnCurso(List<Estado> Estados)
         {
             foreach (Estado estado in Estados)
@@ -96,9 +97,9 @@ namespace PPAI_CU17.Controladores
             }
         }
 
-        private void actualizarEstadoLlamada(Llamada llamadaIdentificada)
+        private void actualizarEstadoLlamada()
         {
-            llamadaIdentificada.enCurso(estadoEnCurso);
+            this.datosLlamada.enCurso(estadoEnCurso, this.fechaYhoraActual);
         }
 
         private string buscarDatosLlamada()
@@ -112,6 +113,7 @@ namespace PPAI_CU17.Controladores
             return infoLlamada;
         }
 
+        // Obtiene y actualiza la fechaYhoraActual
         private void obtenerFechaYhoraActual()
         {
             DateTime fechaYhoraActualizada = DateTime.Now;
@@ -141,9 +143,9 @@ namespace PPAI_CU17.Controladores
 
             this.buscarEstadoEnCurso(estados);
             this.obtenerFechaYhoraActual();
-            this.actualizarEstadoLlamada(datosLlamada);
+            this.actualizarEstadoLlamada();
 
-            this.datosLlamada.enCurso(this.estadoEnCurso);
+            this.datosLlamada.enCurso(this.estadoEnCurso, this.fechaYhoraActual);
 
             string infoLlamada = this.buscarDatosLlamada();
 
@@ -157,8 +159,34 @@ namespace PPAI_CU17.Controladores
         }
 
 
+        private void setEstadoFinalizado(Estado estado)
+        {
+            estadoFinalizado = estado;
+        }
+
+        // Busca entre los objetos estado la instancia "Finalizado" y setea usando el método arriba definido
+        public void buscarEstadoFinalizado(List<Estado> Estados)
+        {
+
+            foreach (Estado estado in Estados)
+            {
+                if (estado.esFinalizada())
+                {
+                    setEstadoFinalizado(estado);
+                    break;
+
+                }
+            }
+        }
+
+        public void registrarFinDeLlamada(Estado estadoFinalizado)
+        {
+            // Será la FechaHoraInicio del CambiodeEstado 
+            this.datosLlamada.finalizar(estadoFinalizado, this.fechaYhoraActual);
+
+        }
+
+
     }
-
-
 
 }
