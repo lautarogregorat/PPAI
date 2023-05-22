@@ -22,6 +22,11 @@ namespace PPAI_CU17.Modelo
             this.validaciones = new List<Validacion>();
             opcionPadre = null;
         }
+        
+        public void agregarValidacion(Validacion validacion)
+        {
+            this.validaciones.Add(validacion);
+        }
 
         // metodos get para subopcion
         public string getNombreSubopcion()

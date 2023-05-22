@@ -234,13 +234,11 @@ namespace PPAI_CU17.Controladores
 
             ventanaRegistrarRespuesta.mostrarValidaciones(this.datosLlamada.getValidaciones());
             
-;
-
             if (!(this.validarRespuestas()))
             {
 
                 // Flujo alternativo 2 - Alguna de las validaciones es incorrecta
-                ventanaRegistrarRespuesta.Hide();
+                MessageBox.Show("Error, alguna de las respuestas ingresas no es valida.");
                 return;
             }
 

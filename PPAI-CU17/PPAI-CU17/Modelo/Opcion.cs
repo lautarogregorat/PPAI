@@ -9,6 +9,7 @@ namespace PPAI_CU17.Modelo;
         private string nombreOpcion;
         private int nroOrdenOpcion;
         private List<SubOpcion> subopciones;
+        private List<Validacion> validacionRequerida;
         public Categoria categoria;
       
       // constructor para opcion
@@ -61,11 +62,18 @@ namespace PPAI_CU17.Modelo;
         {
         return this.ToString();
         }
-	
-	// get validacion
-	public Validacion getValidacion()
-	{
-		return validacion;
-	}
-	
-	}
+
+    // get validacion
+    public List<String> getValidaciones()
+    {
+        List<String> datosValidaciones = new List<string>();
+
+        this.validacionRequerida.ForEach(validacion =>
+        {
+            datosValidaciones.Add(validacion.getNombreValidacion());
+        });
+
+        return datosValidaciones;
+    }
+
+}
