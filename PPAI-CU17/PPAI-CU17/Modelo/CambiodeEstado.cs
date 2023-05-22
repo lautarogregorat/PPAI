@@ -17,5 +17,20 @@ namespace PPAI_CU17.Modelo
             this.estado = estado;
             this.fechaHoraInicio = fechaHorainicio;
         }
+
+        public DateTime getFechaHoraInicio()
+        {
+            return this.fechaHoraInicio;
+        }
+
+        public bool esEstadoIniciada()
+        {
+            return this.estado.esIniciada();
+        }
+
+        public bool esEstadoFinalizada()
+        {
+            return this.estado.esFinalizada();
+        }
     }
 }

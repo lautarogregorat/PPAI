@@ -13,6 +13,11 @@ namespace PPAI_CU17.Controladores
 
         public bool registrarAccionRequerida(string accion)
         {
+            if (accion == "" || accion == null)
+            {
+                return false;
+            };
+
             return true;
         }
     }

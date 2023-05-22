@@ -13,7 +13,7 @@ namespace PPAI_CU17.Modelo
 
         private string descripcionOperador;
         private string detalleAccionRequerida;
-        private int duracion; // VER SI ES INT
+        private TimeSpan duracion; 
         private Boolean encuestaEnviada;
         private string observacionAuditor;
 
@@ -27,6 +27,16 @@ namespace PPAI_CU17.Modelo
             this.crearCambioEstado(estadoIniciada, fechaHoraInicio);
              
        }
+
+        public void setDetalleAccionRequerida(string accion)
+        {
+            this.detalleAccionRequerida = accion;
+        }
+
+        public void setDescripcionOperador(string descripcion)
+        {
+            this.descripcionOperador = descripcion;
+        }
 
         public void enCurso(Estado enCurso, DateTime fechaHoraInicio)
         {
@@ -73,6 +83,27 @@ namespace PPAI_CU17.Modelo
             return this.cliente.esInformacionCorrecta(respuesta, validaciones);
 
 
+        }
+
+        public void calcularDuracion()
+        {
+            DateTime fechaHoraIniciada = new DateTime();
+            DateTime fechaHoraFinalizada = new DateTime();
+
+            this.cambioDeEstado.ForEach(cambio =>
+            {
+                if (cambio.esEstadoIniciada())
+                {
+                    fechaHoraIniciada = cambio.getFechaHoraInicio();
+                }
+
+                if (cambio.esEstadoFinalizada())
+                {
+                    fechaHoraFinalizada = cambio.getFechaHoraInicio();
+                }
+            });
+
+            this.duracion = fechaHoraFinalizada - fechaHoraIniciada;
         }
         }
 }

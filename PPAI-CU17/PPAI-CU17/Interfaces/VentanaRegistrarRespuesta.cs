@@ -72,7 +72,7 @@ namespace PPAI_CU17.Interfaces
             this.btnConfirmar.Visible = false;
 
             // Agregar los controles a la ventana
-            this.Controls.Add(lblDatosLlamada);
+            this.Controls.Add(txtDatosLlamada);
             this.Controls.Add(listaValidaciones);
             this.Controls.Add(txtRespuesta);
             this.Controls.Add(txtAccion);
@@ -121,22 +121,28 @@ namespace PPAI_CU17.Interfaces
             MessageBox.Show("Por favor, ingrese una la acción a realizar");
         }
 
+        public void solicitarConfirmacion()
+        {
+            MessageBox.Show("Desea confirmar el registro de la respuesta?");
+            this.btnConfirmar.Visible = true;
+        }
+
         public void tomarDescripcion()
         {
             string descripcion = this.txtDescripcion.Text;
+            this.controladorRegistrarRespuesta.tomarDescripcion(descripcion);
             // Guardar la descripción en alguna estructura de datos o hacer algo con ella
         }
 
         public void tomarAccion()
         {
             string accion = this.txtAccion.Text;
-            // Guardar la acción en alguna estructura de datos o hacer algo con ella
+            controladorRegistrarRespuesta.tomarAccion(accion);
         }
 
         public void tomarConfirmacion()
         {
-            // Realizar alguna lógica adicional antes de mostrar el mensaje
-            mostrarMsgRegistroAccion();
+            this.controladorRegistrarRespuesta.tomarConfirmacion();
         }
 
         public void mostrarMsgRegistroAccion()

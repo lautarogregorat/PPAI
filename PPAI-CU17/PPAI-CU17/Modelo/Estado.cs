@@ -16,13 +16,18 @@
 
         public Boolean sosEnCurso()
         {
-            return this.nombre == "En curso";
+            return this.nombre.Equals("En curso");
 
+        }
+
+        public Boolean esIniciada()
+        {
+            return this.nombre.Equals("Iniciada");
         }
 
         public Boolean esFinalizada()
         {
-            return this.nombre == "Finalizada";
+            return this.nombre.Equals("Finalizada");
 
         }
     }

@@ -17,7 +17,7 @@ namespace PPAI_CU17.Controladores
         private DateTime fechaYhoraActual;
         private Llamada datosLlamada;
         private InformacionCliente informacionCliente;
-        private Estado estadoFinalizado;
+        private Estado estadoFinalizada;
         public VentanaRegistrarRespuesta ventanaRegistrarRespuesta;
 
         public ControladorRegistrarRespuesta(Llamada datosLlamada, VentanaRegistrarRespuesta _ventanaRegistrarRespuesta)
@@ -63,7 +63,7 @@ namespace PPAI_CU17.Controladores
 
         public Estado getEstadoFinalizado()
         {
-            return estadoFinalizado;
+            return estadoFinalizada;
         }
 
         public void setDescripcion(string value)
@@ -100,10 +100,45 @@ namespace PPAI_CU17.Controladores
             }
         }
 
-        private void registrarAccionRequerida(String accion)
+        private void setEstadoFinalizada(Estado estado)
         {
-            GestorCU gestorCu = new GestorCU();
-            gestorCu.registrarAccionRequerida(accion);
+            this.estadoFinalizada = estado;
+        }
+
+        // Busca entre los objetos estado la instancia "Finalizado" y setea usando el método arriba definido
+        public void buscarEstadoFinalizada(List<Estado> Estados)
+        {
+
+            foreach (Estado estado in Estados)
+            {
+                if (estado.esFinalizada())
+                {
+                    setEstadoFinalizada(estado);
+                    break;
+
+                }
+            }
+        }
+
+        public void tomarDescripcion(string descripcionIngresada)
+        {
+            this.descripcion = descripcionIngresada;
+        }
+
+        public void tomarAccion(string accionRequerida)
+        {
+            this.accion = accionRequerida;
+        }
+
+        public void tomarConfirmacion()
+        {
+            return;
+        }
+
+        private bool registrarAccionRequerida()
+        {
+            GestorCU gestorRegistrarAccion = new GestorCU();
+            return gestorRegistrarAccion.registrarAccionRequerida(this.accion);
         }
 
         private void actualizarEstadoLlamada()
@@ -149,6 +184,21 @@ namespace PPAI_CU17.Controladores
             return valida;
         }
 
+        public void registrarFinDeLlamada()
+        {
+            // Será la FechaHoraInicio del CambiodeEstado 
+            this.datosLlamada.finalizar(this.estadoFinalizada, this.fechaYhoraActual);
+            this.datosLlamada.setDescripcionOperador(this.descripcion);
+            this.datosLlamada.setDetalleAccionRequerida(this.accion);
+            this.datosLlamada.calcularDuracion();
+
+        }
+
+        public void finCu()
+        {
+            return;
+        }
+
         public void registrarRespuesta()
         {
             List<Estado> estados = new List<Estado>();
@@ -188,49 +238,33 @@ namespace PPAI_CU17.Controladores
 
             if (!(this.validarRespuestas()))
             {
-                // Hacer algo si las respuestas no validaron bien, se cancela el CU por ejemplo (Alternativa 2)
-            } else
-            {
-                // Continua el CU
+
+                // Flujo alternativo 2 - Alguna de las validaciones es incorrecta
+                ventanaRegistrarRespuesta.Hide();
+                return;
             }
 
+            ventanaRegistrarRespuesta.solicitarDescripcion();
+            ventanaRegistrarRespuesta.solicitarAccion();
+            ventanaRegistrarRespuesta.solicitarConfirmacion();
 
-            
+            // Paso número 8 - Llamada al CU 28 Registrar accion requerida
 
+            if (!(this.registrarAccionRequerida())){
+                // Flujo alternativo 3 - El CU 28 no ejecuta con éxito
+            };
 
+            this.ventanaRegistrarRespuesta.mostrarMsgRegistroAccion();
+
+            this.buscarEstadoFinalizada(estados);
+
+            this.registrarFinDeLlamada();
+
+            this.finCu();
+
+            return;
         }
-
-
-        private void setEstadoFinalizado(Estado estado)
-        {
-            estadoFinalizado = estado;
-        }
-
-        // Busca entre los objetos estado la instancia "Finalizado" y setea usando el método arriba definido
-        public void buscarEstadoFinalizado(List<Estado> Estados)
-        {
-
-            foreach (Estado estado in Estados)
-            {
-                if (estado.esFinalizada())
-                {
-                    setEstadoFinalizado(estado);
-                    break;
-
-                }
-            }
-        }
-        /*
-        string respuesta = ventanaRegistrarRespuesta.tomarRespuesta();
-        this.validarRespuesta(respuesta);
-        */
-        public void registrarFinDeLlamada(Estado estadoFinalizado)
-        {
-            // Será la FechaHoraInicio del CambiodeEstado 
-            this.datosLlamada.finalizar(estadoFinalizado, this.fechaYhoraActual);
-
-        }
-
+        
     }
 
 }
