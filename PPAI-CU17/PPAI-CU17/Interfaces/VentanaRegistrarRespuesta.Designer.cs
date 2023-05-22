@@ -29,21 +29,50 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaRegistrarRespuesta));
+            lblLlamada = new Label();
+            txtDatosLlamada = new TextBox();
             SuspendLayout();
+            // 
+            // lblLlamada
+            // 
+            lblLlamada.AutoSize = true;
+            lblLlamada.Location = new Point(69, 33);
+            lblLlamada.Name = "lblLlamada";
+            lblLlamada.Size = new Size(107, 15);
+            lblLlamada.TabIndex = 0;
+            lblLlamada.Text = "Datos de Llamada: ";
+            // 
+            // txtDatosLlamada
+            // 
+            txtDatosLlamada.BackColor = Color.Gray;
+            txtDatosLlamada.Font = new Font("Consolas", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtDatosLlamada.ForeColor = Color.Black;
+            txtDatosLlamada.Location = new Point(193, 30);
+            txtDatosLlamada.Multiline = true;
+            txtDatosLlamada.Name = "txtDatosLlamada";
+            txtDatosLlamada.ReadOnly = true;
+            txtDatosLlamada.Size = new Size(559, 325);
+            txtDatosLlamada.TabIndex = 1;
             // 
             // VentanaRegistrarRespuesta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtDatosLlamada);
+            Controls.Add(lblLlamada);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VentanaRegistrarRespuesta";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "VentanaRegistrarRespuesta";
+            Text = "Registrar respuesta de operador";
             Load += VentanaRegistrarRespuesta_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblLlamada;
+        private TextBox txtDatosLlamada;
     }
 }

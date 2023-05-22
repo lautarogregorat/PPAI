@@ -26,7 +26,7 @@ namespace PPAI_CU17.Controladores
 
         public string getDescripcion()
         {
-            return descripcion;
+            return this.descripcion;
         }
         public string getRespuesta()
         {
@@ -104,10 +104,10 @@ namespace PPAI_CU17.Controladores
         private string buscarDatosLlamada()
         {
             String infoLlamada = "";
-            infoLlamada.Concat(this.datosLlamada.getCliente());
-            infoLlamada.Concat(this.datosLlamada.getSubOpcion());
-            infoLlamada.Concat(this.datosLlamada.getOpcionyCategoria());
-            infoLlamada.Concat(this.datosLlamada.getValidaciones());
+            infoLlamada += this.datosLlamada.getCliente() + "\n";
+            infoLlamada += this.datosLlamada.getSubOpcion() + "\n";
+            infoLlamada += this.datosLlamada.getOpcionyCategoria() + "\n";
+            infoLlamada += this.datosLlamada.getValidaciones();
 
             return infoLlamada;
         }
@@ -118,7 +118,7 @@ namespace PPAI_CU17.Controladores
             this.fechaYhoraActual = fechaYhoraActualizada;
         }
 
-        public void registrarRespuesta(Llamada llamadaIniciada)
+        public void registrarRespuesta()
         {
             List<Estado> estados = new List<Estado>();
             string[] stringsEstados = new string[9];
@@ -147,7 +147,7 @@ namespace PPAI_CU17.Controladores
 
             string infoLlamada = this.buscarDatosLlamada();
 
-            VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new VentanaRegistrarRespuesta();
+            VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new();
 
             ventanaRegistrarRespuesta.habilitar();
 

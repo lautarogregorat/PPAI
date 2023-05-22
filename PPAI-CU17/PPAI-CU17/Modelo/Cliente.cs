@@ -13,38 +13,64 @@ namespace PPAI_CU17.Modelo
         private string nombreCompleto;
         private string dni;
         private string nroCelular;
-        private InformacionCliente informacionCliente;
+        private List<InformacionCliente> info;
+
+        public void agregarInfo(InformacionCliente informacion)
+        {
+            this.info.Add(informacion);
+        }
 
         public Cliente(string nombreCompleto, string dni, string nroCelular, InformacionCliente informacionCliente)
         {
             this.nombreCompleto = nombreCompleto;
             this.dni = dni;
             this.nroCelular = nroCelular;
-            this.informacionCliente = informacionCliente;
+            this.info = new List<InformacionCliente>();
+
+            this.info.Add(informacionCliente);
         }
 
-        public string getNombre()
+        public String getNombre()
         { 
             return this.nombreCompleto;
         }
 
-        public string getDni()
+        public String getDni()
         {
             return this.dni;
         }
 
-        public string getNroCelular()
+        public String getNroCelular()
         {
             return this.nroCelular;
         }
 
-        public InformacionCliente getInformacionCliente()
+        public String getInformacionCliente()
         {
-            return this.informacionCliente;
+            String informacionDelCliente = "Informacion asociada al cliente: \n";
+
+            this.info.ForEach(informacionCliente =>
+            {
+                informacionDelCliente += informacionCliente.getDatoAValidar() + "\n";
+            });
+
+            return informacionDelCliente;
         }
+
+        public String getDatos()
+        {
+            String datosCliente = "";
+            datosCliente += "Nombre: " + this.getNombre();
+            datosCliente += "Numero de dni: " + this.getDni();
+            datosCliente += "Numero de celular: " + this.getNroCelular();
+
+            return datosCliente;
+        }
+        /*
         public bool esInformacionCorrecta(string informacion)
         {
             return this.informacionCliente.esInformacionCorrecta(informacion);
         }
+        */
     }
 }

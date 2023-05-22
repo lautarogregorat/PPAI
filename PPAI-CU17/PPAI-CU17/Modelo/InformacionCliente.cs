@@ -13,10 +13,10 @@ namespace PPAI_CU17.Modelo
         private string datoAValidar;
         private Validacion validacion;
 
-        public InformacionCliente(string datoAValidar)
+        public InformacionCliente(string datoAValidar, Validacion _validacion)
         {
             this.datoAValidar = datoAValidar;
-            this.validacion = validacion;
+            this.validacion = _validacion;
         }
 
         public string getDatoAValidar()

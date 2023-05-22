@@ -54,7 +54,12 @@ namespace PPAI_CU17.Modelo
         }
         public string getDatos() {
 
-            return this.ToString();
+            string datosCategoria = "";
+
+            datosCategoria += "Nro. orden de categoria: " + this.getNroOrdenCategoria() + "\n";
+            datosCategoria += "Nombre de categoria: " + this.getNombreCategoria() + "\n";
+
+            return datosCategoria;
         }
 
 

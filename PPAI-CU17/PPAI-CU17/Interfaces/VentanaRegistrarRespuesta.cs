@@ -13,7 +13,7 @@ namespace PPAI_CU17.Interfaces
     public partial class VentanaRegistrarRespuesta : Form
     {
         // Atributos de la clase VentanaRegistrarRespuesta
-        private TextBox txtDatosLlamada;
+        private Label lblDatosLlamada;
         private ListBox listaValidaciones;
         private TextBox txtRespuesta;
         private TextBox txtAccion;
@@ -23,75 +23,84 @@ namespace PPAI_CU17.Interfaces
         // Constructor de la clase
         public VentanaRegistrarRespuesta()
         {
-            // Configurar las propiedades de la ventana
-            Text = "Ventana de Registrar Respuesta";
             Width = 800;
             Height = 600;
 
-            // Crear y configurar la grilla de datos
-            /*
+            /* Crear y configurar la grilla de datos de llamada
             grillaDatosLlamada = new DataGridView();
-            grillaDatosLlamada.Dock = DockStyle.Fill;
-            grillaDatosLlamada.RowHeadersVisible = true;
-            grillaDatosLlamada.Columns.Add("Cliente:", "nombreCliente");
-            grillaDatosLlamada.Columns.Add("Opcion seleccionada:", "nombreOpcion");
-            grillaDatosLlamada.Columns.Add("SubOpcion seleccionada:", "nombreSubOpcion");
-            grillaDatosLlamada.Columns.Add("Categoria seleccionada:", "nombreCategoria");
+            grillaDatosLlamada.ReadOnly = true; // Configurar como de solo lectura
+            grillaDatosLlamada.ColumnCount = 1; // Establecer una sola columna
+            grillaDatosLlamada.Columns[0].HeaderText = "Datos de Llamada"; // Establecer encabezado de columna
+            grillaDatosLlamada.Columns[0].Width = Width / 2; // Establecer el ancho al 50% de la ventana
+            grillaDatosLlamada.Dock = DockStyle.Fill; // Llenar toda la ventana con la grilla
+            grillaDatosLlamada.RowHeadersVisible = false; // Ocultar encabezados de fila
+            grillaDatosLlamada.AllowUserToAddRows = false; // Deshabilitar agregar nuevas filas
+            grillaDatosLlamada.AllowUserToDeleteRows = false; // Deshabilitar eliminar filas
+            grillaDatosLlamada.AllowUserToResizeRows = false; // Deshabilitar redimensionar filas
+            grillaDatosLlamada.BorderStyle = BorderStyle.None; // Sin bordes en las celdas
+            grillaDatosLlamada.BackgroundColor = Color.White; // Color de fondo de la grilla
+            grillaDatosLlamada.CellBorderStyle = DataGridViewCellBorderStyle.None; // Sin bordes en las celdas
+            grillaDatosLlamada.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleccionar toda la fila al hacer clic
             */
 
-            // Crear y configurar el TextBox de los datos de llamada
-            txtDatosLlamada = new TextBox();
-            txtDatosLlamada.Multiline = true;
-            txtDatosLlamada.ReadOnly = true;
-            txtDatosLlamada.Dock = DockStyle.Fill;
-
-
+            /* Crear y configurar el TextBox de los datos de llamada
+            this.txtDatosLlamada = new TextBox();
+            this.txtDatosLlamada.Multiline = true;
+            this.txtDatosLlamada.ReadOnly = true;
+            this.txtDatosLlamada.Dock = DockStyle.Top;
+            */
             // Crear y configurar la lista de validaciones
-            listaValidaciones = new ListBox();
-            listaValidaciones.Visible = false;
+            this.listaValidaciones = new ListBox();
+            this.listaValidaciones.Visible = false;
 
             // Crear y configurar los campos de texto
-            txtRespuesta = new TextBox();
-            txtAccion = new TextBox();
-            txtDescripcion = new TextBox();
+            this.txtRespuesta = new TextBox();
+            this.txtRespuesta.Visible = false;
+            this.txtAccion = new TextBox();
+            this.txtAccion.Visible = false;
+            this.txtDescripcion = new TextBox();
+            this.txtDescripcion.Visible = false;
 
             // Crear y configurar el botón de confirmación
-            btnConfirmar = new Button();
-            btnConfirmar.Text = "Confirmar";
-            btnConfirmar.Click += BtnConfirmar_Click;
+            this.btnConfirmar = new Button();
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.Click += BtnConfirmar_Click;
+            this.btnConfirmar.Visible = false;
 
             // Agregar los controles a la ventana
-            Controls.Add(txtDatosLlamada);
-            Controls.Add(listaValidaciones);
-            Controls.Add(txtRespuesta);
-            Controls.Add(txtAccion);
-            Controls.Add(txtDescripcion);
-            Controls.Add(btnConfirmar);
+            this.Controls.Add(lblDatosLlamada);
+            this.Controls.Add(listaValidaciones);
+            this.Controls.Add(txtRespuesta);
+            this.Controls.Add(txtAccion);
+            this.Controls.Add(txtDescripcion);
+            this.Controls.Add(btnConfirmar);
+
+            InitializeComponent();
         }
 
         public void habilitar()
         {
-            Show();
+            this.Show();
         }
 
         public void mostrarDatosLlamada(String datosLlamada)
         {
-            txtDatosLlamada.Text = datosLlamada;
+            this.txtDatosLlamada.Text = datosLlamada;
         }
 
         public void mostrarValidaciones(List<string> validaciones)
         {
-            listaValidaciones.Items.Clear();
+            this.listaValidaciones.Items.Clear();
             foreach (var validacion in validaciones)
             {
-                listaValidaciones.Items.Add(validacion);
+                this.listaValidaciones.Items.Add(validacion);
             }
-            listaValidaciones.Visible = true;
+            this.listaValidaciones.Visible = true;
         }
 
         public void tomarRespuesta()
         {
-            string respuesta = txtRespuesta.Text;
+            string respuesta = this.txtRespuesta.Text;
             // Guardar la respuesta en alguna estructura de datos o hacer algo con ella
         }
 
@@ -107,13 +116,13 @@ namespace PPAI_CU17.Interfaces
 
         public void tomarDescripcion()
         {
-            string descripcion = txtDescripcion.Text;
+            string descripcion = this.txtDescripcion.Text;
             // Guardar la descripción en alguna estructura de datos o hacer algo con ella
         }
 
         public void tomarAccion()
         {
-            string accion = txtAccion.Text;
+            string accion = this.txtAccion.Text;
             // Guardar la acción en alguna estructura de datos o hacer algo con ella
         }
 
@@ -134,11 +143,11 @@ namespace PPAI_CU17.Interfaces
             tomarConfirmacion();
         }
 
-            private void VentanaRegistrarRespuesta_Load(object sender, EventArgs e)
+        private void VentanaRegistrarRespuesta_Load(object sender, EventArgs e)
         {
 
         }
     }
-        
+
 
 }

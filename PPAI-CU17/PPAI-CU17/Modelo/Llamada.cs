@@ -23,7 +23,7 @@ namespace PPAI_CU17.Modelo
             this.cliente = datosCliente;
             this.opcionSeleccionada = opcion;
             this.subopcionSeleccionada = subOpcion;
-
+            this.cambioDeEstado = new List<CambiodeEstado>();
             this.crearCambioEstado(estadoIniciada);
              
        }
@@ -41,9 +41,8 @@ namespace PPAI_CU17.Modelo
         {
             String datosOpcionYcategoria = "";
 
-            datosOpcionYcategoria.Concat(this.opcionSeleccionada.getDatos());
-
-            datosOpcionYcategoria.Concat(this.opcionSeleccionada.getCategoria());
+            datosOpcionYcategoria += "Opcion seleccionada: " + this.opcionSeleccionada.getDatos() + "\n";
+            datosOpcionYcategoria += "Categoria: " + this.opcionSeleccionada.getCategoria();
 
             return datosOpcionYcategoria;
         }

@@ -22,7 +22,7 @@ namespace PPAI_CU17.Interfaces
         {
             InterfazIVR interfazIVR = new InterfazIVR();
             interfazIVR.registrarRespuestaOperador();
-            this.Hide();
+            // this.Hide();
         }
 
         private void InterfazSistema_Load(object sender, EventArgs e)

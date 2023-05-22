@@ -13,51 +13,59 @@ namespace PPAI_CU17.Modelo
         private int nroOrdenSubopcion;
         private List<Validacion> validaciones;
         public Opcion opcionPadre;
-        public Validacion validacion;
 
         // constructor para subopcion
         public SubOpcion(string nombreSubopcion, int nroOrdenSubopcion)
         {
             this.nombreSubopcion = nombreSubopcion;
             this.nroOrdenSubopcion = nroOrdenSubopcion;
+            this.validaciones = new List<Validacion>();
             opcionPadre = null;
-            this.validacion = validacion
+        }
+
+        public void agregarValidacion(Validacion _validacion)
+        {
+            this.validaciones.Add(_validacion);
         }
 
         // metodos get para subopcion
         public string getNombreSubopcion()
         {
-            return nombreSubopcion;
+            return this.nombreSubopcion;
         }
 
         public int getNroOrdenSubopcion()
         {
-            return nroOrdenSubopcion;
+            return this.nroOrdenSubopcion;
         }
 
-       public Opcion  getOpcion()
+       public Opcion getOpcion()
         {
-            return opcionPadre;
+            return this.opcionPadre;
         }
 
         public string getDatos()
         {
-            return this.ToString();
+            string datosSubOpcion = "";
+            datosSubOpcion += "Nro. orden de subopcion: " + this.getNroOrdenSubopcion() + "\n";
+            datosSubOpcion += "Nombre de subopcion: " + this.getNombreSubopcion() + "\n";
+
+            return datosSubOpcion;
         }
         
         public string getValidaciones()
         {
-
             String datosValidaciones = "";
 
             this.validaciones.ForEach(validacion =>
             {
-                datosValidaciones.Concat(validacion.getMensajeValidacion());
-                datosValidaciones.Concat("\n");
+                datosValidaciones += validacion.getDatos();
+                datosValidaciones += "\n";
             });
 
             return datosValidaciones;
         }
+
     }
 
 
