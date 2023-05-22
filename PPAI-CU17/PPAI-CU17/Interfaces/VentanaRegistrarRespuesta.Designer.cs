@@ -29,13 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaRegistrarRespuesta));
+            listValidaciones2 = new CheckedListBox();
             SuspendLayout();
+            // 
+            // listValidaciones2
+            // 
+            listValidaciones2.FormattingEnabled = true;
+            listValidaciones2.Location = new Point(297, 179);
+            listValidaciones2.Name = "listValidaciones2";
+            listValidaciones2.Size = new Size(120, 94);
+            listValidaciones2.TabIndex = 0;
             // 
             // VentanaRegistrarRespuesta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(listValidaciones2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VentanaRegistrarRespuesta";
             StartPosition = FormStartPosition.CenterScreen;
@@ -45,5 +55,7 @@
         }
 
         #endregion
+
+        private CheckedListBox listValidaciones2;
     }
 }

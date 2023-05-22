@@ -20,6 +20,7 @@ namespace PPAI_CU17.Interfaces
         private TextBox txtAccion;
         private TextBox txtDescripcion;
         private Button btnConfirmar;
+        private Label lblDatosLlamada;
         public ControladorRegistrarRespuesta controladorRegistrarRespuesta;
 
         // Constructor de la clase
@@ -53,7 +54,7 @@ namespace PPAI_CU17.Interfaces
             */
             // Crear y configurar la lista de validaciones
             this.listaValidaciones = new ListBox();
-            this.listaValidaciones.Visible = false;
+            this.listaValidaciones.Visible = true;
 
             // Crear y configurar los campos de texto
             this.txtRespuesta = new TextBox();
@@ -62,6 +63,7 @@ namespace PPAI_CU17.Interfaces
             this.txtAccion.Visible = false;
             this.txtDescripcion = new TextBox();
             this.txtDescripcion.Visible = false;
+            this.lblDatosLlamada = new Label();
 
             // Crear y configurar el botón de confirmación
             this.btnConfirmar = new Button();
@@ -99,6 +101,7 @@ namespace PPAI_CU17.Interfaces
             }
             this.txtDatosLlamada.Visible = false;
             this.listaValidaciones.Visible = true;
+            MessageBox.Show("hola");
         }
 
         public void tomarRespuesta()

@@ -18,11 +18,11 @@ namespace PPAI_CU17.Controladores
             Opcion opcionSeleccionada = new Opcion("Si cuenta con los datos de la tarjeta marque 1\nSi no cuenta con los datos de la tarjeta marque 2\nSi desea comunicarse con un responsable de atencion al cliente marque 3\n Si desea finalizar la llamada marque 4 ",
                 "Si desea informar un robo y solicitar una nueva tarjeta marque 1", "Solicitar nueva tarjeta", 1, categoriaOpcionSeleccionada);
             Estado iniciada = new Estado("Iniciada");
+            SubOpcion subOpcion = new SubOpcion("Solicitar nueva tarjeta", 10);
+            VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new VentanaRegistrarRespuesta();
 
-
-
-            // Llamada datosLlamada = new Llamada(cliente, opcionSeleccionada);
-            // ControladorRegistrarRespuesta controladorRegistrarRespuesta = new ControladorRegistrarRespuesta(datosLlamada);
+            Llamada datosLlamada = new Llamada(cliente, opcionSeleccionada, subOpcion, iniciada, DateTime.Now);
+            ControladorRegistrarRespuesta controladorRegistrarRespuesta = new ControladorRegistrarRespuesta(datosLlamada, ventanaRegistrarRespuesta);
         }
 
     }
