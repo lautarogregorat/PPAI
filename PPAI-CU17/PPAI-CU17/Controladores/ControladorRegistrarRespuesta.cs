@@ -18,10 +18,13 @@ namespace PPAI_CU17.Controladores
         private Llamada datosLlamada;
         private InformacionCliente informacionCliente;
         private Estado estadoFinalizado;
+        public VentanaRegistrarRespuesta ventanaRegistrarRespuesta;
 
-        public ControladorRegistrarRespuesta(Llamada datosLlamada)
+        public ControladorRegistrarRespuesta(Llamada datosLlamada, VentanaRegistrarRespuesta _ventanaRegistrarRespuesta)
         {
             this.datosLlamada = datosLlamada;
+            this.ventanaRegistrarRespuesta = _ventanaRegistrarRespuesta;
+            this.ventanaRegistrarRespuesta.controladorRegistrarRespuesta = this;
         }
 
         public string getDescripcion()
@@ -70,7 +73,7 @@ namespace PPAI_CU17.Controladores
 
         public void tomarRespuesta(string value)
         {
-            respuesta = value;
+            this.respuesta = value;
         }
 
         public void setAccion(string value)
@@ -98,8 +101,8 @@ namespace PPAI_CU17.Controladores
 
         private void registrarAccionRequerida(String accion)
         {
-            GestorCU gestoorCu = new GestorCU();
-            gestoorCu.registrarAccionRequerida(accion);
+            GestorCU gestorCu = new GestorCU();
+            gestorCu.registrarAccionRequerida(accion);
         }
 
         private void actualizarEstadoLlamada(Llamada llamadaIdentificada)
@@ -123,12 +126,26 @@ namespace PPAI_CU17.Controladores
             DateTime fechaYhoraActualizada = DateTime.Now;
             this.fechaYhoraActual = fechaYhoraActualizada;
         }
-        /*
-        private bool validarRespuesta(String respuesta)
+        
+        private bool validarRespuestas()
         {
-            return this.datosLlamada.validarInfoCliente(respuesta);
+            bool valida = false;
+
+            // Para cada dato a validar (Es decir validacion a realizar)
+
+            for(int i = 0; i < this.datosLlamada.getValidaciones().Count; i++)
+            {
+                this.ventanaRegistrarRespuesta.tomarRespuesta();
+                valida = this.datosLlamada.validarInfoCliente(this.respuesta);
+                
+                if (!valida)
+                {
+                    return false;
+                }
+            }
+
+            return valida;
         }
-        */
 
         public void registrarRespuesta()
         {
@@ -159,15 +176,24 @@ namespace PPAI_CU17.Controladores
 
             string infoLlamada = this.buscarDatosLlamada();
 
-            VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new();
-
             ventanaRegistrarRespuesta.habilitar();
 
             ventanaRegistrarRespuesta.mostrarDatosLlamada(infoLlamada);
-            /*
-            string respuesta = ventanaRegistrarRespuesta.tomarRespuesta();
-            this.validarRespuesta(respuesta);
-            */
+
+            ventanaRegistrarRespuesta.mostrarValidaciones(this.datosLlamada.getValidaciones());
+            
+;
+
+            if (!(this.validarRespuestas()))
+            {
+                // Hacer algo si las respuestas no validaron bien, se cancela el CU por ejemplo (Alternativa 2)
+            } else
+            {
+                // Continua el CU
+            }
+
+
+            
         }
 
 

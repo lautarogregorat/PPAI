@@ -53,17 +53,21 @@ namespace PPAI_CU17.Modelo
             return datosSubOpcion;
         }
         
-        public string getValidaciones()
+        public List<String> getValidaciones()
         {
-            String datosValidaciones = "";
+            List<String> datosValidaciones = new List<string>();
 
             this.validaciones.ForEach(validacion =>
             {
-                datosValidaciones += validacion.getDatos();
-                datosValidaciones += "\n";
+                datosValidaciones.Add(validacion.getNombreValidacion());
             });
 
             return datosValidaciones;
+        }
+
+        public List<Validacion> obtenerValidaciones()
+        {
+            return this.validaciones;
         }
 
     }

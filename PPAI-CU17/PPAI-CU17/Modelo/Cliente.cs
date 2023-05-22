@@ -66,24 +66,26 @@ namespace PPAI_CU17.Modelo
 
             return datosCliente;
         }
-        /*
+        
         public bool esInformacionCorrecta(string informacion, List<Validacion> validaciones)
 
         {
              foreach (Validacion validacion in validaciones)
              {
-                if (this.informacionCliente.esValidacion(validacion) && this.informacionCliente.esInformacionCorrecta(informacion))
+                foreach (InformacionCliente informacionCliente in info)
                 {
-                    return true;
+                    if (!(informacionCliente.esValidacion(validacion) && informacionCliente.esInformacionCorrecta(informacion)))
+                    {
+                        return false;
 
-                }; 
-                
-                return false;
+                    };
+
+                }
              }
 
-            return false;
+            return true;
         }
-        */
+        
 
     }
 }

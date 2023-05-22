@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_CU17.Controladores;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace PPAI_CU17.Interfaces
         private TextBox txtAccion;
         private TextBox txtDescripcion;
         private Button btnConfirmar;
+        public ControladorRegistrarRespuesta controladorRegistrarRespuesta;
 
         // Constructor de la clase
         public VentanaRegistrarRespuesta()
@@ -95,13 +97,15 @@ namespace PPAI_CU17.Interfaces
             {
                 this.listaValidaciones.Items.Add(validacion);
             }
+            this.txtDatosLlamada.Visible = false;
             this.listaValidaciones.Visible = true;
         }
 
         public void tomarRespuesta()
         {
             string respuesta = this.txtRespuesta.Text;
-            // Guardar la respuesta en alguna estructura de datos o hacer algo con ella
+
+            this.controladorRegistrarRespuesta.tomarRespuesta(respuesta);
         }
 
         public void solicitarDescripcion()

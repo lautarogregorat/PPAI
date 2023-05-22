@@ -51,7 +51,7 @@ namespace PPAI_CU17.Modelo
             return this.subopcionSeleccionada.getDatos();
         }
 
-        public String getValidaciones() 
+        public List<String> getValidaciones() 
         {
             return this.subopcionSeleccionada.getValidaciones();
         }
@@ -62,7 +62,6 @@ namespace PPAI_CU17.Modelo
             this.cambioDeEstado.Add(nuevoCambioDeEstado);
 
         }
-        /*
         public bool validarInfoCliente(String respuesta)
         {
             List<Validacion> validaciones = this.subopcionSeleccionada.obtenerValidaciones();
@@ -70,6 +69,5 @@ namespace PPAI_CU17.Modelo
 
 
         }
-    */
         }
 }

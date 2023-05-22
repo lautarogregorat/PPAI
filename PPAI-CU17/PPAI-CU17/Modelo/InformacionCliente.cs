@@ -29,6 +29,8 @@ namespace PPAI_CU17.Modelo
             return this.validacion;
         }
 
+        // Este método recibe un string de informacion que se valida contra el dato que tiene asociado el cliente, en este caso la informacion es la respuesta que se ingreso parala validacion
+
         public Boolean esInformacionCorrecta(string informacion) => datoAValidar.Equals(informacion);
 
         // Recibe un Objeto validacion y corrobora si es la misma que la validacion asociada a esta instancia de InformacionCliente
