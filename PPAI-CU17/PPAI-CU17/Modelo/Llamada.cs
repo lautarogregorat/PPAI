@@ -18,15 +18,15 @@ namespace PPAI_CU17.Modelo
         private string observacionAuditor;
 
 
-        public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, Estado estadoIniciada)
+        public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, Estado estadoIniciada, DateTime fechaHoraInicio)
         {
             this.cliente = datosCliente;
             this.opcionSeleccionada = opcion;
             this.subopcionSeleccionada = subOpcion;
-
-            this.crearCambioEstado(estadoIniciada, DateTime.Now); // REVISAR(no encontramos otra forma de obtener la hora sin generar una dependencia)
-
-        }
+            this.cambioDeEstado = new List<CambiodeEstado>();
+            this.crearCambioEstado(estadoIniciada, fechaHoraInicio);
+             
+       }
 
         public void enCurso(Estado enCurso, DateTime fechaHoraInicio)
         {
@@ -41,9 +41,8 @@ namespace PPAI_CU17.Modelo
         {
             String datosOpcionYcategoria = "";
 
-            datosOpcionYcategoria.Concat(this.opcionSeleccionada.getDatos());
-
-            datosOpcionYcategoria.Concat(this.opcionSeleccionada.getCategoria());
+            datosOpcionYcategoria += "Opcion seleccionada: " + this.opcionSeleccionada.getDatos() + "\n";
+            datosOpcionYcategoria += "Categoria: " + this.opcionSeleccionada.getCategoria();
 
             return datosOpcionYcategoria;
         }
@@ -68,6 +67,14 @@ namespace PPAI_CU17.Modelo
         {
             crearCambioEstado(estadoFinalizado, fechaHoraInicio);
         }
+        /*
+        public bool validarInfoCliente(String respuesta)
+        {
+            List<Validacion> validaciones = this.subopcionSeleccionada.obtenerValidaciones();
+            return this.cliente.esInformacionCorrecta(respuesta, validaciones);
 
-    }
+
+        }
+    */
+        }
 }

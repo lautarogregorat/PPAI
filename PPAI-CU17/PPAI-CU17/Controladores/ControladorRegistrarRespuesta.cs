@@ -26,7 +26,7 @@ namespace PPAI_CU17.Controladores
 
         public string getDescripcion()
         {
-            return descripcion;
+            return this.descripcion;
         }
         public string getRespuesta()
         {
@@ -97,6 +97,12 @@ namespace PPAI_CU17.Controladores
             }
         }
 
+        private void registrarAccionRequerida(String accion)
+        {
+            GestorCU gestoorCu = new GestorCU();
+            gestoorCu.registrarAccionRequerida(accion);
+        }
+
         private void actualizarEstadoLlamada()
         {
             this.datosLlamada.enCurso(estadoEnCurso, this.fechaYhoraActual);
@@ -105,10 +111,10 @@ namespace PPAI_CU17.Controladores
         private string buscarDatosLlamada()
         {
             String infoLlamada = "";
-            infoLlamada.Concat(this.datosLlamada.getCliente());
-            infoLlamada.Concat(this.datosLlamada.getSubOpcion());
-            infoLlamada.Concat(this.datosLlamada.getOpcionyCategoria());
-            infoLlamada.Concat(this.datosLlamada.getValidaciones());
+            infoLlamada += this.datosLlamada.getCliente() + "\n";
+            infoLlamada += this.datosLlamada.getSubOpcion() + "\n";
+            infoLlamada += this.datosLlamada.getOpcionyCategoria() + "\n";
+            infoLlamada += this.datosLlamada.getValidaciones();
 
             return infoLlamada;
         }
@@ -119,8 +125,14 @@ namespace PPAI_CU17.Controladores
             DateTime fechaYhoraActualizada = DateTime.Now;
             this.fechaYhoraActual = fechaYhoraActualizada;
         }
+        /*
+        private bool validarRespuesta(String respuesta)
+        {
+            return this.datosLlamada.validarInfoCliente(respuesta);
+        }
+        */
 
-        public void registrarRespuesta(Llamada llamadaIniciada)
+        public void registrarRespuesta()
         {
             List<Estado> estados = new List<Estado>();
             string[] stringsEstados = new string[9];
@@ -149,7 +161,7 @@ namespace PPAI_CU17.Controladores
 
             string infoLlamada = this.buscarDatosLlamada();
 
-            VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new VentanaRegistrarRespuesta();
+            VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new();
 
             ventanaRegistrarRespuesta.habilitar();
 
@@ -178,14 +190,16 @@ namespace PPAI_CU17.Controladores
                 }
             }
         }
-
+        /*
+        string respuesta = ventanaRegistrarRespuesta.tomarRespuesta();
+        this.validarRespuesta(respuesta);
+        */
         public void registrarFinDeLlamada(Estado estadoFinalizado)
         {
             // Será la FechaHoraInicio del CambiodeEstado 
             this.datosLlamada.finalizar(estadoFinalizado, this.fechaYhoraActual);
 
         }
-
 
     }
 
