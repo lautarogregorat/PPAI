@@ -96,6 +96,12 @@ namespace PPAI_CU17.Controladores
             }
         }
 
+        private void registrarAccionRequerida(String accion)
+        {
+            GestorCU gestoorCu = new GestorCU();
+            gestoorCu.registrarAccionRequerida(accion);
+        }
+
         private void actualizarEstadoLlamada(Llamada llamadaIdentificada)
         {
             llamadaIdentificada.enCurso(estadoEnCurso);
@@ -117,6 +123,12 @@ namespace PPAI_CU17.Controladores
             DateTime fechaYhoraActualizada = DateTime.Now;
             this.fechaYhoraActual = fechaYhoraActualizada;
         }
+        /*
+        private bool validarRespuesta(String respuesta)
+        {
+            return this.datosLlamada.validarInfoCliente(respuesta);
+        }
+        */
 
         public void registrarRespuesta()
         {
@@ -152,8 +164,10 @@ namespace PPAI_CU17.Controladores
             ventanaRegistrarRespuesta.habilitar();
 
             ventanaRegistrarRespuesta.mostrarDatosLlamada(infoLlamada);
-
-
+            /*
+            string respuesta = ventanaRegistrarRespuesta.tomarRespuesta();
+            this.validarRespuesta(respuesta);
+            */
         }
 
 
