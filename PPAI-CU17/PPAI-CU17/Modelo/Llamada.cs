@@ -4,33 +4,33 @@ using System.Security.Cryptography.Xml;
 namespace PPAI_CU17.Modelo
 {
     public class Llamada
-        
+
     {
-       private Cliente cliente;
-       private List<CambiodeEstado> cambioDeEstado;
+        private Cliente cliente;
+        private List<CambiodeEstado> cambioDeEstado;
         private Opcion opcionSeleccionada;
         private SubOpcion subopcionSeleccionada;
-        
+
         private string descripcionOperador;
         private string detalleAccionRequerida;
-        private int duracion;
+        private int duracion; // VER SI ES INT
         private Boolean encuestaEnviada;
         private string observacionAuditor;
-        
 
-       public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, Estado estadoIniciada) 
-       {
+
+        public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, Estado estadoIniciada, DateTime fechaHoraInicio)
+        {
             this.cliente = datosCliente;
             this.opcionSeleccionada = opcion;
             this.subopcionSeleccionada = subOpcion;
             this.cambioDeEstado = new List<CambiodeEstado>();
-            this.crearCambioEstado(estadoIniciada);
+            this.crearCambioEstado(estadoIniciada, fechaHoraInicio);
              
        }
 
-        public void enCurso(Estado enCurso)
+        public void enCurso(Estado enCurso, DateTime fechaHoraInicio)
         {
-            crearCambioEstado(enCurso);
+            crearCambioEstado(enCurso, fechaHoraInicio);
         }
 
         public String getCliente()
@@ -56,11 +56,16 @@ namespace PPAI_CU17.Modelo
             return this.subopcionSeleccionada.getValidaciones();
         }
 
-        private void crearCambioEstado(Estado estado)
+        private void crearCambioEstado(Estado estado, DateTime fechaHoraInicio)
         {
-            CambiodeEstado nuevoCambioDeEstado = new CambiodeEstado(estado);
+            CambiodeEstado nuevoCambioDeEstado = new CambiodeEstado(estado, fechaHoraInicio);
             this.cambioDeEstado.Add(nuevoCambioDeEstado);
 
+        }
+
+        public void finalizar(Estado estadoFinalizado, DateTime fechaHoraInicio)
+        {
+            crearCambioEstado(estadoFinalizado, fechaHoraInicio);
         }
         public bool validarInfoCliente(String respuesta)
         {

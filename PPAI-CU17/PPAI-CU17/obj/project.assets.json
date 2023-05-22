@@ -8,24 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Usuaro\\.nuget\\packages\\": {},
-    "D:\\Programas\\VisualStudio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\agust\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
+      "projectUniqueName": "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
       "projectName": "PPAI-CU17",
-      "projectPath": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
-      "packagesPath": "C:\\Users\\Usuaro\\.nuget\\packages\\",
-      "outputPath": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\obj\\",
+      "projectPath": "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
+      "packagesPath": "C:\\Users\\agust\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\Programas\\VisualStudio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Usuaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\agust\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +28,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

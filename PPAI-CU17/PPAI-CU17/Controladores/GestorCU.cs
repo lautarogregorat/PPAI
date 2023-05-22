@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace PPAI_CU17.Controladores
 {
-    internal class GestorCU
+    public class GestorCU
     {
-        public GestorCU() { }
-        public void registrarAccionRequerida(String accion)
-        {
+        public GestorCU() {
+        }
 
+        public bool registrarAccionRequerida(string accion)
+        {
+            return true;
         }
     }
-
-
 }

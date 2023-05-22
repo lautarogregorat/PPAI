@@ -23,11 +23,6 @@ namespace PPAI_CU17.Modelo
             opcionPadre = null;
         }
 
-        public void agregarValidacion(Validacion _validacion)
-        {
-            this.validaciones.Add(_validacion);
-        }
-
         // metodos get para subopcion
         public string getNombreSubopcion()
         {
@@ -46,11 +41,7 @@ namespace PPAI_CU17.Modelo
 
         public string getDatos()
         {
-            string datosSubOpcion = "";
-            datosSubOpcion += "Nro. orden de subopcion: " + this.getNroOrdenSubopcion() + "\n";
-            datosSubOpcion += "Nombre de subopcion: " + this.getNombreSubopcion() + "\n";
-
-            return datosSubOpcion;
+            return this.ToString();
         }
         
         public List<String> getValidaciones()

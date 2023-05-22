@@ -22,24 +22,12 @@ namespace PPAI_CU17.Modelo
         // metodos get para validacion
         public string getMensajeValidacion()
         {
-            return this.audioMensajeValidacion;
+            return audioMensajeValidacion;
         }
 
         public string getNombreValidacion()
         {
-            return this.nombreValidacion;
-        }
-
-        public string getDatos()
-        {
-            string datosValidacion = "";
-
-            datosValidacion += "Mensaje de validacion: " + this.getMensajeValidacion() + "\n";
-            datosValidacion += "Nombre de validacion: " + this.getNombreValidacion() + "\n";
-
-
-            return datosValidacion;
-
+            return nombreValidacion;
         }
 
     }

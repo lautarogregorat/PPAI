@@ -14,7 +14,7 @@ namespace PPAI_CU17.Interfaces
     public partial class VentanaRegistrarRespuesta : Form
     {
         // Atributos de la clase VentanaRegistrarRespuesta
-        private Label lblDatosLlamada;
+        private TextBox txtDatosLlamada;
         private ListBox listaValidaciones;
         private TextBox txtRespuesta;
         private TextBox txtAccion;
