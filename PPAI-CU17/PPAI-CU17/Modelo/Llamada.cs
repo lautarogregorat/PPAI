@@ -107,6 +107,16 @@ namespace PPAI_CU17.Modelo
             return this.cliente.getDatosInformacionCliente();
         }
 
+        public bool getEncuestaEnviada()
+        {
+            return this.encuestaEnviada;
+        }
+
+        public String getObservacionAuditor()
+        {
+            return this.observacionAuditor;
+        }
+
         public void setObservacionAuditor(String value)
         {
             this.observacionAuditor = value;
@@ -127,6 +137,10 @@ namespace PPAI_CU17.Modelo
             this.cliente = cliente;
         }
 
+        public void setEncuestaEnviada(bool enviada)
+        {
+            this.encuestaEnviada = enviada;
+        }
 
         // Crea un CambiodeEstado pasando como parámetros el estado y la fechaHoraInicio
         private void crearCambioEstado(Estado estado, DateTime fechaHoraInicio)
