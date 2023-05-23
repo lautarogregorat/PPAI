@@ -9,16 +9,16 @@ namespace PPAI_CU17.Modelo
     public class SubOpcion
     {
         // Atributos de la clase SubOpcion
-        private String nombreSubopcion;
-        private int nroOrdenSubopcion;
+        private String nombre;
+        private int nroOrden;
         private List<Validacion> validaciones;
         public Opcion opcionPadre;
 
         // Constructor para Subopcion
         public SubOpcion(String nombreSubopcion, int nroOrdenSubopcion)
         {
-            this.nombreSubopcion = nombreSubopcion;
-            this.nroOrdenSubopcion = nroOrdenSubopcion;
+            this.nombre = nombreSubopcion;
+            this.nroOrden = nroOrdenSubopcion;
             this.validaciones = new List<Validacion>();
             opcionPadre = null;
         }
@@ -32,12 +32,12 @@ namespace PPAI_CU17.Modelo
         // Metodos get y set
         public String getNombreSubopcion()
         {
-            return this.nombreSubopcion;
+            return this.nombre;
         }
 
         public int getNroOrdenSubopcion()
         {
-            return this.nroOrdenSubopcion;
+            return this.nroOrden;
         }
 
        public Opcion getOpcion()
@@ -67,12 +67,12 @@ namespace PPAI_CU17.Modelo
 
         public void setNombreSubpcion(String value)
         {
-            this.nombreSubopcion = value;
+            this.nombre = value;
         }
 
         public void setNroOrdenSubopcion(int value)
         {
-            this.nroOrdenSubopcion = value;
+            this.nroOrden = value;
         }
 
         public void setOpcionPadre(Opcion value) 

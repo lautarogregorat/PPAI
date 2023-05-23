@@ -6,8 +6,8 @@ namespace PPAI_CU17.Modelo;
 	// Atibutos de la clase opcion
 	    private String audioMensajeSubopcion;
         private String mensajeOpcion;
-        private String nombreOpcion;
-        private int nroOrdenOpcion;
+        private String nombre;
+        private int nroOrden;
         private List<SubOpcion> subopciones;
         private List<Validacion> validacionRequerida;
         public Categoria categoria;
@@ -19,8 +19,8 @@ namespace PPAI_CU17.Modelo;
         {
             this.audioMensajeSubopcion = audioMensajeSubopciones;
             this.mensajeOpcion = mensajeOpcion;
-            this.nombreOpcion = nombreOpcion;
-            this.nroOrdenOpcion = nroOrdenOpcion;
+            this.nombre = nombreOpcion;
+            this.nroOrden = nroOrdenOpcion;
             this.subopciones = new List<SubOpcion>();
             this.validacionRequerida = new List<Validacion>();
             this.categoria = null;
@@ -52,12 +52,12 @@ namespace PPAI_CU17.Modelo;
 
         public String getNombreOpcion()
         {
-            return this.nombreOpcion;
+            return this.nombre;
         }
 
         public int getNroOrdenOpcion()
         {
-            return this.nroOrdenOpcion;
+            return this.nroOrden;
         }
 
         // Retorna la categoria a la que pertenece la opcion, por una dependencia
@@ -102,12 +102,12 @@ namespace PPAI_CU17.Modelo;
 
         public void setNombreOpcion(String value) 
         {
-            this.nombreOpcion = value;
+            this.nombre = value;
         }
 
         public void setNroOrdenOpcion(int value) 
         {
-            this.nroOrdenOpcion = value;
+            this.nroOrden = value;
         }
 
         public void setCategoria(Categoria categoria) 

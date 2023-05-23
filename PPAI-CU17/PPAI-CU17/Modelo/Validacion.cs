@@ -10,14 +10,14 @@ namespace PPAI_CU17.Modelo
     {
         // Atributos de la clase validacion
         private String audioMensajeValidacion;
-        private String nombreValidacion;
+        private String nombre;
 
         // Metodos de la clase validacion
         // Constructor
         public Validacion(String _audioMensajeValidacion, String _nombreValidacion)
         {
             this.audioMensajeValidacion = _audioMensajeValidacion;
-            this.nombreValidacion = _nombreValidacion;
+            this.nombre = _nombreValidacion;
         }
 
         // Métodos get y set
@@ -28,7 +28,7 @@ namespace PPAI_CU17.Modelo
 
         public String getNombreValidacion()
         {
-            return nombreValidacion;
+            return nombre;
         }
 
         public void setAudioMensajeValidacion(String value) 
@@ -38,7 +38,7 @@ namespace PPAI_CU17.Modelo
 
         public void setNombreValidacion(String value) 
         {
-            this.nombreValidacion = value;
+            this.nombre = value;
         }
 
     }

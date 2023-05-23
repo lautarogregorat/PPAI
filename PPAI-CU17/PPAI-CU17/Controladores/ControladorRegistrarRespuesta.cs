@@ -79,7 +79,7 @@ namespace PPAI_CU17.Controladores
             return estadoEnCurso;
         }
 
-        public DateTime getHoraActual()
+        public DateTime getFechaYhoraActual()
         {
             return this.fechaYhoraActual;
         }

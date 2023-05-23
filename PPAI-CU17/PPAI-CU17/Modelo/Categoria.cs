@@ -9,20 +9,20 @@ namespace PPAI_CU17.Modelo
     public class Categoria
     {
         // Atributos de la clase categoria
-        private String audioMensajeOpcion; 
-        private String mensajeOpcion;
-        private String nombreCategoria;
-        private int nroOrdenCategoria;
+        private String audioMensajeOpciones; 
+        private String mensajeOpciones;
+        private String nombre;
+        private int nroOrden;
         private List<Opcion> opciones;
 
         // Metodos de la clase categoria
         // Constructor
         public Categoria(String audioMensajeOpcion, String mensajeOpcion, String nombreCategoria, int nroOrdenCategoria)
         {
-            this.audioMensajeOpcion = audioMensajeOpcion;
-            this.mensajeOpcion = mensajeOpcion;
-            this.nombreCategoria = nombreCategoria;
-            this.nroOrdenCategoria = nroOrdenCategoria;
+            this.audioMensajeOpciones = audioMensajeOpcion;
+            this.mensajeOpciones = mensajeOpcion;
+            this.nombre = nombreCategoria;
+            this.nroOrden = nroOrdenCategoria;
             opciones = new List<Opcion>();
         }
 
@@ -36,42 +36,42 @@ namespace PPAI_CU17.Modelo
         // Metodos get y set
         public String getAudioMensajeOpcion()
         {
-            return audioMensajeOpcion;
+            return audioMensajeOpciones;
         }
 
-        public String getMensajeOpcion()
+        public String getMensajeOpciones()
         {
-            return mensajeOpcion;
+            return mensajeOpciones;
         }
 
         public String getNombreCategoria()
         {
-            return nombreCategoria;
+            return nombre;
         }
 
         public int getNroOrdenCategoria()
         {
-            return nroOrdenCategoria;
+            return nroOrden;
         }
 
         public void setAudioMensajeOpcion(String value)
         {
-            this.audioMensajeOpcion = value;
+            this.audioMensajeOpciones = value;
         }
 
         public void setMensajeOpcion(String value)
         {
-            this.mensajeOpcion = value;
+            this.mensajeOpciones = value;
         }
 
         public void setNombreCategoria(String value)
         {
-            this.nombreCategoria = value;
+            this.nombre = value;
         }
 
         public void setNroOrdenCategoria(int value)
         {
-            this.nroOrdenCategoria = value;
+            this.nroOrden = value;
         }
 
     }
