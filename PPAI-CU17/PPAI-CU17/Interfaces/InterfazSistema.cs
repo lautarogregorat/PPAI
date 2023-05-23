@@ -34,5 +34,10 @@ namespace PPAI_CU17.Interfaces
         {
 
         }
+
+        private void btnConsultarEncuesta_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad no implementada en XeneiTech...", "Mensaje del sistema");
+        }
     }
 }

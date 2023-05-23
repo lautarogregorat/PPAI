@@ -62,6 +62,7 @@
             btnConsultarEncuesta.TabIndex = 1;
             btnConsultarEncuesta.Text = "Consultar encuestas";
             btnConsultarEncuesta.UseVisualStyleBackColor = false;
+            btnConsultarEncuesta.Click += btnConsultarEncuesta_Click;
             // 
             // lblTituloSistema
             // 

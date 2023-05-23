@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {}
+    "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {
+    "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
+        "projectUniqueName": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
         "projectName": "PPAI-CU17",
-        "projectPath": "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
-        "packagesPath": "C:\\Users\\agust\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agust\\Source\\Repos\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\obj\\",
+        "projectPath": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
+        "packagesPath": "C:\\Users\\Usuaro\\.nuget\\packages\\",
+        "outputPath": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Programas\\VisualStudio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\agust\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

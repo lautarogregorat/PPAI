@@ -12,17 +12,18 @@ namespace PPAI_CU17.Modelo;
         private List<Validacion> validacionRequerida;
         public Categoria categoria;
       
-      // Metodos de la clase opcion
+    // Metodos de la clase opcion
 
     // Constructor
-        public Opcion(String audioMensajeSubopciones, String mensajeOpcion, String nombreOpcion, int nroOrdenOpcion, Categoria categoriaSuperior)
+        public Opcion(String audioMensajeSubopciones, String mensajeOpcion, String nombreOpcion, int nroOrdenOpcion)
         {
             this.audioMensajeSubopcion = audioMensajeSubopciones;
             this.mensajeOpcion = mensajeOpcion;
             this.nombreOpcion = nombreOpcion;
             this.nroOrdenOpcion = nroOrdenOpcion;
             this.subopciones = new List<SubOpcion>();
-            this.categoria = categoriaSuperior;
+            this.validacionRequerida = new List<Validacion>();
+            this.categoria = null;
         }
 
         // Método para agregar subopciones a la opción 
@@ -30,6 +31,11 @@ namespace PPAI_CU17.Modelo;
         {
             _subopcion.opcionPadre = this;
             subopciones.Add(_subopcion);
+        }
+        // Método para agregar validaciones requeridas a la opción 
+        public void agregarValidacionRequerida(Validacion _validacionRequerida)
+        {
+            validacionRequerida.Add(_validacionRequerida);
         }
 
         // Métodos get y set
@@ -60,13 +66,19 @@ namespace PPAI_CU17.Modelo;
             return this.categoria;
         }
 
+        public List<Validacion> getValidaciones()
+    {
+        return this.validacionRequerida;
+
+    }
+
         // Método que devuelve el string con el nombre de la categoria padre de la opcion, usando una dependencia
         public String getNombreCategoria()
         {
             return this.categoria.getNombreCategoria();
         }
         // Retorna el nombre de las validaciones asociadas a la opcion, como una lista de strings de cada nombre
-        public List<String> getValidaciones()
+        public List<String> getDatosValidaciones()
         {
             List<String> datosValidaciones = new List<String>();
 
@@ -77,5 +89,33 @@ namespace PPAI_CU17.Modelo;
 
             return datosValidaciones;
         }
+
+        public void setAudioMensajeSubopcion(String value) 
+        {
+            this.audioMensajeSubopcion = value;
+        }
+
+        public void setMensajeOpcion(String value)
+        {
+            this.mensajeOpcion = value;
+        }
+
+        public void setNombreOpcion(String value) 
+        {
+            this.nombreOpcion = value;
+        }
+
+        public void setNroOrdenOpcion(int value) 
+        {
+            this.nroOrdenOpcion = value;
+        }
+
+        public void setCategoria(Categoria categoria) 
+        {
+            this.categoria = categoria;
+        }
+    
+      
+
 
 }

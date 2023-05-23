@@ -32,42 +32,27 @@ namespace PPAI_CU17.Modelo
 
         // Metodos get y set
 
-        public void setObservacionAuditor(String value) 
-        {   
-            this.observacionAuditor = value;
-        }
-
-        public void setDetalleAccionRequerida(String value)
-        {
-            this.detalleAccionRequerida = value;
-        }
 
         public String getDescripcionOperador()
         {
             return this.descripcionOperador;
         }
 
-        public void setDescripcionOperador(String value)
+        public String getDetalleAccionRequerida()
         {
-            this.descripcionOperador = value;
+            return this.detalleAccionRequerida;
         }
 
-        public void setCliente(Cliente cliente) 
-        {
-            this.cliente = cliente;
-        }
 
-        public CambiodeEstado getCambioDeEstado()
+        public List<CambiodeEstado> getCambioDeEstado()
         {
-            return this.cambioDeEstado.Last();
+            return this.cambioDeEstado;
         }
         
         public TimeSpan getDuracion()
         {
             return this.duracion;
         }
-
-
 
         public String getNombreCliente()
         {
@@ -116,6 +101,33 @@ namespace PPAI_CU17.Modelo
             return this.subopcionSeleccionada.getNombresValidaciones();
         }
 
+        // Método que devuelve una lista de strings con los datos a validar del cliente, es decir, las respuestas correctas a las validaciones
+        public List<String> getDatosInformacionCliente()
+        {
+            return this.cliente.getDatosInformacionCliente();
+        }
+
+        public void setObservacionAuditor(String value)
+        {
+            this.observacionAuditor = value;
+        }
+
+        public void setDetalleAccionRequerida(String value)
+        {
+            this.detalleAccionRequerida = value;
+        }
+
+        public void setDescripcionOperador(String value)
+        {
+            this.descripcionOperador = value;
+        }
+
+        public void setCliente(Cliente cliente)
+        {
+            this.cliente = cliente;
+        }
+
+
         // Crea un CambiodeEstado pasando como parámetros el estado y la fechaHoraInicio
         private void crearCambioEstado(Estado estado, DateTime fechaHoraInicio)
         {
@@ -124,10 +136,18 @@ namespace PPAI_CU17.Modelo
 
         }
 
+        // Cambia el estado de la llamada a "enCurso", para eso recibe el nuevo estado "EnCurso" y la fechaHoraInicio para crear un nuevo cambio
+        // de estado y agregarlo a la lista de cambios de estados de la llamada en cuestion
+
+        public void enCurso(Estado estado, DateTime fechaHoraInicio) {
+
+            this.crearCambioEstado(estado, fechaHoraInicio);
+        }
+
         // Finaliza la llamada creando un cambio de estado con estado finalizado
-        public void finalizar(Estado estadoFinalizado, DateTime fechaHoraInicio)
+        public void finalizar(Estado estado, DateTime fechaHoraInicio)
         {
-            crearCambioEstado(estadoFinalizado, fechaHoraInicio);
+            this.crearCambioEstado(estado, fechaHoraInicio);
         }
         
         // Método que delega la responsabilidad de validar la informacionCliente al Cliente
@@ -145,6 +165,7 @@ namespace PPAI_CU17.Modelo
         {
             DateTime fechaHoraIniciada = new DateTime();
             DateTime fechaHoraFinalizada = new DateTime();
+
 
             this.cambioDeEstado.ForEach(cambio =>
             {

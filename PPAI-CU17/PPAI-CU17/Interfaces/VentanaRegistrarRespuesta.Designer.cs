@@ -40,19 +40,21 @@
             lblNombreCliente = new Label();
             lblDatosLlamada = new Label();
             panelValidaciones = new Panel();
-            btnConfirmar = new Button();
+            txtRespuesta = new TextBox();
             rbRespuesta3 = new RadioButton();
             rbRespuesta2 = new RadioButton();
             rbRespuesta1 = new RadioButton();
             listValidaciones = new ListBox();
             btnTomarRespuesta = new Button();
-            txtRespuesta = new TextBox();
             lblRespuesta = new Label();
+            btnConfirmar = new Button();
             labelValidaciones = new Label();
             lblDescripcion = new Label();
             txtDescripcion = new TextBox();
             txtAccionRequerida = new TextBox();
             lblAccionRequerida = new Label();
+            btnEnviarDescripcion = new Button();
+            btnEnviarAccion = new Button();
             panelDatosLlamada.SuspendLayout();
             panelValidaciones.SuspendLayout();
             SuspendLayout();
@@ -157,45 +159,41 @@
             // lblDatosLlamada
             // 
             lblDatosLlamada.AutoSize = true;
-            lblDatosLlamada.Font = new Font("Cascadia Code SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDatosLlamada.Location = new Point(49, 19);
+            lblDatosLlamada.Font = new Font("Lucida Sans Unicode", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDatosLlamada.Location = new Point(49, 9);
             lblDatosLlamada.Name = "lblDatosLlamada";
-            lblDatosLlamada.Size = new Size(238, 32);
+            lblDatosLlamada.Size = new Size(229, 28);
             lblDatosLlamada.TabIndex = 0;
             lblDatosLlamada.Text = "Datos de llamada";
             // 
             // panelValidaciones
             // 
             panelValidaciones.BackColor = Color.MintCream;
-            panelValidaciones.Controls.Add(btnConfirmar);
+            panelValidaciones.Controls.Add(txtRespuesta);
             panelValidaciones.Controls.Add(rbRespuesta3);
             panelValidaciones.Controls.Add(rbRespuesta2);
             panelValidaciones.Controls.Add(rbRespuesta1);
             panelValidaciones.Controls.Add(listValidaciones);
             panelValidaciones.Controls.Add(btnTomarRespuesta);
-            panelValidaciones.Controls.Add(txtRespuesta);
             panelValidaciones.Controls.Add(lblRespuesta);
             panelValidaciones.Location = new Point(49, 331);
             panelValidaciones.Name = "panelValidaciones";
             panelValidaciones.Size = new Size(813, 168);
             panelValidaciones.TabIndex = 1;
             // 
-            // btnConfirmar
+            // txtRespuesta
             // 
-            btnConfirmar.BackColor = Color.LightSkyBlue;
-            btnConfirmar.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnConfirmar.Location = new Point(536, 117);
-            btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(105, 36);
-            btnConfirmar.TabIndex = 4;
-            btnConfirmar.Text = "CONFIRMAR";
-            btnConfirmar.UseVisualStyleBackColor = false;
-            btnConfirmar.Visible = false;
+            txtRespuesta.Enabled = false;
+            txtRespuesta.Location = new Point(485, 45);
+            txtRespuesta.Name = "txtRespuesta";
+            txtRespuesta.Size = new Size(252, 23);
+            txtRespuesta.TabIndex = 7;
+            txtRespuesta.Visible = false;
             // 
             // rbRespuesta3
             // 
             rbRespuesta3.AutoSize = true;
-            rbRespuesta3.Location = new Point(183, 103);
+            rbRespuesta3.Location = new Point(264, 120);
             rbRespuesta3.Name = "rbRespuesta3";
             rbRespuesta3.Size = new Size(94, 19);
             rbRespuesta3.TabIndex = 6;
@@ -207,7 +205,7 @@
             // rbRespuesta2
             // 
             rbRespuesta2.AutoSize = true;
-            rbRespuesta2.Location = new Point(183, 67);
+            rbRespuesta2.Location = new Point(264, 82);
             rbRespuesta2.Name = "rbRespuesta2";
             rbRespuesta2.Size = new Size(94, 19);
             rbRespuesta2.TabIndex = 5;
@@ -219,7 +217,7 @@
             // rbRespuesta1
             // 
             rbRespuesta1.AutoSize = true;
-            rbRespuesta1.Location = new Point(183, 32);
+            rbRespuesta1.Location = new Point(264, 45);
             rbRespuesta1.Name = "rbRespuesta1";
             rbRespuesta1.Size = new Size(94, 19);
             rbRespuesta1.TabIndex = 4;
@@ -236,38 +234,47 @@
             listValidaciones.Font = new Font("Lucida Sans Unicode", 12F, FontStyle.Regular, GraphicsUnit.Point);
             listValidaciones.FormattingEnabled = true;
             listValidaciones.ItemHeight = 20;
-            listValidaciones.Location = new Point(16, 29);
+            listValidaciones.Location = new Point(27, 35);
             listValidaciones.Name = "listValidaciones";
-            listValidaciones.Size = new Size(142, 104);
+            listValidaciones.Size = new Size(155, 104);
             listValidaciones.TabIndex = 0;
             // 
             // btnTomarRespuesta
             // 
             btnTomarRespuesta.BackColor = Color.LightSkyBlue;
+            btnTomarRespuesta.Cursor = Cursors.Hand;
             btnTomarRespuesta.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTomarRespuesta.Location = new Point(536, 75);
+            btnTomarRespuesta.Location = new Point(502, 103);
             btnTomarRespuesta.Name = "btnTomarRespuesta";
-            btnTomarRespuesta.Size = new Size(105, 36);
+            btnTomarRespuesta.Size = new Size(208, 36);
             btnTomarRespuesta.TabIndex = 3;
-            btnTomarRespuesta.Text = "ENVIAR";
+            btnTomarRespuesta.Text = "ENVIAR RESPUESTA";
             btnTomarRespuesta.UseVisualStyleBackColor = false;
-            // 
-            // txtRespuesta
-            // 
-            txtRespuesta.Location = new Point(436, 46);
-            txtRespuesta.Name = "txtRespuesta";
-            txtRespuesta.Size = new Size(357, 23);
-            txtRespuesta.TabIndex = 2;
+            btnTomarRespuesta.Click += btnTomarRespuesta_Click;
             // 
             // lblRespuesta
             // 
             lblRespuesta.AutoSize = true;
             lblRespuesta.Font = new Font("Lucida Sans Unicode", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblRespuesta.Location = new Point(470, 13);
+            lblRespuesta.Location = new Point(189, 11);
             lblRespuesta.Name = "lblRespuesta";
-            lblRespuesta.Size = new Size(265, 20);
+            lblRespuesta.Size = new Size(290, 20);
             lblRespuesta.TabIndex = 1;
-            lblRespuesta.Text = "Ingrese la respuesta del cliente:";
+            lblRespuesta.Text = "Seleccione la respuesta del cliente:";
+            // 
+            // btnConfirmar
+            // 
+            btnConfirmar.BackColor = Color.LightSkyBlue;
+            btnConfirmar.Cursor = Cursors.Hand;
+            btnConfirmar.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnConfirmar.Location = new Point(413, 631);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.Size = new Size(126, 45);
+            btnConfirmar.TabIndex = 4;
+            btnConfirmar.Text = "CONFIRMAR";
+            btnConfirmar.UseVisualStyleBackColor = false;
+            btnConfirmar.Visible = false;
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // labelValidaciones
             // 
@@ -283,7 +290,7 @@
             // 
             lblDescripcion.AutoSize = true;
             lblDescripcion.Font = new Font("Lucida Sans Unicode", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDescripcion.Location = new Point(103, 529);
+            lblDescripcion.Location = new Point(52, 529);
             lblDescripcion.Name = "lblDescripcion";
             lblDescripcion.Size = new Size(316, 20);
             lblDescripcion.TabIndex = 4;
@@ -292,7 +299,7 @@
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(485, 531);
+            txtDescripcion.Location = new Point(374, 531);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(357, 23);
             txtDescripcion.TabIndex = 5;
@@ -300,7 +307,7 @@
             // 
             // txtAccionRequerida
             // 
-            txtAccionRequerida.Location = new Point(485, 581);
+            txtAccionRequerida.Location = new Point(374, 583);
             txtAccionRequerida.Name = "txtAccionRequerida";
             txtAccionRequerida.Size = new Size(357, 23);
             txtAccionRequerida.TabIndex = 6;
@@ -310,18 +317,49 @@
             // 
             lblAccionRequerida.AutoSize = true;
             lblAccionRequerida.Font = new Font("Lucida Sans Unicode", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAccionRequerida.Location = new Point(260, 579);
+            lblAccionRequerida.Location = new Point(208, 581);
             lblAccionRequerida.Name = "lblAccionRequerida";
             lblAccionRequerida.Size = new Size(149, 20);
             lblAccionRequerida.TabIndex = 7;
             lblAccionRequerida.Text = "Accion requerida:";
             lblAccionRequerida.Visible = false;
             // 
+            // btnEnviarDescripcion
+            // 
+            btnEnviarDescripcion.BackColor = Color.LightSkyBlue;
+            btnEnviarDescripcion.Cursor = Cursors.Hand;
+            btnEnviarDescripcion.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEnviarDescripcion.Location = new Point(757, 523);
+            btnEnviarDescripcion.Name = "btnEnviarDescripcion";
+            btnEnviarDescripcion.Size = new Size(105, 36);
+            btnEnviarDescripcion.TabIndex = 9;
+            btnEnviarDescripcion.Text = "ENVIAR";
+            btnEnviarDescripcion.UseVisualStyleBackColor = false;
+            btnEnviarDescripcion.Visible = false;
+            btnEnviarDescripcion.Click += btnEnviarDescripcion_Click;
+            // 
+            // btnEnviarAccion
+            // 
+            btnEnviarAccion.BackColor = Color.LightSkyBlue;
+            btnEnviarAccion.Cursor = Cursors.Hand;
+            btnEnviarAccion.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEnviarAccion.Location = new Point(757, 575);
+            btnEnviarAccion.Name = "btnEnviarAccion";
+            btnEnviarAccion.Size = new Size(105, 36);
+            btnEnviarAccion.TabIndex = 10;
+            btnEnviarAccion.Text = "ENVIAR";
+            btnEnviarAccion.UseVisualStyleBackColor = false;
+            btnEnviarAccion.Visible = false;
+            btnEnviarAccion.Click += btnEnviarAccion_Click;
+            // 
             // VentanaRegistrarRespuesta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(955, 670);
+            ClientSize = new Size(1001, 688);
+            Controls.Add(btnEnviarAccion);
+            Controls.Add(btnEnviarDescripcion);
+            Controls.Add(btnConfirmar);
             Controls.Add(lblAccionRequerida);
             Controls.Add(txtAccionRequerida);
             Controls.Add(txtDescripcion);
@@ -368,5 +406,9 @@
         private TextBox txtDescripcion;
         private TextBox txtAccionRequerida;
         private Label lblAccionRequerida;
+        private TextBox txtRespuesta;
+        private UserControl ventanaMsgEmergente;
+        private Button btnEnviarDescripcion;
+        private Button btnEnviarAccion;
     }
 }

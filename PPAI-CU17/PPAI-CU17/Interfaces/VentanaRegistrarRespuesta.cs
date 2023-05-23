@@ -15,12 +15,6 @@ namespace PPAI_CU17.Interfaces
     public partial class VentanaRegistrarRespuesta : Form
     {
         // Atributos de la clase VentanaRegistrarRespuesta
-        private TextBox txtDatosLlamada;
-        private ListBox listaValidaciones;
-        private TextBox txtRespuesta;
-        private TextBox txtAccion;
-        private TextBox txt;
-        private Button btn;
         public ControladorRegistrarRespuesta controladorRegistrarRespuesta;
 
         // Constructor de la clase
@@ -50,25 +44,28 @@ namespace PPAI_CU17.Interfaces
         // Para eso se declara (hardcodeada) una lista de respuestas posibles para simular la validacion. 
         public void mostrarValidaciones(List<String> validaciones, List<String> respuestasCorrectas)
         {
-            // Declaración de posibles respuestas para las validaciones
+            // Declaración de posibles respuestas para las validaciones (validacion por codigo postal)
 
-            List<String> posiblesRespuestasCp = new List<String>();
+            List<String> posiblesRespuestasCantHijos = new List<String>();
 
-            posiblesRespuestasCp.Add("5000");
-            posiblesRespuestasCp.Add("4500");
+            posiblesRespuestasCantHijos.Add("4");
+            posiblesRespuestasCantHijos.Add("1");
 
 
             this.listValidaciones.Items.Clear();
 
+            // Muestra las validaciones correspondientes a la validacion por Codigo Postal
+
             validaciones.ForEach((validacion) =>
             {
                 this.listValidaciones.Items.Add(validacion);
-                this.rbRespuesta1.Text = posiblesRespuestasCp[0];
-                this.rbRespuesta2.Text = posiblesRespuestasCp[1];
+                this.rbRespuesta1.Text = posiblesRespuestasCantHijos[0];
+                this.rbRespuesta2.Text = posiblesRespuestasCantHijos[1];
                 this.rbRespuesta3.Text = respuestasCorrectas[0];
             });
 
             this.listValidaciones.Visible = true;
+            this.txtRespuesta.Visible = true;
         }
 
         // Método que toma la respuesta que indicó el operador para las validaciones del cliente, y llama al mismo mensaje en 
@@ -84,7 +81,7 @@ namespace PPAI_CU17.Interfaces
         {
             this.lblDescripcion.Visible = true;
             this.txtDescripcion.Visible = true;
-        } 
+        }
 
         // hace visible los elementos para ingresar la accion requerida por el cliente
 
@@ -97,10 +94,7 @@ namespace PPAI_CU17.Interfaces
         // los que puedan tener datos cargados de antes o por defecto
         public void solicitarRespuesta()
         {
-            this.txtRespuesta.Visible = true;
-            this.lblRespuesta.Visible = true;
             this.btnTomarRespuesta.Visible = true;
-            this.txtRespuesta.Clear();
         }
 
         // hace visible el botón de confirmar, para que se confirme la operación realizada.
@@ -114,13 +108,21 @@ namespace PPAI_CU17.Interfaces
         public void tomarDescripcion()
         {
             string descripcion = this.txtDescripcion.Text;
+            this.txtDescripcion.Enabled = false;
+
+            MessageBox.Show("Descripcion ingresada: " + descripcion, "Ingreso de datos");
+
             this.controladorRegistrarRespuesta.tomarDescripcion(descripcion);
         }
 
         // Metodo para tomar la accion requerida que se ingresa por el textBox, y llama al método tomarAccion del controlador
         public void tomarAccion()
         {
-            string accion = this.txtAccion.Text;
+            string accion = this.txtAccionRequerida.Text;
+            this.txtAccionRequerida.Enabled = false;
+
+            MessageBox.Show("Accion requerida: " + accion, "Ingreso de datos");
+
             controladorRegistrarRespuesta.tomarAccion(accion);
         }
 
@@ -134,22 +136,40 @@ namespace PPAI_CU17.Interfaces
         // Muestra una ventana emergente que indica que la acción del CU 28 (Gestor CU - Registrar accion requerida) fue exitosa
         public void mostrarMsgRegistroAccion()
         {
-            MessageBox.Show("La acción fue ejecutada de forma correcta");
+            MessageBox.Show("La acción fue ejecutada de forma correcta", "Registrar accion requerida");
+        }
+
+        // Muestra un mensaje para continuar con la siguiente validación o confirmar la operación
+
+        public void mostrarMsgValidacionCorrecta()
+        {
+            MessageBox.Show("Validacion correcta, ingrese los datos para concretar la operacion", "Validacion");
+            this.solicitarDescripcion();
+            this.solicitarAccion();
+            this.solicitarConfirmacion();
+
+            this.btnEnviarDescripcion.Visible = true;
+            this.btnEnviarAccion.Visible = true;
         }
 
         // Muestra una ventana que indica que alguna de las validaciones que se intentó realizar fue incorrecta.
         public void mostrarMsgValidacionIncorrecta()
         {
-            MessageBox.Show("Error, una de las validaciones es incorrecta");
+            MessageBox.Show("Error, una de las validaciones es incorrecta", "Error");
         }
         // Muestra una ventana que informa que la acción del CU 28 no se pudo ejecutar de forma correcta
         public void mostrarMsgRegistroAccionIncorrecta()
         {
-            MessageBox.Show("Error, la acción no pudo ejecutarse correctamente");
+            MessageBox.Show("Error, la acción no pudo ejecutarse correctamente", "Registrar accion requerida - Error");
+        }
+
+        public void mostrarDatosFinDeLlamada(String duracion, String descripcionRespuesta)
+        {
+            MessageBox.Show("Duracion de la llamada: " + duracion + "\n" + "Descripcion de la respuesta: " + descripcionRespuesta, "Datos del fin de llamada:");
         }
 
         // Detecta un evento de click en el botón confirmar y llama al método para tomar la confirmacion
-        private void BtnConfirmar_Click(object sender, EventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
             this.tomarConfirmacion();
         }
@@ -158,17 +178,17 @@ namespace PPAI_CU17.Interfaces
         // cada uno a un radio button que se puede elegir, luego ejecuta el método tomarRespuesta con el texto de la validacion
         private void rbRespuesta1_CheckedChanged(object sender, EventArgs e)
         {
-            this.tomarRespuesta(rbRespuesta1.Text);
+            this.txtRespuesta.Text = rbRespuesta1.Text;
         }
 
         private void rbRespuesta2_CheckedChanged(object sender, EventArgs e)
         {
-            this.tomarRespuesta(rbRespuesta2.Text);
+            this.txtRespuesta.Text = rbRespuesta2.Text;
         }
 
         private void rbRespuesta3_CheckedChanged(object sender, EventArgs e)
         {
-            this.tomarRespuesta(rbRespuesta3.Text);
+            this.txtRespuesta.Text = rbRespuesta3.Text;
         }
 
         private void VentanaRegistrarRespuesta_Load(object sender, EventArgs e)
@@ -176,8 +196,26 @@ namespace PPAI_CU17.Interfaces
 
         }
 
+        private void btnTomarRespuesta_Click(object sender, EventArgs e)
+        {
+            this.tomarRespuesta(txtRespuesta.Text);
+        }
 
+        // Para efectos de la simulacion,mostrar los datos de la llamada cuando se recibe el click para cargar los datos.
+        private void btnCargarDatos_Click(object sender, EventArgs e)
+        {
+        }
 
+        // Método para tomar la descripcion ingresada en txtDescripcion
+        private void btnEnviarDescripcion_Click(object sender, EventArgs e)
+        {
+            this.tomarDescripcion();
+        }
 
+        // Método para tomar la accion registrada en txtAccionRequerida
+        private void btnEnviarAccion_Click(object sender, EventArgs e)
+        {
+            this.tomarAccion();
+        }
     }
 }

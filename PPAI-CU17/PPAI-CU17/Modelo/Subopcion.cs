@@ -23,22 +23,13 @@ namespace PPAI_CU17.Modelo
             opcionPadre = null;
         }
         
+        // Metodo para agregar validaciones requeridas relacionadas al objeto SubOpcion
         public void agregarValidacion(Validacion validacion)
         {
             this.validaciones.Add(validacion);
         }
 
-        public void setNombreSubpcion(String value) 
-        {
-            this.nombreSubopcion = value;
-        }
-
-        public void setNroOrdenSubopcion(int value)
-        {
-            this.nroOrdenSubopcion = value;
-        }
-
-        // Metodos get para Subopcion
+        // Metodos get y set
         public String getNombreSubopcion()
         {
             return this.nombreSubopcion;
@@ -54,7 +45,6 @@ namespace PPAI_CU17.Modelo
             return this.opcionPadre;
 
         }
-
         // Método que devuelve una lista de validaciones requeridas que tiene la subopcion
         public List<Validacion> getValidaciones()
         {
@@ -75,8 +65,21 @@ namespace PPAI_CU17.Modelo
             return datosValidaciones;
         }
 
+        public void setNombreSubpcion(String value)
+        {
+            this.nombreSubopcion = value;
+        }
+
+        public void setNroOrdenSubopcion(int value)
+        {
+            this.nroOrdenSubopcion = value;
+        }
+
+        public void setOpcionPadre(Opcion value) 
+        {
+            this.opcionPadre = value;
+        }
 
     }
-
 
 }
