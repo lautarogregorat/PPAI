@@ -10,9 +10,10 @@ namespace PPAI_CU17.Controladores
 {
     public class ControladorRegistrarRespuesta
     {
-        private string respuesta;
-        private string descripcion;
-        private string accion;
+        // Atributos de la clase controlador registrar respuesta
+        private String respuesta;
+        private String descripcion;
+        private String accion;
         private Estado estadoEnCurso;
         private DateTime fechaYhoraActual;
         private Llamada datosLlamada;
@@ -20,23 +21,28 @@ namespace PPAI_CU17.Controladores
         private Estado estadoFinalizada;
         public VentanaRegistrarRespuesta ventanaRegistrarRespuesta;
 
+        // Metodos de la clase controlador registrar respuesta
         public ControladorRegistrarRespuesta(Llamada datosLlamada, VentanaRegistrarRespuesta _ventanaRegistrarRespuesta)
         {
+            this.respuesta = "";
+            this.descripcion = "";
+            this.accion = "";
             this.datosLlamada = datosLlamada;
             this.ventanaRegistrarRespuesta = _ventanaRegistrarRespuesta;
             this.ventanaRegistrarRespuesta.controladorRegistrarRespuesta = this;
         }
 
-        public string getDescripcion()
+        // Metodos get y set del controlador
+        public String getDescripcion()
         {
             return this.descripcion;
         }
-        public string getRespuesta()
+        public String getRespuesta()
         {
             return respuesta;
         }
 
-        public string getAccion()
+        public String getAccion()
         {
             return accion;
         }
@@ -48,60 +54,64 @@ namespace PPAI_CU17.Controladores
 
         public DateTime getHoraActual()
         {
-            return fechaYhoraActual;
+            return this.fechaYhoraActual;
         }
 
         public Llamada getDatosLlamada()
         {
-            return datosLlamada;
+            return this.datosLlamada;
         }
 
         public InformacionCliente getInformacionCliente()
         {
-            return informacionCliente;
+            return this.informacionCliente;
         }
 
-        public Estado getEstadoFinalizado()
+        public Estado getEstadoFinalizada()
         {
-            return estadoFinalizada;
+            return this.estadoFinalizada;
         }
 
-        public void setDescripcion(string value)
-        {
-            descripcion = value;
-        }
-
-        public void tomarRespuesta(string value)
+        public void setRespuesta(String value) 
         {
             this.respuesta = value;
         }
 
-        public void setAccion(string value)
-        {
-            accion = value;
-        }
-
-        /*
-        private void setEstadoEnCurso(Estado estado)
+        public void setEstadoEnCurso(Estado estado) 
         {
             this.estadoEnCurso = estado;
         }
-        */
+
+        public void setEstadoFinalizada(Estado estado) 
+        {
+            this.estadoFinalizada = estado;
+        }
+        public void setDescripcion(String value)
+        {
+            this.descripcion = value;
+        }
+
+        public void setDatosLlamada(Llamada datosLlamada)
+        {
+            this.datosLlamada = datosLlamada;
+        }
+    
+        public void setAccion(String value)
+        {
+            this.accion = value;
+        }
+        // Métodos de implementación
+
+        // Toma la respuesta ingresada desde la ventana de interfaz
+        public void tomarRespuesta(String value)
+        {
+            this.respuesta = value;
+            this.validarRespuesta();
+        }
 
         // Busca entre los objetos estado la instancia "enCurso" y setea usando el método arriba definido
         private void buscarEstadoEnCurso(List<Estado> Estados)
         {
-            /*
-            foreach (Estado estado in Estados)
-            {
-                if (estado.sosEnCurso())
-                {
-                    this.estadoEnCurso = estado;
-                    return;
-
-                }
-            }
-            */
 
             Estados.ForEach((Estado estado) =>
             {
@@ -113,12 +123,7 @@ namespace PPAI_CU17.Controladores
             });
         }
 
-        private void setEstadoFinalizada(Estado estado)
-        {
-            this.estadoFinalizada = estado;
-        }
-
-        // Busca entre los objetos estado la instancia "Finalizado" y setea usando el método arriba definido
+        // Busca entre los objetos estado la instancia "Finalizada" de la llamada y setea usando el método arriba definido
         public void buscarEstadoFinalizada(List<Estado> Estados)
         {
 
@@ -126,47 +131,56 @@ namespace PPAI_CU17.Controladores
             {
                 if (estado.esFinalizada())
                 {
-                    setEstadoFinalizada(estado);
+                    this.setEstadoFinalizada(estado);
                     break;
 
                 }
             }
         }
 
-        public void tomarDescripcion(string descripcionIngresada)
+        // Toma la descripcion de la respuesta ingresada por el operador desde la ventana
+        public void tomarDescripcion(String descripcionIngresada)
         {
             this.descripcion = descripcionIngresada;
         }
 
-        public void tomarAccion(string accionRequerida)
+        // Toma la accion requerida por el cliente, ingresada por el operador desde la ventana
+        public void tomarAccion(String accionRequerida)
         {
             this.accion = accionRequerida;
         }
 
+        // Toma la confirmación realizada en el boton de confirmar la operación en la ventana
         public void tomarConfirmacion()
         {
             return;
         }
 
+        // Registra la accion requerida por el cliente, instancia un nuevo objeto de la clase GestorCU, enviandole un mensaje
+        // para realizar dicha tarea, esto simula la llamada al caso de uso 28. Devuelve true o false según si el caso de uso se ejecutó
+        // de manera correcta
         private bool registrarAccionRequerida()
         {
             GestorCU gestorRegistrarAccion = new GestorCU();
             return gestorRegistrarAccion.registrarAccionRequerida(this.accion);
         }
 
+        // Método que actualiza el estado de la llamada actual en el controlador, llamando al método enCurso de la llamada que 
+        // genera un nuevo cambio de estado
         private void actualizarEstadoLlamada()
         {
             this.datosLlamada.enCurso(estadoEnCurso, this.fechaYhoraActual);
         }
 
+        // obtiene los datos de la llamada seleccionada y los retorna como una lista de cadenas
         private List<String> buscarDatosLlamada()
         {
             List<String> infoLlamada = new List<String>();
-            infoLlamada.Add(this.datosLlamada.getCliente());
-            infoLlamada.Add(this.datosLlamada.getOpcion());
-            infoLlamada.Add(this.datosLlamada.getCategoriaOpcion());
-            infoLlamada.Add(this.datosLlamada.getSubOpcion());
-                       
+            infoLlamada.Add(this.datosLlamada.getNombreCliente());
+            infoLlamada.Add(this.datosLlamada.getNombreOpcion());
+            infoLlamada.Add(this.datosLlamada.getNombreCategoriaOpcion());
+            infoLlamada.Add(this.datosLlamada.getNombreSubOpcion());
+ 
             
             return infoLlamada;
         }
@@ -178,25 +192,16 @@ namespace PPAI_CU17.Controladores
             this.fechaYhoraActual = fechaYhoraActualizada;
         }
         
+        // Valida la respuesta del cliente ingresada por el operador a las validaciones, para ello llama al método validarInfoCliente
+        // de la llamada asociada, para obtener un boolean que indica si la respuesta fue o no correcta.
         private bool validarRespuesta()
         {
-            bool valida = false;
-
-            // Para cada dato a validar (Es decir validacion a realizar)
-
-            for (int i = 0; i < this.datosLlamada.getValidaciones().Count; i++)
-            {
-                valida = this.datosLlamada.validarInfoCliente(this.respuesta);
+            return this.datosLlamada.validarInfoCliente(this.respuesta);
                 
-                if (!valida)
-                {
-                    return false;
-                }
-            }
-
-            return valida;
         }
-
+        // registra el finde la llamada asociada, para ello llama al método finalizar() en la llamada, que crea un nuevo cambio de estado
+        // ejecuta los métodos "set" para la descripcion y accion ingresadas, y despues delega la responsabilidad de calcular la duración
+        // a la llamada
         public void registrarFinDeLlamada()
         {
             // Será la FechaHoraInicio del CambiodeEstado 
@@ -207,11 +212,14 @@ namespace PPAI_CU17.Controladores
 
         }
 
+        // Finaliza el caso de uso, cierra la ventana y sale de la ejecución
         public void finCu()
         {
+            this.ventanaRegistrarRespuesta.Close();
             return;
         }
 
+        // Inicia la funcionalidad principal del flujo del caso de uso
         public void registrarRespuesta()
         {
 
@@ -263,44 +271,57 @@ namespace PPAI_CU17.Controladores
             
             this.actualizarEstadoLlamada();
 
-
+            
             List<string> infoLlamada = this.buscarDatosLlamada();
 
             ventanaRegistrarRespuesta.habilitar();
 
             ventanaRegistrarRespuesta.mostrarDatosLlamada(infoLlamada);
 
-            ventanaRegistrarRespuesta.mostrarValidaciones(this.datosLlamada.getValidaciones());
+            ventanaRegistrarRespuesta.mostrarValidaciones(this.datosLlamada.getNombreValidacionesSubOpcion(), this.datosLlamada.getCliente().getDatosInformacionCliente());
 
-            for (int i = 0; i < this.datosLlamada.getValidaciones().Count; i++)
-            {
-                ventanaRegistrarRespuesta.solicitarRespuesta();
+            MessageBox.Show("EMPIEZA LA VALIDACIONOSKIIIIIIIIIIIIII");
 
-                while(this.respuesta != "")
+                bool respuestaValida = this.validarRespuesta();
+
+            MessageBox.Show(this.respuesta);
+/*
+                if (!(respuestaValida))
                 {
-                    if (!this.validarRespuesta())
-                    {
-
-                    };
+                    this.ventanaRegistrarRespuesta.mostrarMsgValidacionIncorrecta();
+                    this.ventanaRegistrarRespuesta.Close();
+                    return;
                 }
-            }            
-           
-
+*/
             ventanaRegistrarRespuesta.solicitarDescripcion();
+
+
             ventanaRegistrarRespuesta.solicitarAccion();
             ventanaRegistrarRespuesta.solicitarConfirmacion();
 
             // Paso número 8 - Llamada al CU 28 Registrar accion requerida
 
-            if (!(this.registrarAccionRequerida())){
-                // Flujo alternativo 3 - El CU 28 no ejecuta con éxito
-            };
+            if (this.registrarAccionRequerida())
+            {
+                this.ventanaRegistrarRespuesta.mostrarMsgRegistroAccion();
 
-            this.ventanaRegistrarRespuesta.mostrarMsgRegistroAccion();
+            } else
+            {
+                this.ventanaRegistrarRespuesta.mostrarMsgRegistroAccionIncorrecta();
+                this.ventanaRegistrarRespuesta.Close();
+                return;
+            }
+
+            MessageBox.Show("PASO EL CU 28 PAI");
 
             this.buscarEstadoFinalizada(estados);
 
+            MessageBox.Show("Estado finalizada: " + this.getEstadoFinalizada().getNombre());
+
             this.registrarFinDeLlamada();
+
+            MessageBox.Show("Datos de la llamada finalizada: " + this.datosLlamada.getCambioDeEstado() + this.datosLlamada.getDescripcionOperador() + this.datosLlamada.getDuracion().ToString());
+
 
             this.finCu();
 

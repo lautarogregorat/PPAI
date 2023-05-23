@@ -10,29 +10,39 @@ namespace PPAI_CU17.Controladores
 {
     internal class InterfazIVR
     {
+        // Esta clase se corresponde a la interfaz que inicia el caso de uso, es decir, la que nos da los datos de la llamada
+        // Contiene todos los datos hardcodeados para iniciar el flujo descripto en el caso de uso
         public void registrarRespuestaOperador()
         {
 
             // Datos de prueba 
 
 
-            // Validaciones
+            //  Inicializacion de Validaciones
             Validacion validacionSubOpcionCp = new Validacion("Ingrese su codigo postal", "Codigo postal");
+            
+            /*
             Validacion validacionSubOpcionFecha = new Validacion("Ingrese su fecha de nacimiento dd/mm/aaaa", "Fecha Nacimiento");
             Validacion validacionSubOpcionCantidadHijos = new Validacion("Ingrese la cantidad de hijos", "Cantidad Hijos");
-
+            */
 
             // Informacion del cliente
 
             InformacionCliente infoClienteCp = new InformacionCliente("5200", validacionSubOpcionCp);
+           
+            /*
             InformacionCliente infoClienteFecha = new InformacionCliente("12/10/12", validacionSubOpcionFecha);
             InformacionCliente infoClienteCantHijos = new InformacionCliente("3", validacionSubOpcionCantidadHijos);
+            */
 
             // Cliente
-            Cliente cliente = new Cliente("Juan Roman Riquelme", "1212121210", "1010101010", infoClienteCp);
+            Cliente cliente = new Cliente("Juan Roman Riquelme", "1212121210", "1010101010");
+            cliente.agregarInfo(infoClienteCp);
+            /*
             cliente.agregarInfo(infoClienteFecha);
             cliente.agregarInfo(infoClienteCantHijos);
-            
+            */
+
             // Categoria
             Categoria categoriaOpcionSeleccionada = new Categoria("Si desea informar un robo y solicitar una nueva tarjeta marque 1\n Si desea informar un robo y anular su tarjeta marque 2\n Si desea finalizar la llamada marque 3", "Si quiere informar un robo marque 1", "Informar Robo", 1);
             
@@ -43,10 +53,13 @@ namespace PPAI_CU17.Controladores
             // Subopcion
             SubOpcion subOpcionSeleccionada = new SubOpcion("Si cuenta con los datos de la tarjeta marque 1", 1);
             subOpcionSeleccionada.agregarValidacion(validacionSubOpcionCp);
+
+            /*
             subOpcionSeleccionada.agregarValidacion(validacionSubOpcionFecha);
             subOpcionSeleccionada.agregarValidacion(validacionSubOpcionCantidadHijos);
-
-            //Estado
+            */
+            
+            // Estado
             Estado iniciada = new Estado("Iniciada");
 
             // Llamada
@@ -59,6 +72,8 @@ namespace PPAI_CU17.Controladores
             VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new VentanaRegistrarRespuesta();
 
             ControladorRegistrarRespuesta controladorRegistrarRespuesta = new ControladorRegistrarRespuesta(datosLlamada, ventanaRegistrarRespuesta);
+
+            // llamada al método del controlador que empieza el flujo del caso de uso
 
             controladorRegistrarRespuesta.registrarRespuesta();
         }

@@ -3,17 +3,19 @@
 namespace PPAI_CU17.Modelo;
 	public class Opcion
 	{
-	// atributos para opcion
-	private string audioMensajeSubopcion;
-        private string mensajeOpcion;
-        private string nombreOpcion;
+	// Atibutos de la clase opcion
+	    private String audioMensajeSubopcion;
+        private String mensajeOpcion;
+        private String nombreOpcion;
         private int nroOrdenOpcion;
         private List<SubOpcion> subopciones;
         private List<Validacion> validacionRequerida;
         public Categoria categoria;
       
-      // constructor para opcion
-        public Opcion(string audioMensajeSubopciones, string mensajeOpcion, string nombreOpcion, int nroOrdenOpcion, Categoria categoriaSuperior)
+      // Metodos de la clase opcion
+
+    // Constructor
+        public Opcion(String audioMensajeSubopciones, String mensajeOpcion, String nombreOpcion, int nroOrdenOpcion, Categoria categoriaSuperior)
         {
             this.audioMensajeSubopcion = audioMensajeSubopciones;
             this.mensajeOpcion = mensajeOpcion;
@@ -23,26 +25,26 @@ namespace PPAI_CU17.Modelo;
             this.categoria = categoriaSuperior;
         }
 
-        // Agregamos subopciones a la opcion
+        // Método para agregar subopciones a la opción 
         public void agregarSubopcion(SubOpcion _subopcion)
         {
             _subopcion.opcionPadre = this;
             subopciones.Add(_subopcion);
         }
 
-        // metodos get para opcion
+        // Métodos get y set
 
-        public string getAudioMensajeSubopcion()
+        public String getAudioMensajeSubopcion()
         {
             return audioMensajeSubopcion;
         }
 
-        public string getMensajeOpcion()
+        public String getMensajeOpcion()
         {
             return this.mensajeOpcion;
         }
 
-        public string getNombreOpcion()
+        public String getNombreOpcion()
         {
             return this.nombreOpcion;
         }
@@ -52,28 +54,28 @@ namespace PPAI_CU17.Modelo;
             return this.nroOrdenOpcion;
         }
 
-        // get categoria
-        public String getCategoria()
+        // Retorna la categoria a la que pertenece la opcion, por una dependencia
+        public Categoria getCategoria()
         {
-        return this.categoria.getNombreCategoria();
+            return this.categoria;
         }
 
-        public string getDatos() 
+        // Método que devuelve el string con el nombre de la categoria padre de la opcion, usando una dependencia
+        public String getNombreCategoria()
         {
-        return this.ToString();
+            return this.categoria.getNombreCategoria();
         }
-
-    // get validacion
-    public List<String> getValidaciones()
-    {
-        List<String> datosValidaciones = new List<string>();
-
-        this.validacionRequerida.ForEach(validacion =>
+        // Retorna el nombre de las validaciones asociadas a la opcion, como una lista de strings de cada nombre
+        public List<String> getValidaciones()
         {
-            datosValidaciones.Add(validacion.getNombreValidacion());
-        });
+            List<String> datosValidaciones = new List<String>();
 
-        return datosValidaciones;
-    }
+            this.validacionRequerida.ForEach(validacion =>
+            {
+                datosValidaciones.Add(validacion.getNombreValidacion());
+            });
+
+            return datosValidaciones;
+        }
 
 }

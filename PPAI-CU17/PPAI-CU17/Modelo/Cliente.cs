@@ -8,28 +8,31 @@ namespace PPAI_CU17.Modelo
 {
     public class Cliente
     {
-        /* Atributos de clase */
+        // Atributos de la clase cliente
 
-        private string nombreCompleto;
-        private string dni;
-        private string nroCelular;
+        private String nombreCompleto;
+        private String dni;
+        private String nroCelular;
         private List<InformacionCliente> info;
 
-        public void agregarInfo(InformacionCliente informacion)
-        {
-            this.info.Add(informacion);
-        }
-
-        public Cliente(string nombreCompleto, string dni, string nroCelular, InformacionCliente informacionCliente)
+        // Metodos de la clase cliente
+        // Constructor
+        public Cliente(String nombreCompleto, String dni, String nroCelular)
         {
             this.nombreCompleto = nombreCompleto;
             this.dni = dni;
             this.nroCelular = nroCelular;
             this.info = new List<InformacionCliente>();
-
-            this.info.Add(informacionCliente);
         }
 
+        // Método para agregar objetos de la clase InformacionCliente a la lista de objetos de ese tipo a los que
+        // referencia la clase
+        public void agregarInfo(InformacionCliente informacion)
+        {
+            this.info.Add(informacion);
+        }
+
+        // Métodos get y set
         public String getNombre()
         { 
             return this.nombreCompleto;
@@ -45,47 +48,63 @@ namespace PPAI_CU17.Modelo
             return this.nroCelular;
         }
 
-        public String getInformacionCliente()
+        public void setNombre(String value) 
         {
-            String informacionDelCliente = "Informacion asociada al cliente: \n";
+            this.nombreCompleto = value;
+        }
+
+        public void setDni(String value) 
+        {
+            this.dni = value;
+        }
+
+        public void setNroCelular(String value) 
+        {
+            this.nroCelular = value;
+        }
+
+        // Método get para obtener la lista de objetos InformacionCliente 
+        public List<InformacionCliente> getInformacionCliente()
+        {
+            return this.info;
+        }
+
+
+        // Método que devuelve los datos a validar en formato de texto de cada objeto InformacionCliente que referencia la clase, 
+        // como una lista de strings con cada dato
+        public List<String> getDatosInformacionCliente()
+        {
+            List<String> informacionDelCliente = new List<String>();
 
             this.info.ForEach(informacionCliente =>
             {
-                informacionDelCliente += informacionCliente.getDatoAValidar() + "\n";
+                informacionDelCliente.Add(informacionCliente.getDatoAValidar());
             });
 
             return informacionDelCliente;
         }
 
-        public String getDatos()
+        // Método que recibe como parámetro un string de información, que representa el dato que tiene que validar como igual
+        // cada objeto InformacionCliente a su atributo datoAValidar, y a su vez validar que cada uno de esos objetos corresponda
+        // a la misma validacion relacionada, con el método esValidacion. Devuelve un booleano.
+        public bool esInformacionCorrecta(String informacion, List<Validacion> validaciones)
         {
-            String datosCliente = "";
-            datosCliente += "Nombre: " + this.getNombre();
-            datosCliente += "Numero de dni: " + this.getDni();
-            datosCliente += "Numero de celular: " + this.getNroCelular();
-
-            return datosCliente;
-        }
-        
-        public bool esInformacionCorrecta(string informacion, List<Validacion> validaciones)
-
-        {
-             foreach (Validacion validacion in validaciones)
-             {
-                foreach (InformacionCliente informacionCliente in info)
+            bool informacionValida = false;
+            validaciones.ForEach((validacion) =>
+            {
+                this.info.ForEach((informacionCliente) =>
                 {
-                    if (!(informacionCliente.esValidacion(validacion) && informacionCliente.esInformacionCorrecta(informacion)))
+                    if (informacionCliente.esValidacion(validacion) && informacionCliente.esInformacionCorrecta(informacion))
                     {
-                        return false;
-
+                        informacionValida = true;
                     };
-
-                }
-             }
-
-            return true;
+                });
+            });
+            return informacionValida;
         }
+    }
+}
         
 
     }
-}
+

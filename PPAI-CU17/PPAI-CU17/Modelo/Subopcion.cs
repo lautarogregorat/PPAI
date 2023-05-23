@@ -8,14 +8,14 @@ namespace PPAI_CU17.Modelo
 {
     public class SubOpcion
     {
-        // atributos
-        private string nombreSubopcion;
+        // Atributos de la clase SubOpcion
+        private String nombreSubopcion;
         private int nroOrdenSubopcion;
         private List<Validacion> validaciones;
         public Opcion opcionPadre;
 
-        // constructor para subopcion
-        public SubOpcion(string nombreSubopcion, int nroOrdenSubopcion)
+        // Constructor para Subopcion
+        public SubOpcion(String nombreSubopcion, int nroOrdenSubopcion)
         {
             this.nombreSubopcion = nombreSubopcion;
             this.nroOrdenSubopcion = nroOrdenSubopcion;
@@ -28,8 +28,18 @@ namespace PPAI_CU17.Modelo
             this.validaciones.Add(validacion);
         }
 
-        // metodos get para subopcion
-        public string getNombreSubopcion()
+        public void setNombreSubpcion(String value) 
+        {
+            this.nombreSubopcion = value;
+        }
+
+        public void setNroOrdenSubopcion(int value)
+        {
+            this.nroOrdenSubopcion = value;
+        }
+
+        // Metodos get para Subopcion
+        public String getNombreSubopcion()
         {
             return this.nombreSubopcion;
         }
@@ -42,12 +52,20 @@ namespace PPAI_CU17.Modelo
        public Opcion getOpcion()
         {
             return this.opcionPadre;
+
         }
 
-        
-        public List<String> getValidaciones()
+        // Método que devuelve una lista de validaciones requeridas que tiene la subopcion
+        public List<Validacion> getValidaciones()
         {
-            List<String> datosValidaciones = new List<string>();
+            return this.validaciones;
+        }
+
+        // Método que devuelve una lista de strings con los nombres de todas las validaciones que tenga asociadas
+
+        public List<String> getNombresValidaciones()
+        {
+            List<String> datosValidaciones = new List<String>();
 
             this.validaciones.ForEach(validacion =>
             {
@@ -57,10 +75,6 @@ namespace PPAI_CU17.Modelo
             return datosValidaciones;
         }
 
-        public List<Validacion> obtenerValidaciones()
-        {
-            return this.validaciones;
-        }
 
     }
 

@@ -8,26 +8,37 @@ namespace PPAI_CU17.Modelo
 {
     public class Validacion
     {
-        // atributos de validacion
-        private string audioMensajeValidacion;
-        private string nombreValidacion;
+        // Atributos de la clase validacion
+        private String audioMensajeValidacion;
+        private String nombreValidacion;
 
-        // constructor de validacion
-        public Validacion(string _audioMensajeValidacion, string _nombreValidacion)
+        // Metodos de la clase validacion
+        // Constructor
+        public Validacion(String _audioMensajeValidacion, String _nombreValidacion)
         {
             this.audioMensajeValidacion = _audioMensajeValidacion;
             this.nombreValidacion = _nombreValidacion;
         }
 
-        // metodos get para validacion
-        public string getMensajeValidacion()
+        // Métodos get y set
+        public String getMensajeValidacion()
         {
             return audioMensajeValidacion;
         }
 
-        public string getNombreValidacion()
+        public String getNombreValidacion()
         {
             return nombreValidacion;
+        }
+
+        public void setAudioMensajeValidacion(String value) 
+        {
+            this.audioMensajeValidacion = value;
+        }
+
+        public void setNombreValidacion(String value) 
+        {
+            this.nombreValidacion = value;
         }
 
     }
