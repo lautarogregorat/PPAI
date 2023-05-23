@@ -44,10 +44,6 @@ namespace PPAI_CU17.Modelo
             return this.opcionPadre;
         }
 
-        public string getDatos()
-        {
-            return this.ToString();
-        }
         
         public List<String> getValidaciones()
         {

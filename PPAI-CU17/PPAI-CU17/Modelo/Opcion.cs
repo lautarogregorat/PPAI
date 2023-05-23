@@ -20,7 +20,7 @@ namespace PPAI_CU17.Modelo;
             this.nombreOpcion = nombreOpcion;
             this.nroOrdenOpcion = nroOrdenOpcion;
             this.subopciones = new List<SubOpcion>();
-            this.categoria = null;
+            this.categoria = categoriaSuperior;
         }
 
         // Agregamos subopciones a la opcion
@@ -55,7 +55,7 @@ namespace PPAI_CU17.Modelo;
         // get categoria
         public String getCategoria()
         {
-        return this.categoria.getDatos();
+        return this.categoria.getNombreCategoria();
         }
 
         public string getDatos() 

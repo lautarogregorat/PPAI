@@ -47,18 +47,19 @@ namespace PPAI_CU17.Modelo
         {
             return this.cliente.getNombre();
         }
-        public String getOpcionyCategoria()
+        public String getOpcion()
         {
-            String datosOpcionYcategoria = "";
-
-            datosOpcionYcategoria += "Opcion seleccionada: " + this.opcionSeleccionada.getDatos() + "\n";
-            datosOpcionYcategoria += "Categoria: " + this.opcionSeleccionada.getCategoria();
-
-            return datosOpcionYcategoria;
+            return this.opcionSeleccionada.getNombreOpcion();
         }
+
+        public String getCategoriaOpcion()
+        {
+            return this.opcionSeleccionada.getCategoria();
+        }
+
         public String getSubOpcion()
         {
-            return this.subopcionSeleccionada.getDatos();
+            return this.subopcionSeleccionada.getNombreSubopcion();
         }
 
         public List<String> getValidaciones() 

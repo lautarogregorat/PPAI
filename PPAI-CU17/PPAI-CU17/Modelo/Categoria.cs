@@ -52,10 +52,6 @@ namespace PPAI_CU17.Modelo
         {
             return nroOrdenCategoria;
         }
-        public string getDatos() {
-
-            return this.ToString();
-        }
 
 
     }

@@ -12,22 +12,55 @@ namespace PPAI_CU17.Controladores
     {
         public void registrarRespuestaOperador()
         {
-            Validacion validacionSubOpcion = new Validacion("Ingrese su codigo postal", "Codigo postal");
-            InformacionCliente infoCliente = new InformacionCliente("5200", validacionSubOpcion);
-            Cliente cliente = new Cliente("Juan Roman Riquelme", "1212121210", "1010101010", infoCliente);
+
+            // Datos de prueba 
+
+
+            // Validaciones
+            Validacion validacionSubOpcionCp = new Validacion("Ingrese su codigo postal", "Codigo postal");
+            Validacion validacionSubOpcionFecha = new Validacion("Ingrese su fecha de nacimiento dd/mm/aaaa", "Fecha Nacimiento");
+            Validacion validacionSubOpcionCantidadHijos = new Validacion("Ingrese la cantidad de hijos", "Cantidad Hijos");
+
+
+            // Informacion del cliente
+
+            InformacionCliente infoClienteCp = new InformacionCliente("5200", validacionSubOpcionCp);
+            InformacionCliente infoClienteFecha = new InformacionCliente("12/10/12", validacionSubOpcionFecha);
+            InformacionCliente infoClienteCantHijos = new InformacionCliente("3", validacionSubOpcionCantidadHijos);
+
+            // Cliente
+            Cliente cliente = new Cliente("Juan Roman Riquelme", "1212121210", "1010101010", infoClienteCp);
+            cliente.agregarInfo(infoClienteFecha);
+            cliente.agregarInfo(infoClienteCantHijos);
+            
+            // Categoria
             Categoria categoriaOpcionSeleccionada = new Categoria("Si desea informar un robo y solicitar una nueva tarjeta marque 1\n Si desea informar un robo y anular su tarjeta marque 2\n Si desea finalizar la llamada marque 3", "Si quiere informar un robo marque 1", "Informar Robo", 1);
+            
+            // Opcion
             Opcion opcionSeleccionada = new Opcion("Si cuenta con los datos de la tarjeta marque 1\nSi no cuenta con los datos de la tarjeta marque 2\nSi desea comunicarse con un responsable de atencion al cliente marque 3\n Si desea finalizar la llamada marque 4 ",
                 "Si desea informar un robo y solicitar una nueva tarjeta marque 1", "Solicitar nueva tarjeta", 1, categoriaOpcionSeleccionada);
-            Estado iniciada = new Estado("Iniciada");
+            
+            // Subopcion
             SubOpcion subOpcionSeleccionada = new SubOpcion("Si cuenta con los datos de la tarjeta marque 1", 1);
-            subOpcionSeleccionada.agregarValidacion(validacionSubOpcion);
+            subOpcionSeleccionada.agregarValidacion(validacionSubOpcionCp);
+            subOpcionSeleccionada.agregarValidacion(validacionSubOpcionFecha);
+            subOpcionSeleccionada.agregarValidacion(validacionSubOpcionCantidadHijos);
 
+            //Estado
+            Estado iniciada = new Estado("Iniciada");
 
+            // Llamada
             DateTime fechaHoraInicio = DateTime.Now; // esto está hardcodeado, se tiene que cambiar para q lo haga el controlador, y los datos de la llamada
             // los vamos a poner directamente en el controlador.
             Llamada datosLlamada = new Llamada(cliente, opcionSeleccionada, subOpcionSeleccionada, iniciada, fechaHoraInicio);
+            
+            // Ventana y Controlador
+
             VentanaRegistrarRespuesta ventanaRegistrarRespuesta = new VentanaRegistrarRespuesta();
+
             ControladorRegistrarRespuesta controladorRegistrarRespuesta = new ControladorRegistrarRespuesta(datosLlamada, ventanaRegistrarRespuesta);
+
+            controladorRegistrarRespuesta.registrarRespuesta();
         }
 
     }

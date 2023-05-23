@@ -81,23 +81,36 @@ namespace PPAI_CU17.Controladores
             accion = value;
         }
 
+        /*
         private void setEstadoEnCurso(Estado estado)
         {
-            estadoEnCurso = estado;
+            this.estadoEnCurso = estado;
         }
+        */
 
         // Busca entre los objetos estado la instancia "enCurso" y setea usando el método arriba definido
         private void buscarEstadoEnCurso(List<Estado> Estados)
         {
+            /*
             foreach (Estado estado in Estados)
             {
                 if (estado.sosEnCurso())
                 {
-                    setEstadoEnCurso(estado);
-                    break;
+                    this.estadoEnCurso = estado;
+                    return;
 
                 }
             }
+            */
+
+            Estados.ForEach((Estado estado) =>
+            {
+                if (estado.sosEnCurso())
+                {
+                    this.estadoEnCurso = estado;
+                    return;
+                }
+            });
         }
 
         private void setEstadoFinalizada(Estado estado)
@@ -146,14 +159,15 @@ namespace PPAI_CU17.Controladores
             this.datosLlamada.enCurso(estadoEnCurso, this.fechaYhoraActual);
         }
 
-        private string buscarDatosLlamada()
+        private List<String> buscarDatosLlamada()
         {
-            String infoLlamada = "";
-            infoLlamada += this.datosLlamada.getCliente() + "\n";
-            infoLlamada += this.datosLlamada.getSubOpcion() + "\n";
-            infoLlamada += this.datosLlamada.getOpcionyCategoria() + "\n";
-            infoLlamada += this.datosLlamada.getValidaciones();
-
+            List<String> infoLlamada = new List<String>();
+            infoLlamada.Add(this.datosLlamada.getCliente());
+            infoLlamada.Add(this.datosLlamada.getOpcion());
+            infoLlamada.Add(this.datosLlamada.getCategoriaOpcion());
+            infoLlamada.Add(this.datosLlamada.getSubOpcion());
+                       
+            
             return infoLlamada;
         }
 
@@ -164,15 +178,14 @@ namespace PPAI_CU17.Controladores
             this.fechaYhoraActual = fechaYhoraActualizada;
         }
         
-        private bool validarRespuestas()
+        private bool validarRespuesta()
         {
             bool valida = false;
 
             // Para cada dato a validar (Es decir validacion a realizar)
 
-            for(int i = 0; i < this.datosLlamada.getValidaciones().Count; i++)
+            for (int i = 0; i < this.datosLlamada.getValidaciones().Count; i++)
             {
-                this.ventanaRegistrarRespuesta.tomarRespuesta();
                 valida = this.datosLlamada.validarInfoCliente(this.respuesta);
                 
                 if (!valida)
@@ -201,46 +214,77 @@ namespace PPAI_CU17.Controladores
 
         public void registrarRespuesta()
         {
+
+            // Estados posibles para la llamada 
+
             List<Estado> estados = new List<Estado>();
-            string[] stringsEstados = new string[9];
+            List<String> stringsEstados = new List<string>();
 
-            stringsEstados.Append("Iniciada");
-            stringsEstados.Append("EnCurso");
-            stringsEstados.Append("Finalizada");
-            stringsEstados.Append("Cancelada");
-            stringsEstados.Append("PendienteEscucha");
-            stringsEstados.Append("Correcta");
-            stringsEstados.Append("Observada");
-            stringsEstados.Append("Descartada");
-            stringsEstados.Append("Encuestada");
+            stringsEstados.Add("Iniciada");
+            stringsEstados.Add("EnCurso");
+            stringsEstados.Add("Finalizada");
+            stringsEstados.Add("Cancelada");
+            stringsEstados.Add("PendienteEscucha");
+            stringsEstados.Add("Correcta");
+            stringsEstados.Add("Observada");
+            stringsEstados.Add("Descartada");
+            stringsEstados.Add("Encuestada");
 
-            foreach (string str in stringsEstados)
+            stringsEstados.ForEach((nombre) =>
             {
-                Estado est = new Estado(str);
-                estados.Add(est);
+                Estado estadoInicializado = new Estado(nombre);
+                estados.Add(estadoInicializado);
+            });
+
+
+
+            // Buscar el estado EnCurso
+
+            /*
+              Prueba de estados
+              foreach (Estado est in estados)
+            {
+                MessageBox.Show(est.getNombre());
             }
 
+            MessageBox.Show(estados.ToString());
+            
+            */
+            // Obtener la fecha y hora actual
+
             this.buscarEstadoEnCurso(estados);
+
+            // Prueba estado en curso
+            MessageBox.Show(this.estadoEnCurso.getNombre());
+
             this.obtenerFechaYhoraActual();
+            // Prueba fecha y hora
+            MessageBox.Show(this.fechaYhoraActual.ToString());
+            
             this.actualizarEstadoLlamada();
 
-            this.datosLlamada.enCurso(this.estadoEnCurso, this.fechaYhoraActual);
 
-            string infoLlamada = this.buscarDatosLlamada();
+            List<string> infoLlamada = this.buscarDatosLlamada();
 
             ventanaRegistrarRespuesta.habilitar();
 
             ventanaRegistrarRespuesta.mostrarDatosLlamada(infoLlamada);
 
             ventanaRegistrarRespuesta.mostrarValidaciones(this.datosLlamada.getValidaciones());
-            
-            if (!(this.validarRespuestas()))
-            {
 
-                // Flujo alternativo 2 - Alguna de las validaciones es incorrecta
-                MessageBox.Show("Error, alguna de las respuestas ingresas no es valida.");
-                return;
-            }
+            for (int i = 0; i < this.datosLlamada.getValidaciones().Count; i++)
+            {
+                ventanaRegistrarRespuesta.solicitarRespuesta();
+
+                while(this.respuesta != "")
+                {
+                    if (!this.validarRespuesta())
+                    {
+
+                    };
+                }
+            }            
+           
 
             ventanaRegistrarRespuesta.solicitarDescripcion();
             ventanaRegistrarRespuesta.solicitarAccion();
@@ -261,6 +305,7 @@ namespace PPAI_CU17.Controladores
             this.finCu();
 
             return;
+        
         }
         
     }

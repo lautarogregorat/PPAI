@@ -25,58 +25,6 @@ namespace PPAI_CU17.Interfaces
         // Constructor de la clase
         public VentanaRegistrarRespuesta()
         {
-            Width = 800;
-            Height = 600;
-
-            /* Crear y configurar la grilla de datos de llamada
-            grillaDatosLlamada = new DataGridView();
-            grillaDatosLlamada.ReadOnly = true; // Configurar como de solo lectura
-            grillaDatosLlamada.ColumnCount = 1; // Establecer una sola columna
-            grillaDatosLlamada.Columns[0].HeaderText = "Datos de Llamada"; // Establecer encabezado de columna
-            grillaDatosLlamada.Columns[0].Width = Width / 2; // Establecer el ancho al 50% de la ventana
-            grillaDatosLlamada.Dock = DockStyle.Fill; // Llenar toda la ventana con la grilla
-            grillaDatosLlamada.RowHeadersVisible = false; // Ocultar encabezados de fila
-            grillaDatosLlamada.AllowUserToAddRows = false; // Deshabilitar agregar nuevas filas
-            grillaDatosLlamada.AllowUserToDeleteRows = false; // Deshabilitar eliminar filas
-            grillaDatosLlamada.AllowUserToResizeRows = false; // Deshabilitar redimensionar filas
-            grillaDatosLlamada.BorderStyle = BorderStyle.None; // Sin bordes en las celdas
-            grillaDatosLlamada.BackgroundColor = Color.White; // Color de fondo de la grilla
-            grillaDatosLlamada.CellBorderStyle = DataGridViewCellBorderStyle.None; // Sin bordes en las celdas
-            grillaDatosLlamada.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleccionar toda la fila al hacer clic
-            */
-
-            /* Crear y configurar el TextBox de los datos de llamada
-            this.txtDatosLlamada = new TextBox();
-            this.txtDatosLlamada.Multiline = true;
-            this.txtDatosLlamada.ReadOnly = true;
-            this.txtDatosLlamada.Dock = DockStyle.Top;
-            */
-            // Crear y configurar la lista de validaciones
-            this.listaValidaciones = new ListBox();
-            this.listaValidaciones.Visible = false;
-
-            // Crear y configurar los campos de texto
-            this.txtRespuesta = new TextBox();
-            this.txtRespuesta.Visible = false;
-            this.txtAccion = new TextBox();
-            this.txtAccion.Visible = false;
-            this.txtDescripcion = new TextBox();
-            this.txtDescripcion.Visible = false;
-
-            // Crear y configurar el botón de confirmación
-            this.btnConfirmar = new Button();
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.Click += BtnConfirmar_Click;
-            this.btnConfirmar.Visible = false;
-
-            // Agregar los controles a la ventana
-            this.Controls.Add(txtDatosLlamada);
-            this.Controls.Add(listaValidaciones);
-            this.Controls.Add(txtRespuesta);
-            this.Controls.Add(txtAccion);
-            this.Controls.Add(txtDescripcion);
-            this.Controls.Add(btnConfirmar);
-
             InitializeComponent();
         }
 
@@ -85,20 +33,24 @@ namespace PPAI_CU17.Interfaces
             this.Show();
         }
 
-        public void mostrarDatosLlamada(String datosLlamada)
+        public void mostrarDatosLlamada(List<string> datosLlamada)
         {
-            this.txtDatosLlamada.Text = datosLlamada;
+            this.txtNombreCliente.Text = datosLlamada[0];
+            this.txtCategoriaSeleccionada.Text = datosLlamada[1];
+            this.txtOpcionSeleccionada.Text = datosLlamada[2];
+            this.txtSubOpcionSeleccionada.Text = datosLlamada[3];
+            this.panelDatosLlamada.Visible = true;
         }
 
-        public void mostrarValidaciones(List<string> validaciones)
+        public void mostrarValidaciones(List<String> validaciones)
         {
-            this.listaValidaciones.Items.Clear();
+            this.listValidaciones.Items.Clear();
+
             foreach (var validacion in validaciones)
             {
-                this.listaValidaciones.Items.Add(validacion);
+                this.listValidaciones.Items.Add(validacion);
             }
-            this.txtDatosLlamada.Visible = false;
-            this.listaValidaciones.Visible = true;
+            this.listValidaciones.Visible = true;
         }
 
         public void tomarRespuesta()
@@ -118,6 +70,13 @@ namespace PPAI_CU17.Interfaces
             MessageBox.Show("Por favor, ingrese una la acción a realizar");
         }
 
+        public void solicitarRespuesta()
+        {
+            this.txtRespuesta.Visible = true;
+            this.lblRespuesta.Visible = true;
+            this.btnTomarRespuesta.Visible = true;
+            this.txtRespuesta.Clear();
+        }
         public void solicitarConfirmacion()
         {
             MessageBox.Show("Desea confirmar el registro de la respuesta?");
@@ -153,10 +112,18 @@ namespace PPAI_CU17.Interfaces
             tomarConfirmacion();
         }
 
+        private void btnTomarRespuesta_Click(object sender, EventArgs e)
+        {
+
+            this.tomarRespuesta();
+        }
+
         private void VentanaRegistrarRespuesta_Load(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 
 

@@ -16,7 +16,7 @@
 
         public Boolean sosEnCurso()
         {
-            return this.nombre.Equals("En curso");
+            return this.nombre.Equals("EnCurso");
 
         }
 
