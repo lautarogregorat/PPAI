@@ -1,5 +1,6 @@
 ﻿using PPAI_CU17.Interfaces;
 using PPAI_CU17.Modelo;
+using PPAI_CU17.Modelo.Estados.Estado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,15 @@ namespace PPAI_CU17.Controladores
         private String respuesta;
         private String descripcion;
         private String accion;
-        private Estado estadoEnCurso;
+        // private Estado estadoEnCurso;
         private DateTime fechaYhoraActual;
         private Llamada datosLlamada;
         private InformacionCliente informacionCliente;
-        private Estado estadoFinalizada;
+        //private Estado estadoFinalizada;
         private TimeSpan duracionLlamada;
 
-        // definicion de los estados posibles que puede tomar una llamada, para buscarlos con los métodos correspondientes (solo para pruebas)
-        private List<Estado> estadosLlamada;
+        // definicion de los estados posibles que puede tomar una llamada, para buscarlos con los métodos correspondientes (DEPRECADO DEL ANÁLISIS)
+        // private List<Estado> estadosLlamada;
 
         public VentanaRegistrarRespuesta ventanaRegistrarRespuesta;
 
@@ -36,26 +37,26 @@ namespace PPAI_CU17.Controladores
             this.ventanaRegistrarRespuesta = _ventanaRegistrarRespuesta;
             this.ventanaRegistrarRespuesta.controladorRegistrarRespuesta = this;
 
-            // Inicializacion de los estados posibles para la llamada, a efecto de pruebas
+            // Inicializacion de los estados posibles para la llamada, a efecto de pruebas (DEPRECADO DEL ANÁLISIS)
 
-            this.estadosLlamada = new List<Estado>();
-            List<String> stringsEstados = new List<string>();
+            //this.estadosLlamada = new List<Estado>();
+            //List<String> stringsEstados = new List<string>();
 
-            stringsEstados.Add("Iniciada");
-            stringsEstados.Add("EnCurso");
-            stringsEstados.Add("Finalizada");
-            stringsEstados.Add("Cancelada");
-            stringsEstados.Add("PendienteEscucha");
-            stringsEstados.Add("Correcta");
-            stringsEstados.Add("Observada");
-            stringsEstados.Add("Descartada");
-            stringsEstados.Add("Encuestada");
+            //stringsEstados.Add("Iniciada");
+            //stringsEstados.Add("EnCurso");
+            //stringsEstados.Add("Finalizada");
+            //stringsEstados.Add("Cancelada");
+            //stringsEstados.Add("PendienteEscucha");
+            //stringsEstados.Add("Correcta");
+            //stringsEstados.Add("Observada");
+            //stringsEstados.Add("Descartada");
+            //stringsEstados.Add("Encuestada");
 
-            stringsEstados.ForEach((nombre) =>
-            {
-                Estado estadoInicializado = new Estado(nombre);
-                this.estadosLlamada.Add(estadoInicializado);
-            });
+            //stringsEstados.ForEach((nombre) =>
+            //{
+            //    Estado estadoInicializado = new Estado(nombre);
+            //    this.estadosLlamada.Add(estadoInicializado);
+            //});
 
         }
 
@@ -74,11 +75,6 @@ namespace PPAI_CU17.Controladores
             return accion;
         }
 
-        public Estado getEstadoEnCurso()
-        {
-            return estadoEnCurso;
-        }
-
         public DateTime getFechaYhoraActual()
         {
             return this.fechaYhoraActual;
@@ -94,25 +90,32 @@ namespace PPAI_CU17.Controladores
             return this.informacionCliente;
         }
 
-        public Estado getEstadoFinalizada()
-        {
-            return this.estadoFinalizada;
-        }
+        // (MÉTODOS DEPRECADOS DEL ANÁLISIS)
+        //public Estado getEstadoEnCurso()
+        //{
+        //    return estadoEnCurso;
+        //}
+
+        //public Estado getEstadoFinalizada()
+        //{
+        //    return this.estadoFinalizada;
+        //}
 
         public void setRespuesta(String value) 
         {
             this.respuesta = value;
         }
 
-        public void setEstadoEnCurso(Estado estado) 
-        {
-            this.estadoEnCurso = estado;
-        }
+        // (METODOS DEPRECADOS DEL ANÁLISIS)
+        //public void setEstadoEnCurso(Estado estado) 
+        //{
+        //    this.estadoEnCurso = estado;
+        //}
 
-        public void setEstadoFinalizada(Estado estado) 
-        {
-            this.estadoFinalizada = estado;
-        }
+        //public void setEstadoFinalizada(Estado estado) 
+        //{
+        //    this.estadoFinalizada = estado;
+        //}
         public void setDescripcion(String value)
         {
             this.descripcion = value;
@@ -136,34 +139,34 @@ namespace PPAI_CU17.Controladores
             this.validarRespuesta();
         }
 
-        // Busca entre los objetos estado la instancia "enCurso" y setea usando el método arriba definido
-        private void buscarEstadoEnCurso(List<Estado> Estados)
-        {
+        // Busca entre los objetos estado la instancia "enCurso" y setea usando el método arriba definido (METODO DEPRECADO DEL ANÁLISIS)
+        //private void buscarEstadoEnCurso(List<Estado> Estados)
+        //{
 
-            Estados.ForEach((Estado estado) =>
-            {
-                if (estado.sosEnCurso())
-                {
-                    this.estadoEnCurso = estado;
-                    return;
-                }
-            });
-        }
+        //    Estados.ForEach((Estado estado) =>
+        //    {
+        //        if (estado.esEnCurso())
+        //        {
+        //            this.estadoEnCurso = estado;
+        //            return;
+        //        }
+        //    });
+        //}
 
-        // Busca entre los objetos estado la instancia "Finalizada" de la llamada y setea usando el método arriba definido
-        public void buscarEstadoFinalizada(List<Estado> Estados)
-        {
+        // Busca entre los objetos estado la instancia "Finalizada" de la llamada y setea usando el método arriba definido (METODO DEPRECADO DEL ANÁLISIS)
+        //public void buscarEstadoFinalizada(List<Estado> Estados)
+        //{
 
-            foreach (Estado estado in Estados)
-            {
-                if (estado.esFinalizada())
-                {
-                    this.setEstadoFinalizada(estado);
-                    break;
+        //    foreach (Estado estado in Estados)
+        //    {
+        //        if (estado.esFinalizada())
+        //        {
+        //            this.setEstadoFinalizada(estado);
+        //            break;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         // Toma la descripcion de la respuesta ingresada por el operador desde la ventana
         public void tomarDescripcion(String descripcionIngresada)
@@ -211,9 +214,10 @@ namespace PPAI_CU17.Controladores
 
         // Método que actualiza el estado de la llamada actual en el controlador, llamando al método enCurso de la llamada que 
         // genera un nuevo cambio de estado
-        private void actualizarEstadoLlamada()
-        {
-            this.datosLlamada.enCurso(estadoEnCurso, this.fechaYhoraActual);
+
+        private void actualizarEstadoLlamada() {
+            this.obtenerFechaYhoraActual();
+            this.datosLlamada.enCurso(this.fechaYhoraActual);
         }
 
         // obtiene los datos de la llamada seleccionada y los retorna como una lista de cadenas
@@ -252,14 +256,13 @@ namespace PPAI_CU17.Controladores
             };
                 
         }
-        // registra el finde la llamada asociada, para ello llama al método finalizar() en la llamada, que crea un nuevo cambio de estado
+        // registra el finde la llamada asociada, para ello llama al método finalizar() en la llamada
         // ejecuta los métodos "set" para la descripcion y accion ingresadas, y despues delega la responsabilidad de calcular la duración
         // a la llamada
         public void registrarFinDeLlamada()
         {
             this.obtenerFechaYhoraActual();
-            this.buscarEstadoFinalizada(this.estadosLlamada);
-            this.datosLlamada.finalizar(this.estadoFinalizada, this.fechaYhoraActual);
+            this.datosLlamada.finalizar(this.fechaYhoraActual);
             this.datosLlamada.setDescripcionOperador(this.descripcion);
             this.datosLlamada.setDetalleAccionRequerida(this.accion);
 
@@ -279,8 +282,8 @@ namespace PPAI_CU17.Controladores
         // Inicia la funcionalidad principal del flujo del caso de uso
         public void registrarRespuesta()
         {
-                        
-            this.buscarEstadoEnCurso(this.estadosLlamada);
+            // ya no se buscan los estados (DEPRECADO DEL ANÁLISIS)
+            // this.buscarEstadoEnCurso(this.estadosLlamada);
 
             this.obtenerFechaYhoraActual();
 

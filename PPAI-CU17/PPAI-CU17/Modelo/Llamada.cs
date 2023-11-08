@@ -1,5 +1,5 @@
-﻿using PPAI_CU17.Modelo;
-using System.Security.Cryptography.Xml;
+﻿
+using PPAI_CU17.Modelo.Estados.Estado;
 
 namespace PPAI_CU17.Modelo
 {
@@ -16,17 +16,19 @@ namespace PPAI_CU17.Modelo
         private TimeSpan duracion; 
         private Boolean encuestaEnviada;
         private String observacionAuditor;
+        private Estado estadoActual;
 
         // Metodos de la clase llamada
 
         // Constructor
-        public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, Estado estadoIniciada, DateTime fechaHoraInicio)
+        public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, DateTime fechaHoraInicio)
         {
             this.cliente = datosCliente;
             this.opcionSeleccionada = opcion;
             this.subopcionSeleccionada = subOpcion;
             this.cambioDeEstado = new List<CambiodeEstado>();
-            this.crearCambioEstado(estadoIniciada, fechaHoraInicio);
+            this.setEstadoActual(new Iniciada("Iniciada"));
+            this.crearCambioEstado(this.estadoActual, fechaHoraInicio);
              
        }
 
@@ -146,22 +148,33 @@ namespace PPAI_CU17.Modelo
         private void crearCambioEstado(Estado estado, DateTime fechaHoraInicio)
         {
             CambiodeEstado nuevoCambioDeEstado = new CambiodeEstado(estado, fechaHoraInicio);
-            this.cambioDeEstado.Add(nuevoCambioDeEstado);
+            this.agregarCambioEstado(nuevoCambioDeEstado);
 
+        }
+
+        // Agrega un cambio de estado a la coleccion de cambios de estado de la llamada
+        public void agregarCambioEstado(CambiodeEstado ce)
+        {
+            this.cambioDeEstado.Add(ce);
+        }
+
+        public void setEstadoActual(Estado e)
+        {
+            this.estadoActual = e;
         }
 
         // Cambia el estado de la llamada a "enCurso", para eso recibe el nuevo estado "EnCurso" y la fechaHoraInicio para crear un nuevo cambio
         // de estado y agregarlo a la lista de cambios de estados de la llamada en cuestion
 
-        public void enCurso(Estado estado, DateTime fechaHoraInicio) {
+        public void enCurso (DateTime fechaHoraInicio) {
 
-            this.crearCambioEstado(estado, fechaHoraInicio);
+            this.estadoActual.enCurso(fechaHoraInicio, this);
         }
 
-        // Finaliza la llamada creando un cambio de estado con estado finalizado
-        public void finalizar(Estado estado, DateTime fechaHoraInicio)
+        // Finaliza la llamada delegando la responsabilidad del cambio de estado al estado actual, que es EnCurso
+        public void finalizar(DateTime fechaHoraInicio)
         {
-            this.crearCambioEstado(estado, fechaHoraInicio);
+            this.estadoActual.finalizar(fechaHoraInicio, this);
         }
         
         // Método que delega la responsabilidad de validar la informacionCliente al Cliente

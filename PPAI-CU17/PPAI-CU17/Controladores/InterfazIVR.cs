@@ -1,5 +1,6 @@
 ﻿using PPAI_CU17.Interfaces;
 using PPAI_CU17.Modelo;
+using PPAI_CU17.Modelo.Estados.Estado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,13 +65,13 @@ namespace PPAI_CU17.Controladores
             categoriaOpcionSeleccionada.agregarOpcion(opcionSeleccionada);
             
                        
-            // Estado
-            Estado iniciada = new Estado("Iniciada");
+            // Estado (YA NO SE CREA, DEPRECADO DEL ANÁLISIS)
+            // Estado iniciada = new Estado("Iniciada");
 
             // Llamada
             DateTime fechaHoraInicio = DateTime.Now; 
 
-            Llamada datosLlamada = new Llamada(cliente, opcionSeleccionada, subOpcionSeleccionada, iniciada, fechaHoraInicio);
+            Llamada datosLlamada = new Llamada(cliente, opcionSeleccionada, subOpcionSeleccionada, fechaHoraInicio);
 
             // Ventana y Controlador
 

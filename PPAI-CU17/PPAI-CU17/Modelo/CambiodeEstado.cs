@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_CU17.Modelo.Estados.Estado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

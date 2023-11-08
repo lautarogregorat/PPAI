@@ -20,8 +20,8 @@ namespace PPAI_CU17.Interfaces
         // de las credenciales del usuario
         public VentanaLogin()
         {
-            this.usuario = "operador";
-            this.password = "operador";
+            this.usuario = "1";
+            this.password = "1";
 
             InitializeComponent();
         }
