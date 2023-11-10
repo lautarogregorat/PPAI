@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +12,25 @@ namespace PPAI_CU17.Modelo
     {
         // Atributos de la clase cliente
 
-        private String nombreCompleto;
-        private String dni;
-        private String nroCelular;
-        private List<InformacionCliente> info;
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int idCliente { get; set; }
+        [Column("dni", TypeName = "varchar(200)")]
+        public String dni;
+        public String nombreCompleto;
+        [Column("nro_celular", TypeName = "varchar(200)")]
+        public String nroCelular;
+
+        public List<InformacionCliente> info;
+
+        public List<Llamada> llamadas { get; set; }
 
         // Metodos de la clase cliente
         // Constructor
+
+        public Cliente()
+        {
+        }
         public Cliente(String nombreCompleto, String dni, String nroCelular)
         {
             this.nombreCompleto = nombreCompleto;

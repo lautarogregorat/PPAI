@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -8,12 +10,27 @@ using System.Threading.Tasks;
 namespace PPAI_CU17.Modelo
 {
     public class InformacionCliente
+
     {
+        [Key]
+        public int idInformacionCliente { get; set; }
         // Atributos de clase
-        private String datoAValidar;
-        private Validacion validacion;
+        [Column("dato_a_validar", TypeName = "varchar(200)")]
+        public String datoAValidar;
+
+        [ForeignKey("idValidacion")]
+        public int idValidacion { get; set; }
+        public Validacion validacion;
+
+        [ForeignKey("idCliente")]
+        public int idCliente { get; set; }
+        public Cliente cliente { get; set; }
+
 
         // Constructor
+        public InformacionCliente()
+        {
+        }
         public InformacionCliente(String datoAValidar, Validacion _validacion)
         {
             this.datoAValidar = datoAValidar;

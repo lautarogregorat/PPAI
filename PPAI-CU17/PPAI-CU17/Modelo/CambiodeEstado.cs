@@ -1,6 +1,8 @@
 ﻿using PPAI_CU17.Modelo.Estados.Estado;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +12,22 @@ namespace PPAI_CU17.Modelo
     public class CambiodeEstado
 
     {
+        [Key]
+        public int idCambioEstado { get; set; }
         // Atributos de la clase cambio de estado
-        private DateTime fechaHoraInicio;
-        private Estado estado;
+        [Column("fecha_hora_inicio", TypeName = "datetime")]
+        public DateTime fechaHoraInicio;
+
+        public Estado estado;
+
+        [ForeignKey("idLlamada")]
+        public int idLlamada { get; set; }
+        public Llamada llamada;
         
         // Metodos de la clase cambio de estado
+        public CambiodeEstado()
+        {
+        }
         public CambiodeEstado(Estado estado, DateTime fechaHorainicio)
         {
             this.estado = estado;

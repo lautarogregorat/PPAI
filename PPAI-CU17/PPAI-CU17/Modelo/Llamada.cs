@@ -1,5 +1,7 @@
 ﻿
 using PPAI_CU17.Modelo.Estados.Estado;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PPAI_CU17.Modelo
 {
@@ -7,22 +9,46 @@ namespace PPAI_CU17.Modelo
 
     {
         // Atributos de la clase llamada
-        private Cliente cliente;
-        private List<CambiodeEstado> cambioDeEstado;
-        private Opcion opcionSeleccionada;
-        private SubOpcion subopcionSeleccionada;
-        private String descripcionOperador;
-        private String detalleAccionRequerida;
-        private TimeSpan duracion; 
-        private Boolean encuestaEnviada;
-        private String observacionAuditor;
-        private Estado estadoActual;
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int idLlamada { get; set;}
+        [Column("descripcion_operador", TypeName = "varchar(200)")]
+        public String? descripcionOperador;
+        [Column("detalle_accion_requerida", TypeName = "varchar(200)")]
+        public String? detalleAccionRequerida;
+        [Column("duracion", TypeName = "varchar(200)")]
+        public TimeSpan duracion;
+        [Column("encuestaEnviada", TypeName = "bit")]
+        public Boolean encuestaEnviada;
+        [Column("observacion_auditor", TypeName = "varchar(200)")]
+        public String? observacionAuditor;
 
+        [ForeignKey("idCliente")]
+        public int idCliente { get; set; }
+        public Cliente cliente { get; set; } = null!;
+
+        public List<CambiodeEstado> cambioDeEstado;
+
+        public Estado estadoActual;
+
+        [ForeignKey("idOpcion")]
+        public int? idOpcion { get; set; }
+        public Opcion? opcionSeleccionada;
+
+        [ForeignKey("idSubOpcion")]
+        public int? idSubOpcion { get; set; }
+        public SubOpcion subopcionSeleccionada;
         // Metodos de la clase llamada
 
         // Constructor
-        public Llamada(Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, DateTime fechaHoraInicio)
+
+        public Llamada()
         {
+
+        }
+        public Llamada( Cliente datosCliente, Opcion opcion, SubOpcion subOpcion, DateTime fechaHoraInicio)
+        {
+
             this.cliente = datosCliente;
             this.opcionSeleccionada = opcion;
             this.subopcionSeleccionada = subOpcion;

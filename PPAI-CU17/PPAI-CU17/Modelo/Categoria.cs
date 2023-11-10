@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +10,25 @@ namespace PPAI_CU17.Modelo
 {
     public class Categoria
     {
+        [Key]
+        public int idCategoria { get; set; }
         // Atributos de la clase categoria
-        private String audioMensajeOpciones; 
-        private String mensajeOpciones;
-        private String nombre;
-        private int nroOrden;
-        private List<Opcion> opciones;
+        [Column("audio_mensaje_opciones", TypeName = "varchar(200)")]
+        public String audioMensajeOpciones;
+        [Column("mensaje_opciones", TypeName = "varchar(200)")]
+        public String mensajeOpciones;
+        [Column("nombre_categoria", TypeName = "varchar(200)")]
+        public String nombre;
+        [Column("nro_orden_categoria", TypeName = "int")]
+        public int nroOrden;
+
+        public List<Opcion> opciones;
 
         // Metodos de la clase categoria
         // Constructor
+        public Categoria()
+        {
+        }
         public Categoria(String audioMensajeOpcion, String mensajeOpcion, String nombreCategoria, int nroOrdenCategoria)
         {
             this.audioMensajeOpciones = audioMensajeOpcion;

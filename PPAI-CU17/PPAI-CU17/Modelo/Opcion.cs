@@ -1,36 +1,56 @@
 ﻿using PPAI_CU17.Modelo;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PPAI_CU17.Modelo;
 	public class Opcion
 	{
-	// Atibutos de la clase opcion
-	    private String audioMensajeSubopcion;
-        private String mensajeOpcion;
-        private String nombre;
-        private int nroOrden;
-        private List<SubOpcion> subopciones;
-        private List<Validacion> validacionRequerida;
+    // Atibutos de la clase opcion
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int idOpcion { get; set; }
+        [Column("audio_mensaje_subopcion", TypeName = "varchar(200)")]
+	    public String audioMensajeSubopcion;
+        [Column("mensaje_opcion", TypeName = "varchar(200)")]
+        public String mensajeOpcion;
+        [Column("nombre_opcion", TypeName = "varchar(200)")]
+        public String nombre;
+        [Column("nro_orden", TypeName = "int")]
+        public int nroOrden;
+
+         
+        public List<SubOpcion> subOpciones;
+
+        public List<Validacion> validacionRequerida;
+
+        [ForeignKey("idCategoria")]
+        public int idCategoria { get; set; }
         public Categoria categoria;
-      
+        public ICollection<Llamada> llamadas { get; set; } = new List<Llamada>();
+
     // Metodos de la clase opcion
 
     // Constructor
+    public Opcion()
+    {
+
+    }
         public Opcion(String audioMensajeSubopciones, String mensajeOpcion, String nombreOpcion, int nroOrdenOpcion)
         {
             this.audioMensajeSubopcion = audioMensajeSubopciones;
             this.mensajeOpcion = mensajeOpcion;
             this.nombre = nombreOpcion;
             this.nroOrden = nroOrdenOpcion;
-            this.subopciones = new List<SubOpcion>();
+            this.subOpciones = new List<SubOpcion>();
             this.validacionRequerida = new List<Validacion>();
             this.categoria = null;
         }
 
-        // Método para agregar subopciones a la opción 
+        // Método para agregar subOpciones a la opción 
         public void agregarSubopcion(SubOpcion _subopcion)
         {
             _subopcion.opcionPadre = this;
-            subopciones.Add(_subopcion);
+            subOpciones.Add(_subopcion);
         }
         // Método para agregar validaciones requeridas a la opción 
         public void agregarValidacionRequerida(Validacion _validacionRequerida)

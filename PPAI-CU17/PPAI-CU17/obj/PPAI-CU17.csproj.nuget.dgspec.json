@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {}
+    "C:\\Users\\lauta\\source\\repos\\PPAI-3\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {}
   },
   "projects": {
-    "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {
+    "C:\\Users\\lauta\\source\\repos\\PPAI-3\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
+        "projectUniqueName": "C:\\Users\\lauta\\source\\repos\\PPAI-3\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
         "projectName": "PPAI-CU17",
-        "projectPath": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
-        "packagesPath": "C:\\Users\\Usuaro\\.nuget\\packages\\",
-        "outputPath": "D:\\Repos\\PPAI-CU17\\PPAI-CU17\\obj\\",
+        "projectPath": "C:\\Users\\lauta\\source\\repos\\PPAI-3\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\PPAI-CU17.csproj",
+        "packagesPath": "C:\\Users\\lauta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lauta\\source\\repos\\PPAI-3\\ppai-registrar-rta-operador\\PPAI-CU17\\PPAI-CU17\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Programas\\VisualStudio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Usuaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lauta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,6 +43,22 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -63,7 +78,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
