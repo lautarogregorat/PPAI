@@ -1,10 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace PPAI_CU17.Modelo.Estados.Estado
-{
-    // Atributos de la clase Estado
+{   
     public abstract class Estado
     {
-        protected Llamada llamada;
+        // Atributos de la clase Estado
+
+        [Key]
+        public int idEstado { get; set; }
+
+        protected Llamada llamada { get; set; }
+
         private string nombre;
+        public List<CambiodeEstado> cambiosDeEstado { get; set; }
 
         // Constructor de la clase Estado
         public Estado(string nombre)
@@ -85,24 +96,13 @@ namespace PPAI_CU17.Modelo.Estados.Estado
         {
         }
 
-        public void finalizar(DateTime fechaHoraInicio, Llamada llamada)
-        {
+        public abstract void finalizar();
 
-        }
+        public abstract void enCurso();
 
-        public void enCurso(DateTime fechaHoraInicio, Llamada llamada)
-        {
+        public abstract void enCurso(DateTime fechaHoraInicio, Llamada llamada);
 
-        }
+        public abstract void finalizar(DateTime fechaHoraInicio, Llamada llamada);
 
-        public void crearProximoEstado()
-        {
-
-        }
-
-        public void crearCambioEstado()
-        {
-
-        }
     }
 }

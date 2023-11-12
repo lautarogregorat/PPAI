@@ -1,4 +1,5 @@
-﻿using PPAI_CU17.Controladores;
+﻿using PPAI_CU17.BaseDeDatos;
+using PPAI_CU17.Controladores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,12 @@ namespace PPAI_CU17.Interfaces
 {
     public partial class InterfazSistema : Form
     {
+        public PPAIContext? dbContext;
         // Esta clase representa la ventana del sistema, de donde accedemos a las opciones para el mismo, el resto de opciones no está
         // implementado, solamente el caso de uso registrar operador 
-        public InterfazSistema()
+        public InterfazSistema(PPAIContext? _dbContext)
         {
+            this.dbContext = _dbContext;
             InitializeComponent();
         }
 
@@ -26,7 +29,7 @@ namespace PPAI_CU17.Interfaces
         private void btnRegistrarRespuestaOperador_Click(object sender, EventArgs e)
         {
             InterfazIVR interfazIVR = new InterfazIVR();
-            interfazIVR.registrarRespuestaOperador();
+            interfazIVR.registrarRespuestaOperador(dbContext);
             this.Hide();
         }
 
@@ -38,6 +41,11 @@ namespace PPAI_CU17.Interfaces
         private void btnConsultarEncuesta_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Funcionalidad no implementada en XeneiTech...", "Mensaje del sistema");
+        }
+
+        private void lblTituloSistema_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

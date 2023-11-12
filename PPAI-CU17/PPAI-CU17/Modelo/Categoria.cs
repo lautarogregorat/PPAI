@@ -22,7 +22,7 @@ namespace PPAI_CU17.Modelo
         [Column("nro_orden_categoria", TypeName = "int")]
         public int nroOrden;
 
-        public List<Opcion> opciones;
+        public List<Opcion> opciones { get; set; }
 
         // Metodos de la clase categoria
         // Constructor

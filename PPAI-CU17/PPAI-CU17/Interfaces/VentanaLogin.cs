@@ -36,11 +36,13 @@ namespace PPAI_CU17.Interfaces
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.dbContext!.SaveChanges();
-            if (this.txtPassword.Text.Equals(this.password) && (this.txtUsuario.Text.Equals(this.usuario))) {
-                InterfazSistema interfaz = new InterfazSistema();
+            if (this.txtPassword.Text.Equals(this.password) && (this.txtUsuario.Text.Equals(this.usuario)))
+            {
+                InterfazSistema interfaz = new InterfazSistema(dbContext);
                 interfaz.Show();
                 this.Hide();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Usuario incorrecto, intente otra vez", "Error de login");
             }
@@ -57,15 +59,35 @@ namespace PPAI_CU17.Interfaces
             base.OnLoad(e);
 
             this.dbContext = new PPAIContext();
+            // this.dbContext.Database.EnsureDeleted();
 
             // Comprueba si la base de datos ya existe
-            var databaseExists = this.dbContext.Database.GetService<IRelationalDatabaseCreator>().Exists();
+            //var databaseExists = this.dbContext.Database.GetService<IRelationalDatabaseCreator>().Exists();
 
             // Si la base de datos no existe, crea la base de datos y las tablas
-            if (!databaseExists)
+            //if (!databaseExists)
+            //{
+            try
             {
                 this.dbContext.Database.EnsureCreated();
+                this.dbContext.Llamadas.Load();
+                this.dbContext.CambiosDeEstado.Load();
+                this.dbContext.Clientes.Load();
+                this.dbContext.InformacionClientes.Load();
+                this.dbContext.Validaciones.Load();
+                this.dbContext.Opciones.Load();
+                this.dbContext.SubOpciones.Load();
+                this.dbContext.Categorias.Load();
+                this.dbContext.Estados.Load();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.TargetSite);
             }
+            
+
+
+            //}
 
         }
 
@@ -75,6 +97,11 @@ namespace PPAI_CU17.Interfaces
 
             this.dbContext?.Dispose();
             this.dbContext = null;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

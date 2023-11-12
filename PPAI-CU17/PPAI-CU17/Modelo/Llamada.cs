@@ -16,28 +16,27 @@ namespace PPAI_CU17.Modelo
         public String? descripcionOperador;
         [Column("detalle_accion_requerida", TypeName = "varchar(200)")]
         public String? detalleAccionRequerida;
-        [Column("duracion", TypeName = "varchar(200)")]
+        [Column("duracion", TypeName = "integer")]
         public TimeSpan duracion;
-        [Column("encuestaEnviada", TypeName = "bit")]
+        [Column("encuestaEnviada", TypeName = "integer")]
         public Boolean encuestaEnviada;
         [Column("observacion_auditor", TypeName = "varchar(200)")]
         public String? observacionAuditor;
 
         [ForeignKey("idCliente")]
-        public int idCliente { get; set; }
-        public Cliente cliente { get; set; } = null!;
+        public int? idCliente { get; set; }
+        public Cliente? cliente { get; set; } = null!;
 
         public List<CambiodeEstado> cambioDeEstado;
-
-        public Estado estadoActual;
+        private Estado estadoActual { get; set; }
 
         [ForeignKey("idOpcion")]
         public int? idOpcion { get; set; }
-        public Opcion? opcionSeleccionada;
+        public Opcion? opcionSeleccionada { get; set; }
 
         [ForeignKey("idSubOpcion")]
         public int? idSubOpcion { get; set; }
-        public SubOpcion subopcionSeleccionada;
+        public SubOpcion subopcionSeleccionada { get; set; }
         // Metodos de la clase llamada
 
         // Constructor
@@ -53,8 +52,8 @@ namespace PPAI_CU17.Modelo
             this.opcionSeleccionada = opcion;
             this.subopcionSeleccionada = subOpcion;
             this.cambioDeEstado = new List<CambiodeEstado>();
-            this.setEstadoActual(new Iniciada("Iniciada"));
-            this.crearCambioEstado(this.estadoActual, fechaHoraInicio);
+            this.setEstadoActual(new Iniciada());
+            this.crearCambioEstado(new Iniciada(), fechaHoraInicio);
              
        }
 
@@ -96,6 +95,7 @@ namespace PPAI_CU17.Modelo
         {
             return this.opcionSeleccionada;
         }
+
 
         public SubOpcion getSubOpcion()
         {
@@ -194,13 +194,13 @@ namespace PPAI_CU17.Modelo
 
         public void enCurso (DateTime fechaHoraInicio) {
 
-            this.estadoActual.enCurso(fechaHoraInicio, this);
+            estadoActual.enCurso(fechaHoraInicio, this);
         }
 
         // Finaliza la llamada delegando la responsabilidad del cambio de estado al estado actual, que es EnCurso
         public void finalizar(DateTime fechaHoraInicio)
         {
-            this.estadoActual.finalizar(fechaHoraInicio, this);
+           estadoActual.finalizar(fechaHoraInicio, this);
         }
         
         // Método que delega la responsabilidad de validar la informacionCliente al Cliente

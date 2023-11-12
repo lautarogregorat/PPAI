@@ -16,6 +16,31 @@ namespace PPAI_CU17.BaseDeDatos
             builder.ToTable("InformacionClientes");
             builder.Property(c => c.datoAValidar).HasColumnName("dato_a_validar");
             builder.HasOne( c => c.cliente).WithMany( c => c.info).HasForeignKey( c => c.idCliente).IsRequired();
+            builder.HasOne(c => c.validacion).WithMany(c => c.informacionClientes).HasForeignKey(c => c.idValidacion).IsRequired(false);
+
+            builder.HasData(
+                new InformacionCliente
+                {
+                    idInformacionCliente = 1,
+                    datoAValidar = "3",
+                    idCliente = 1,
+                    idValidacion = 1
+                },
+                new InformacionCliente
+                {
+                    idInformacionCliente = 2,
+                    datoAValidar = "12/10/12",
+                    idCliente = 1,
+                    idValidacion = 2
+                },
+                new InformacionCliente
+                {
+                    idInformacionCliente = 3,
+                    datoAValidar = "5200",
+                    idCliente = 1,
+                    idValidacion = 3
+                }
+                );
 
         }
 

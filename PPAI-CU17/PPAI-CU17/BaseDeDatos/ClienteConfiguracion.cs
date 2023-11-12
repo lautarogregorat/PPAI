@@ -14,9 +14,20 @@ namespace PPAI_CU17.BaseDeDatos
         {
             builder.ToTable("Clientes");
             builder.Property(c => c.dni).HasColumnName("dni");
+            builder.Property(c => c.nombreCompleto).HasColumnName("nombreCompleto");
             builder.Property(c => c.nroCelular).HasColumnName("nro_celular");
-            builder.HasMany(c => c.llamadas).WithOne(l => l.cliente).HasForeignKey(l => l.idCliente).IsRequired();
-            builder.HasMany(i => i.info).WithOne(c => c.cliente).HasForeignKey(c => c.idCliente).IsRequired();
+            builder.HasMany(c => c.llamadas).WithOne(l => l.cliente).HasForeignKey(l => l.idCliente).IsRequired(false);
+            builder.HasMany(i => i.info).WithOne(c => c.cliente).HasForeignKey(c => c.idCliente).IsRequired(false);
+
+            builder.HasData(
+                new Cliente
+                {
+                    idCliente = 1,
+                    nombreCompleto = "Juan ROMAN 10",
+                    dni = "12345678",
+                    nroCelular = "12345678"
+                });
+
         }
     }
 }

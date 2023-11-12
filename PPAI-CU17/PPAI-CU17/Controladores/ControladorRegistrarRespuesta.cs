@@ -1,4 +1,5 @@
-﻿using PPAI_CU17.Interfaces;
+﻿using PPAI_CU17.BaseDeDatos;
+using PPAI_CU17.Interfaces;
 using PPAI_CU17.Modelo;
 using PPAI_CU17.Modelo.Estados.Estado;
 using System;
@@ -11,52 +12,29 @@ namespace PPAI_CU17.Controladores
 {
     public class ControladorRegistrarRespuesta
     {
+        // Clase context para mapeo de BD
+        public PPAIContext dbContext;
         // Atributos de la clase controlador registrar respuesta
         private String respuesta;
         private String descripcion;
         private String accion;
-        // private Estado estadoEnCurso;
         private DateTime fechaYhoraActual;
         private Llamada datosLlamada;
         private InformacionCliente informacionCliente;
-        //private Estado estadoFinalizada;
         private TimeSpan duracionLlamada;
-
-        // definicion de los estados posibles que puede tomar una llamada, para buscarlos con los métodos correspondientes (DEPRECADO DEL ANÁLISIS)
-        // private List<Estado> estadosLlamada;
-
         public VentanaRegistrarRespuesta ventanaRegistrarRespuesta;
 
+
         // Metodos de la clase controlador registrar respuesta
-        public ControladorRegistrarRespuesta(Llamada datosLlamada, VentanaRegistrarRespuesta _ventanaRegistrarRespuesta)
+        public ControladorRegistrarRespuesta(Llamada datosLlamada, VentanaRegistrarRespuesta _ventanaRegistrarRespuesta, PPAIContext _dbContext)
         {
             this.respuesta = "";
             this.descripcion = "";
             this.accion = "";
             this.datosLlamada = datosLlamada;
+            this.dbContext = _dbContext;
             this.ventanaRegistrarRespuesta = _ventanaRegistrarRespuesta;
             this.ventanaRegistrarRespuesta.controladorRegistrarRespuesta = this;
-
-            // Inicializacion de los estados posibles para la llamada, a efecto de pruebas (DEPRECADO DEL ANÁLISIS)
-
-            //this.estadosLlamada = new List<Estado>();
-            //List<String> stringsEstados = new List<string>();
-
-            //stringsEstados.Add("Iniciada");
-            //stringsEstados.Add("EnCurso");
-            //stringsEstados.Add("Finalizada");
-            //stringsEstados.Add("Cancelada");
-            //stringsEstados.Add("PendienteEscucha");
-            //stringsEstados.Add("Correcta");
-            //stringsEstados.Add("Observada");
-            //stringsEstados.Add("Descartada");
-            //stringsEstados.Add("Encuestada");
-
-            //stringsEstados.ForEach((nombre) =>
-            //{
-            //    Estado estadoInicializado = new Estado(nombre);
-            //    this.estadosLlamada.Add(estadoInicializado);
-            //});
 
         }
 
@@ -90,32 +68,10 @@ namespace PPAI_CU17.Controladores
             return this.informacionCliente;
         }
 
-        // (MÉTODOS DEPRECADOS DEL ANÁLISIS)
-        //public Estado getEstadoEnCurso()
-        //{
-        //    return estadoEnCurso;
-        //}
-
-        //public Estado getEstadoFinalizada()
-        //{
-        //    return this.estadoFinalizada;
-        //}
-
         public void setRespuesta(String value) 
         {
             this.respuesta = value;
         }
-
-        // (METODOS DEPRECADOS DEL ANÁLISIS)
-        //public void setEstadoEnCurso(Estado estado) 
-        //{
-        //    this.estadoEnCurso = estado;
-        //}
-
-        //public void setEstadoFinalizada(Estado estado) 
-        //{
-        //    this.estadoFinalizada = estado;
-        //}
         public void setDescripcion(String value)
         {
             this.descripcion = value;
@@ -139,34 +95,6 @@ namespace PPAI_CU17.Controladores
             this.validarRespuesta();
         }
 
-        // Busca entre los objetos estado la instancia "enCurso" y setea usando el método arriba definido (METODO DEPRECADO DEL ANÁLISIS)
-        //private void buscarEstadoEnCurso(List<Estado> Estados)
-        //{
-
-        //    Estados.ForEach((Estado estado) =>
-        //    {
-        //        if (estado.esEnCurso())
-        //        {
-        //            this.estadoEnCurso = estado;
-        //            return;
-        //        }
-        //    });
-        //}
-
-        // Busca entre los objetos estado la instancia "Finalizada" de la llamada y setea usando el método arriba definido (METODO DEPRECADO DEL ANÁLISIS)
-        //public void buscarEstadoFinalizada(List<Estado> Estados)
-        //{
-
-        //    foreach (Estado estado in Estados)
-        //    {
-        //        if (estado.esFinalizada())
-        //        {
-        //            this.setEstadoFinalizada(estado);
-        //            break;
-
-        //        }
-        //    }
-        //}
 
         // Toma la descripcion de la respuesta ingresada por el operador desde la ventana
         public void tomarDescripcion(String descripcionIngresada)
@@ -267,6 +195,11 @@ namespace PPAI_CU17.Controladores
             this.datosLlamada.setDetalleAccionRequerida(this.accion);
 
             this.datosLlamada.calcularDuracion();
+            this.datosLlamada.cambioDeEstado.ForEach(
+                ce =>
+                {
+                    MessageBox.Show(ce.getNombreEstado(), ce.getFechaHoraInicio().ToString());
+                });
             this.duracionLlamada = this.datosLlamada.getDuracion();
             this.ventanaRegistrarRespuesta.mostrarDatosFinDeLlamada(this.duracionLlamada.ToString(), this.descripcion);
 
@@ -282,8 +215,6 @@ namespace PPAI_CU17.Controladores
         // Inicia la funcionalidad principal del flujo del caso de uso
         public void registrarRespuesta()
         {
-            // ya no se buscan los estados (DEPRECADO DEL ANÁLISIS)
-            // this.buscarEstadoEnCurso(this.estadosLlamada);
 
             this.obtenerFechaYhoraActual();
 

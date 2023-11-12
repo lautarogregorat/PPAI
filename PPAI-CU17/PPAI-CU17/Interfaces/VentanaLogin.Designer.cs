@@ -94,6 +94,7 @@
             label1.Size = new Size(89, 32);
             label1.TabIndex = 5;
             label1.Text = "LOGIN";
+            label1.Click += label1_Click;
             // 
             // VentanaLogin
             // 

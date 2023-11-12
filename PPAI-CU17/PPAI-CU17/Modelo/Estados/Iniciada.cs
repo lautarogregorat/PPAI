@@ -1,13 +1,21 @@
-namespace PPAI_CU17.Modelo.Estados.Estado;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using PPAI_CU17.Modelo;
+using PPAI_CU17.Modelo.Estados.Estado;
 public class Iniciada : Estado
 {
     public Iniciada(string nombre) : base(nombre)
     {
     }
 
-    public void finalizar()
+    public Iniciada() : base("Iniciada")
     {
 
+    }
+
+
+    public override void finalizar()
+    {
     }
 
     public void registrarRtaOperador()
@@ -15,8 +23,10 @@ public class Iniciada : Estado
 
     }
 
-    public void enCurso(DateTime fechaHoraInicio, Llamada llamada)
+
+    public override void enCurso(DateTime fechaHoraInicio, Llamada llamada)
     {
+        MessageBox.Show("Cambiando estado a en curso");
         Estado e = crearProximoEstado();
         CambiodeEstado c = crearCambioDeEstado(fechaHoraInicio, e);
         llamada.agregarCambioEstado(c);
@@ -25,13 +35,19 @@ public class Iniciada : Estado
 
     public Estado crearProximoEstado()
     {
-        return new EnCurso("enCurso");
+        EnCurso e = new EnCurso();
+        return e;
     }
 
+    public bool esIniciada()
+    {
+        return true;
+    }
 
     public CambiodeEstado crearCambioDeEstado(DateTime fechaHoraInicio, Estado estado)
     {
-        return  new CambiodeEstado(estado, fechaHoraInicio);
+        CambiodeEstado ce = new CambiodeEstado(estado, fechaHoraInicio);
+        return ce;
     }
 
     public void cancelarLlamada()
@@ -39,6 +55,13 @@ public class Iniciada : Estado
 
     }
 
+    public override void enCurso()
+    {
+        throw new NotImplementedException();
+    }
 
-
+    public override void finalizar(DateTime fechaHoraInicio, Llamada llamada)
+    {
+        throw new NotImplementedException();
+    }
 }

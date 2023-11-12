@@ -21,6 +21,18 @@ namespace PPAI_CU17.BaseDeDatos
             builder.HasMany(o => o.subOpciones).WithOne(s => s.opcionPadre).HasForeignKey(o => o.idOpcion).IsRequired(false);
             builder.HasMany(o => o.validacionRequerida).WithOne(v => v.opcion).HasForeignKey(v => v.idOpcion).IsRequired(false);
             builder.HasOne(o => o.categoria).WithMany(c => c.opciones).HasForeignKey(o => o.idCategoria).IsRequired(false);
+
+            builder.HasData(
+                new Opcion
+                {
+                    idOpcion = 1,
+                    nombre = "Solicitar nueva tarjeta",
+                    mensajeOpcion = "Si desea informar un robo y solicitar una nueva tarjeta marque 1",
+                    nroOrden = 1,
+                    audioMensajeSubopcion = "Si cuenta con los datos de la tarjeta marque 1\nSi no cuenta con los datos de la tarjeta marque 2\nSi desea comunicarse con un responsable de atencion al cliente marque 3\n Si desea finalizar la llamada marque 4 ",
+                    idCategoria = 1
+                });
+
         }
     }
 }

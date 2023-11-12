@@ -19,7 +19,7 @@ namespace PPAI_CU17.Modelo
         [Column("nro_orden_subopcion", TypeName = "int")]
         public int nroOrden;
 
-        public List<Validacion> validaciones = new List<Validacion>();
+        public List<Validacion> validaciones { get; set; }
         public List<Llamada> llamadas { get; set; }
 
         [ForeignKey("idOpcion")]

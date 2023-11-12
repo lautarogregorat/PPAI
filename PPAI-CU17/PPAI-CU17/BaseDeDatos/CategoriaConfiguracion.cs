@@ -19,6 +19,16 @@ namespace PPAI_CU17.BaseDeDatos
             builder.Property(c => c.nroOrden).HasColumnName("nro_orden_categoria");
             builder.HasMany(c => c.opciones).WithOne(o => o.categoria).HasForeignKey(o => o.idCategoria).IsRequired(false);
 
+            builder.HasData(
+              new Categoria
+              {
+                  idCategoria = 1,
+                  nombre = "Informar Robo",
+                  audioMensajeOpciones = "Si desea informar un robo y solicitar una nueva tarjeta marque 1\n Si desea informar un robo y anular su tarjeta marque 2\n Si desea finalizar la llamada marque 3",
+                  mensajeOpciones = "Si quiere informar un robo marque 1",
+                  nroOrden = 1
+              });
+
         }
     }
 }

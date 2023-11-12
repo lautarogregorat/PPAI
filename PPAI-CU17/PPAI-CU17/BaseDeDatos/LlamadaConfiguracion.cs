@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using PPAI_CU17.Modelo.Estados.Estado;
 
 namespace PPAI_CU17.BaseDeDatos
 {
@@ -22,6 +23,22 @@ namespace PPAI_CU17.BaseDeDatos
             builder.HasOne(l => l.opcionSeleccionada).WithMany(l => l.llamadas).HasForeignKey(l => l.idOpcion).IsRequired(false);
             builder.HasOne(l => l.subopcionSeleccionada).WithMany(l => l.llamadas).HasForeignKey(l => l.idSubOpcion).IsRequired(false);
             builder.HasMany(l => l.cambioDeEstado).WithOne(c => c.llamada).HasForeignKey(c => c.idLlamada).IsRequired(false);
+
+
+            builder.HasData(
+            new Llamada
+            {
+                idLlamada = 1,
+                descripcionOperador = "",
+                detalleAccionRequerida = "",
+                duracion = new TimeSpan(0, 0, 0, 0),
+                encuestaEnviada = false,
+                observacionAuditor = "",
+                idCliente = 1,
+                idOpcion = 1,
+                idSubOpcion = 1
+            });
+
         }
     }
 }

@@ -15,7 +15,20 @@ namespace PPAI_CU17.BaseDeDatos
         {
             builder.ToTable("CambiosDeEstados");
             builder.Property(c => c.fechaHoraInicio).HasColumnName("fecha_hora_inicio");
-            builder.HasOne(c => c.llamada).WithMany(l => l.cambioDeEstado).HasForeignKey(c => c.idLlamada).IsRequired();
+            builder.HasOne(c => c.llamada).WithMany(l => l.cambioDeEstado).HasForeignKey(c => c.idLlamada).IsRequired(false);
+            builder.HasOne(c => c.estado).WithMany(e => e.cambiosDeEstado).HasForeignKey(c => c.idEstado).IsRequired(false);
+
+            builder.HasData(
+            new CambiodeEstado
+            {
+                idCambioEstado = 1,
+                fechaHoraInicio = DateTime.Now,
+                idEstado = 1,
+                idLlamada = 1
+            });
+
         }
+
+
     }
 }

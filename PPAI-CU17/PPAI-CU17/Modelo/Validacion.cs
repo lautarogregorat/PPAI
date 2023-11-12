@@ -28,6 +28,7 @@ namespace PPAI_CU17.Modelo
         public int? idSubOpcion { get; set; }
         public SubOpcion? subOpcion { get; set; }
 
+        public List<InformacionCliente> informacionClientes { get; set; }
 
         // Constructor
         public Validacion()

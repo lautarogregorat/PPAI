@@ -75,6 +75,7 @@
             lblTituloSistema.TabIndex = 2;
             lblTituloSistema.Text = "SISTEMA IVR ";
             lblTituloSistema.UseCompatibleTextRendering = true;
+            lblTituloSistema.Click += lblTituloSistema_Click;
             // 
             // pictureBox1
             // 

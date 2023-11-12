@@ -13,11 +13,14 @@ namespace PPAI_CU17.Modelo
 
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idCambioEstado { get; set; }
         // Atributos de la clase cambio de estado
         [Column("fecha_hora_inicio", TypeName = "datetime")]
         public DateTime fechaHoraInicio;
 
+        [ForeignKey("idEstado")]
+        public int idEstado { get; set; }
         public Estado estado;
 
         [ForeignKey("idLlamada")]
@@ -49,6 +52,12 @@ namespace PPAI_CU17.Modelo
         {
             this.estado = estado;
         }
+
+        public Estado getEstado()
+        {
+            return this.estado;
+        }
+
         
         public void setFechaHoraInicio(DateTime value) 
         {

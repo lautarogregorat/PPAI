@@ -21,7 +21,7 @@ namespace PPAI_CU17.Modelo
         [Column("nro_celular", TypeName = "varchar(200)")]
         public String nroCelular;
 
-        public List<InformacionCliente> info;
+        public List<InformacionCliente> info { get; set; }
 
         public List<Llamada> llamadas { get; set; }
 
